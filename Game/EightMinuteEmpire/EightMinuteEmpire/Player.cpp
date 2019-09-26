@@ -1,46 +1,44 @@
 #include "Player.h"
 
 Player::Player() {
-	name = "";
-	coins = 12;
+	pName = new string("");
+	pCoins = new int(12);
+	pBiddingFacility = new BiddingFacility();
 }
 
 Player::Player(string name) {
-	this->name = name;
-	coins = 12;
+	pName = new string(name);
+	pCoins = new int(12);
+	pBiddingFacility = new BiddingFacility();
 }
 
-BiddingFacility& Player::getBiddingFacility()
+string *Player::getName()
 {
-	return biddingFacility;
-}
-
-void Player::showBids()
-{
-	cout << "Name: " << name << " / Bid: " << biddingFacility.getBid() << endl;
-
-}
-
-string Player::getName()
-{
-	return name;
+	return pName;
 }
 
 void Player::setName(string name)
 {
-	this->name = name;
+	*pName = name;
 }
 
-void Player::Print() {
-	cout << "Name: " << name << " / Coins: " << coins << endl;
-}
-
-int Player::getCoins() {
-	return coins;
+int *Player::getCoins() {
+	return pCoins;
 }
 
 void Player::setCoins(int coins) {
-	this->coins = coins;
+	*pCoins = coins;
+}
+
+BiddingFacility *Player::getBiddingFacility()
+{
+	return pBiddingFacility;
+}
+
+void Player::showBids()
+{
+	cout << "Name: " << *pName << " / Bid: " << *(pBiddingFacility->getBid()) << endl;
+
 }
 
 void Player::PayCoin() {

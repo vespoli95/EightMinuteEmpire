@@ -5,11 +5,11 @@ using namespace std;
 
 class BiddingFacility {
 	private:
-		int bid;
+		int *pBid;
 	public:
 		BiddingFacility();
 		BiddingFacility(int bid);
 		void start();
-		int getBid() const;
+		int *getBid();
 		void setBid(int bid);
 };

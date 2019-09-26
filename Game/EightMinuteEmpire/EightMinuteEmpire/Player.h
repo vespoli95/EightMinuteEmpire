@@ -9,19 +9,18 @@ using namespace std;
 
 class Player {
 	private:
-		int coins;
-		string name;
-		BiddingFacility biddingFacility;
+		int *pCoins;
+		string *pName;
+		BiddingFacility *pBiddingFacility;
 	public:
 		Player();
 		Player(string name);
-		BiddingFacility& getBiddingFacility();
+		BiddingFacility *getBiddingFacility();
 		void showBids();
-		int getCoins();
+		int *getCoins();
 		void setCoins(int coins);
-		string getName();
+		string *getName();
 		void setName(string name);
-		void Print();
 		void PayCoin();
 		void PlaceNewArmies();
 		void MoveArmies();
