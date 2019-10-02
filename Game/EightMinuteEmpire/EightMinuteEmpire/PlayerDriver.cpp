@@ -13,9 +13,13 @@ int main() {
 	vector<Player>::iterator ptr;
 
 	//get bids from each player
+	cout << "------------ BIDDING STARTED ------------" << endl;
+	cout << "Bids must be greater than or equal to zero and less than or equal to coins possessed." << endl;
 	for (ptr = players.begin(); ptr < players.end(); ptr++) {
-		cout << *ptr->getName() << ", how much would you like to bid?" << endl;
-		ptr->getBiddingFacility()->start();
+		do {
+			cout << *ptr->getName() << ", how much would you like to bid? " << endl;
+			ptr->getBiddingFacility()->start();
+		} while (*ptr->getBiddingFacility()->getBid() < 0 || *ptr->getBiddingFacility()->getBid() > *ptr->getCoins());
 	}
 	 
 	//display bids
