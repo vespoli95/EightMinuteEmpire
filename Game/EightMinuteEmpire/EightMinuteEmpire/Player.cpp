@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Player.h";
 
 Player::Player() {
 	pName = new string("");
@@ -10,6 +10,15 @@ Player::Player(string name) {
 	pName = new string(name);
 	pCoins = new int(12);
 	pBiddingFacility = new BiddingFacility();
+}
+
+Player::Player(string name, int age)
+{
+	pName = new string(name);
+	pCoins = new int(12);
+	pAge = new int(age);
+	pBiddingFacility = new BiddingFacility();
+
 }
 
 string *Player::getName()
@@ -28,6 +37,16 @@ int *Player::getCoins() {
 
 void Player::setCoins(int coins) {
 	*pCoins = coins;
+}
+
+int * Player::getAge()
+{
+	return pAge;
+}
+
+void Player::setAge(int age)
+{
+	*pAge = age;
 }
 
 BiddingFacility *Player::getBiddingFacility()

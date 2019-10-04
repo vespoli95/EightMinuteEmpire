@@ -1,3 +1,7 @@
-﻿  PlayerDriver.cpp
-c:\users\antve\onedrive\desktop\programming\comp345game\eightminuteempire\game\eightminuteempire\eightminuteempire\playerdriver.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  BiddingFacility.cpp
+  BiddingFacilityDriver.cpp
+c:\users\antve\onedrive\desktop\programming\comp345game\eightminuteempire\game\eightminuteempire\eightminuteempire\biddingfacilitydriver.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Player.cpp
+c:\users\antve\onedrive\desktop\programming\comp345game\eightminuteempire\game\eightminuteempire\eightminuteempire\player.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
   EightMinuteEmpire.vcxproj -> C:\Users\antve\OneDrive\Desktop\Programming\comp345game\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

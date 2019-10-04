@@ -9,7 +9,9 @@ class BiddingFacility {
 	public:
 		BiddingFacility();
 		BiddingFacility(int bid);
+		virtual ~BiddingFacility();
 		void start();
 		int *getBid();
 		void setBid(int bid);
 };
+
