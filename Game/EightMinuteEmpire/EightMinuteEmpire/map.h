@@ -7,21 +7,21 @@
 
 using namespace std;
 
-//A class Country holds a vector which is populated by pointers pointing to all countries within itself
-class Country
+//A class Region holds a vector which is populated by pointers pointing to all countries within itself
+class Region
 {
 
 public:
-	Country();
-	Country(string countryname);
+	Region();
+	Region(string regionname);
 
 private:
 	int MAX = 8;
-	typedef map<string, Country*> edges;
-	Country* ptr;
+	typedef map<string, Region*> edges;
+	Region* ptr;
 	string name;
 
-	Country* array[8];
+	Region* array[8];
 	edges land_edges;
 	edges marine_edges;
 
@@ -36,18 +36,18 @@ class Continent
 public:
 	Continent();
 	Continent(string continentname);
-	typedef map<string, Country*> empire;
-	empire countryList;
+	typedef map<string, Region*> empire;
+	empire regionList;
 	string name;
 	Continent* ptr;
 
-	void addcountry(Country& v);
+	void addregion(Region& v);
 
 	void printsize();
 
 private:
 
-	friend class Country;
+	friend class Region;
 	friend class Board;
 
 };
@@ -57,7 +57,7 @@ private:
 class Board
 {
 private:
-	typedef map<string, Country*> vmap;
+	typedef map<string, Region*> vmap;
 	vmap worldmap;
 	typedef map<string, Continent*> cmap;
 	cmap continents;
@@ -68,7 +68,9 @@ private:
 public:
 	static Board& getInstance();
 
-	void addcountry(Country& countryname);
+	void addregionobj(Region& regionname);
+
+	Region& addregion(string regionname);
 
 	void addcontinent(Continent& continentname);
 

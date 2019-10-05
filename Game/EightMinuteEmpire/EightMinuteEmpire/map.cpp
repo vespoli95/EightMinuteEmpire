@@ -3,15 +3,15 @@
 using namespace std;
 
 
-Country::Country()
+Region::Region()
 {
 	name = "";
 	ptr = NULL;
 }
 
-Country::Country(string countryname) {
+Region::Region(string regionname) {
 
-	name = countryname;
+	name = regionname;
 	ptr->array;
 }
 
@@ -25,17 +25,17 @@ Continent::Continent(string continentname) {
 	name = continentname;
 }
 
-void Continent::addcountry(Country& countryname)
+void Continent::addregion(Region& regionname)
 {
-	empire::iterator itr = countryList.find(countryname.name);
-	if (itr == countryList.end())
+	empire::iterator itr = regionList.find(regionname.name);
+	if (itr == regionList.end())
 	{
-		Country* v;
-		v = new Country(countryname.name);
-		countryList[countryname.name] = v;
+		Region* v;
+		v = new Region(regionname.name);
+		regionList[regionname.name] = v;
 		return;
 	}
-	cout << "\nCountry already exists!";
+	cout << "\nRegion already exists!";
 }
 
 
@@ -63,30 +63,42 @@ Board& Board::getInstance() {
 	return theInstance;
 }
 
-void Board::addcountry(Country& countryname) {
-	vmap::iterator itr = worldmap.find(countryname.name);
-	if (itr == worldmap.end())
+void Board::addregionobj(Region& regionname) {
+	vmap::iterator itr = worldmap.find(regionname.name);  //search the worldmap to see if the region already exists
+	if (itr == worldmap.end()) //if it doesn't exist, add it to the worldmap
 	{
-		Country* v;
-		v = new Country(countryname.name);
-		worldmap[countryname.name] = v;
+		Region* v;
+		v = new Region(regionname.name);
+		worldmap[regionname.name] = v;
 		return;
 	}
-	cout << "\nCountry already exists!";
+	cout << "\nRegion already exists!";
+}
+
+Region& Board::addregion(string regionname) {
+	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
+	if (itr == worldmap.end()) //if it doesn't exist, add it to the worldmap
+	{
+		Region* v;
+		v = new Region(regionname);
+		worldmap[regionname] = v;
+		return *v;
+	}
+	cout << "\nRegion already exists!";
 }
 
 void Board::addcontinent(Continent& continentname)
 {
 
-	cmap::iterator itr = continents.find(continentname.name);
-	if (itr == continents.end())
+	cmap::iterator itr = continents.find(continentname.name); //search the continent map to see if the continent already exists
+	if (itr == continents.end()) //if it doesn't exist, add it to the continent map
 	{
 		Continent* cont;
 		cont = new Continent(continentname.name);
 		continents[continentname.name] = cont;
 		return;
 	}
-	cout << "\nCountry already exists!";
+	cout << "\nRegion already exists!";
 
 }
 
