@@ -37,6 +37,8 @@ public:
 	empire regionList;
 	string name;
 
+	void addregion(Region& regionname);
+
 	void print();
 
 private:

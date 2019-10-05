@@ -9,10 +9,9 @@ int main()
 
 	Board& mapofworld = Board::getInstance();
 
+	mapofworld.addregionandcontinent("Canada", "North America");
+	mapofworld.printlist();
 
-	//found out how many countries will be on the map
-	cout << "How many countries does your map have?" << endl;
-	cin >> countries;
 
 
 
