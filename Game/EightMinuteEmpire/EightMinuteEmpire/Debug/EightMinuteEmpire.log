@@ -1,4 +1,6 @@
-﻿  mapdriver.cpp
+﻿  map.cpp
+  mapdriver.cpp
 C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\mapdriver.cpp(8,6): warning C4101:  'players': unreferenced local variable
+  Generating Code...
 C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\mapdriver.cpp(7,6): warning C4101:  'countries': unreferenced local variable
   EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

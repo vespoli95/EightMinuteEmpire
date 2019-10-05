@@ -43,6 +43,7 @@ void Continent::print()
 
 	for (itr = regionList.begin(); itr != regionList.end(); ++itr) {
 		cout << itr->first << '\n';
+		//cout << itr->second->name << '\n'; //test to see if both return same content
 	}
 	
 }
