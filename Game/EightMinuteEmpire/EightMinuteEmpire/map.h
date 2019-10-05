@@ -16,11 +16,9 @@ public:
 	Region(string regionname);
 
 private:
-	int MAX = 8;
 	typedef map<string, Region*> edges;
-	Region* ptr;
+	Region* regionptr;
 	string name;
-
 	Region* array[8];
 	edges land_edges;
 	edges marine_edges;
@@ -72,7 +70,9 @@ public:
 
 	Region& addregion(string regionname);
 
-	void addcontinent(Continent& continentname);
+	void addcontinentobj(Continent& continentname);
+
+	Continent& addcontinent(string continentname);
 
 	void printlist();
 

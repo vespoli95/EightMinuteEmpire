@@ -6,13 +6,13 @@ using namespace std;
 Region::Region()
 {
 	name = "";
-	ptr = NULL;
+	regionptr = NULL;
 }
 
 Region::Region(string regionname) {
 
 	name = regionname;
-	ptr->array;
+	regionptr->array;
 }
 
 Continent::Continent()
@@ -87,7 +87,7 @@ Region& Board::addregion(string regionname) {
 	cout << "\nRegion already exists!";
 }
 
-void Board::addcontinent(Continent& continentname)
+void Board::addcontinentobj(Continent& continentname)
 {
 
 	cmap::iterator itr = continents.find(continentname.name); //search the continent map to see if the continent already exists
@@ -97,6 +97,21 @@ void Board::addcontinent(Continent& continentname)
 		cont = new Continent(continentname.name);
 		continents[continentname.name] = cont;
 		return;
+	}
+	cout << "\nRegion already exists!";
+
+}
+
+Continent& Board::addcontinent(string continentname)
+{
+
+	cmap::iterator itr = continents.find(continentname); //search the continent map to see if the continent already exists
+	if (itr == continents.end()) //if it doesn't exist, add it to the continent map
+	{
+		Continent* cont;
+		cont = new Continent(continentname);
+		continents[continentname] = cont;
+		return *cont;
 	}
 	cout << "\nRegion already exists!";
 
