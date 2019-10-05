@@ -12,13 +12,31 @@ using std::ios;
 
 int main()
 {
+	string regionname, continentname;
 
 	Board& mapofworld = Board::getInstance();
 	
 	//mapofworld.addregionandcontinent("Canada", "North America");
 	//mapofworld.printlist();
 
-
+	ifstream input("test.text");
+	if (input.fail()) {
+		cout << "File does not exist" << endl;
+		cout << "Exit Program" << endl;
+		return 0;
+	}
+	while (true)
+	{
+		input >> regionname >> continentname;
+		if (input.eof()) {
+			break;
+		}
+		else
+		{
+			cout << "region name is :" << regionname << "which is part of continent: " << continentname << endl;
+		}
+		input.close();
+	}
 
 
 
