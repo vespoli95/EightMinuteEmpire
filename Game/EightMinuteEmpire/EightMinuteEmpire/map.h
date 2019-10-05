@@ -19,10 +19,9 @@ private:
 	typedef map<string, Region*> edges;
 	Region* regionptr;
 	string name;
-	Region* array[8];
+	string* array[8];
 	edges land_edges;
 	edges marine_edges;
-
 	friend class Board;
 	friend class Continent;
 };
@@ -37,11 +36,8 @@ public:
 	typedef map<string, Region*> empire;
 	empire regionList;
 	string name;
-	Continent* ptr;
 
-	void addregion(Region& v);
-
-	void printsize();
+	void print();
 
 private:
 
@@ -66,11 +62,9 @@ private:
 public:
 	static Board& getInstance();
 
-	void addregionobj(Region& regionname);
+	void addregionandcontinent(string regionname, string continentname);
 
 	Region& addregion(string regionname);
-
-	void addcontinentobj(Continent& continentname);
 
 	Continent& addcontinent(string continentname);
 

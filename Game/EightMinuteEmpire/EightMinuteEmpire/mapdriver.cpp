@@ -7,7 +7,7 @@ int main()
 	int countries;
 	int players;
 
-	//Board& mapofworld = Board::getInstance();
+	Board& mapofworld = Board::getInstance();
 
 
 	//found out how many countries will be on the map

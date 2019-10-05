@@ -25,23 +25,14 @@ Continent::Continent(string continentname) {
 	name = continentname;
 }
 
-void Continent::addregion(Region& regionname)
+void Continent::print()
 {
-	empire::iterator itr = regionList.find(regionname.name);
-	if (itr == regionList.end())
-	{
-		Region* v;
-		v = new Region(regionname.name);
-		regionList[regionname.name] = v;
-		return;
+	empire::iterator itr;
+
+	for (itr = regionList.begin(); itr != regionList.end(); ++itr) {
+		cout << itr->first << '\n';
 	}
-	cout << "\nRegion already exists!";
-}
-
-
-
-void Continent::printsize()
-{
+	
 }
 
 
@@ -63,17 +54,13 @@ Board& Board::getInstance() {
 	return theInstance;
 }
 
-void Board::addregionobj(Region& regionname) {
-	vmap::iterator itr = worldmap.find(regionname.name);  //search the worldmap to see if the region already exists
-	if (itr == worldmap.end()) //if it doesn't exist, add it to the worldmap
-	{
-		Region* v;
-		v = new Region(regionname.name);
-		worldmap[regionname.name] = v;
-		return;
-	}
-	cout << "\nRegion already exists!";
+void Board::addregionandcontinent(string regionname, string continentname) {
+	Region& x = Board::addregion(regionname);
+	cout << x.name << endl;
+	Continent& y = Board::addcontinent(continentname);
+	cout << y.name << endl;
 }
+
 
 Region& Board::addregion(string regionname) {
 	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
@@ -85,22 +72,10 @@ Region& Board::addregion(string regionname) {
 		return *v;
 	}
 	cout << "\nRegion already exists!";
+	Region* x = itr->second;
+	return *x;
 }
 
-void Board::addcontinentobj(Continent& continentname)
-{
-
-	cmap::iterator itr = continents.find(continentname.name); //search the continent map to see if the continent already exists
-	if (itr == continents.end()) //if it doesn't exist, add it to the continent map
-	{
-		Continent* cont;
-		cont = new Continent(continentname.name);
-		continents[continentname.name] = cont;
-		return;
-	}
-	cout << "\nRegion already exists!";
-
-}
 
 Continent& Board::addcontinent(string continentname)
 {
@@ -114,8 +89,11 @@ Continent& Board::addcontinent(string continentname)
 		return *cont;
 	}
 	cout << "\nRegion already exists!";
+	Continent* x = itr->second;
+	return *x;
 
 }
+
 
 void Board::printlist() {
 	vmap::iterator itr;
