@@ -1,16 +1,22 @@
 #include "map.h"
+#include <iostream>
+#include <fstream>
+
+using std::cout;
+using std::endl;
+using std::cin;
+using std::ofstream;
+using std::ios;
 
 
 
 int main()
 {
-	int countries;
-	int players;
 
 	Board& mapofworld = Board::getInstance();
-
-	mapofworld.addregionandcontinent("Canada", "North America");
-	mapofworld.printlist();
+	
+	//mapofworld.addregionandcontinent("Canada", "North America");
+	//mapofworld.printlist();
 
 
 
