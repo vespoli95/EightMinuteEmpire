@@ -15,26 +15,6 @@ Region::Region(string regionname) {
 	regionptr->array;
 }
 
-void Region::addlandedge(string edgeid, string regionname1, string regionname2) {
-	////Region& x = Board::findregion(regionname1);
-
-	//
-	//edges::iterator itr = land_edges.find(edgeid);  //search the worldmap to see if the region already exists
-	//if (itr == land_edges.end()) //if it doesn't exist, add it to the worldmap
-	//{
-	//	land_edges[edgeid] = &x;
-	//	return;
-	//}
-
-	//return;
-	
-}
-
-void Region::addmarineedge(string edgeid, string regionname1, string regionname2 ) {
-	
-
-
-}
 
 Continent::Continent()
 {
@@ -121,6 +101,46 @@ Region& Board::addregion(string regionname) {
 	cout << "\nRegion already exists!";
 	Region* x = itr->second;
 	return *x;
+}
+
+void Board::addlandedge(string edgeid, string regionname1, string regionname2) {
+	Region& x = findregion(regionname1);
+	Region& y = findregion(regionname2);
+
+	//place <edgeid,region1 pointer> in Land Edge of region1
+	vmap::iterator itr = x.land_edges.find(edgeid);  
+	if (itr == x.land_edges.end()) {
+		x.land_edges[edgeid] = &y;
+	}
+	//place <edgeid,region2 pointer> in Land Edge of region2
+	vmap::iterator cnt = y.land_edges.find(edgeid);  
+	if (cnt == y.land_edges.end())
+	{
+		y.land_edges[edgeid] = &x;
+	}
+
+	return;
+
+}
+
+void Board::addmarineedge(string edgeid, string regionname1, string regionname2) {
+	Region& x = findregion(regionname1);
+	Region& y = findregion(regionname2);
+
+	//place <edgeid,region1 pointer> in Land Edge of region1
+	vmap::iterator itr = x.marine_edges.find(edgeid);
+	if (itr == x.marine_edges.end()) {
+		x.marine_edges[edgeid] = &y;
+	}
+	//place <edgeid,region2 pointer> in Land Edge of region2
+	vmap::iterator cnt = y.marine_edges.find(edgeid);
+	if (cnt == y.marine_edges.end())
+	{
+		y.marine_edges[edgeid] = &x;
+	}
+
+	return;
+
 }
 
 
