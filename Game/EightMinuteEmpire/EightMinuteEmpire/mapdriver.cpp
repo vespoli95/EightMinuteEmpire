@@ -9,7 +9,6 @@ using std::ofstream;
 using std::ios;
 
 
-
 int main()
 {
 	string regionname, continentname;
@@ -18,8 +17,9 @@ int main()
 	
 	//mapofworld.addregionandcontinent("Canada", "North America");
 	//mapofworld.printlist();
-
-	ifstream input("test.text");
+	
+	ifstream input("C:\\test.txt", ios::in);
+	
 	if (input.fail()) {
 		cout << "File does not exist" << endl;
 		cout << "Exit Program" << endl;
@@ -33,7 +33,7 @@ int main()
 		}
 		else
 		{
-			cout << "region name is :" << regionname << "which is part of continent: " << continentname << endl;
+			cout << "region name is : " << regionname << " which is part of continent: " << continentname << endl;
 		}
 		input.close();
 	}
