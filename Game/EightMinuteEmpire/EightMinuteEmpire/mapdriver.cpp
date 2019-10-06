@@ -71,7 +71,7 @@ int main()
 
 	Board& mapofworld = Board::getInstance();	
 
-	readfile(mapofworld,"C:\\test.txt");
+	readfile(mapofworld,"C:\\map8.txt");
 
 	mapofworld.printlist();
 
