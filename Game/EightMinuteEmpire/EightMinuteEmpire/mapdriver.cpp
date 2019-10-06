@@ -8,62 +8,68 @@ using std::cin;
 using std::ofstream;
 using std::ios;
 
+void readfile(string filename) {
 
-int main()
-{
-	string regionname, continentname;
+	string regionname1, continentname, edgeid, regionname2;
 
-	Board& mapofworld = Board::getInstance();
-	
-	//mapofworld.addregionandcontinent("Canada", "North America");
-	//mapofworld.printlist();
-	
-	ifstream input("C:\\test.txt", ios::in);
-	
+	ifstream input(filename, ios::in);
+
 	if (input.fail()) {
 		cout << "File does not exist" << endl;
 		cout << "Exit Program" << endl;
-		return 0;
+		return;
 	}
-	while (true)
+	//mapping regions and continents
+	while (!input.eof())
 	{
-		input >> regionname >> continentname;
-		if (input.eof()) {
+		input >> regionname1;
+		if (regionname1 == "LE") {
+			cout << "switching to Land Edges " << endl;
 			break;
 		}
 		else
 		{
-			cout << "region name is : " << regionname << " which is part of continent: " << continentname << endl;
+			input >> continentname;
+			cout << "region name is : " << regionname1 << " which is part of continent: " << continentname << endl;
 		}
-		input.close();
+		
 	}
+	//mapping land edges
+	while (!input.eof())
+	{
+		input >> edgeid;
+		if (edgeid == "ME") {
+			cout << "switching to Marine Edges " << endl;
+			break;
+		}
+		else
+		{
+			input >> regionname1 >> regionname2;
+			cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by land " << endl;
+		}
 
+	}
+	//mapping marine edges
+	while (!input.eof())
+	{
+		input >> edgeid >>regionname1 >> regionname2;
+		cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by sea " << endl;
 
+	}
+	   
+	input.close();
 
-
-
-	/*
-//SHOULD be in the country constructor
-//pointer to a particular country
-string* start = map[0];
-char a = 'a';
-for (int i = 0; i < country_array_size; i++) {
-	start[i] = a;
-	a++;
 }
-//SHOULD be in the country constructor , see if Continent exists, if not create it and add country to it
-Continent america("America");
-for (int i = 0; i < country_array_size; i++) {
-	cout << start[i] << " ";
-}
-cout << endl;
-cout << &map[0] << endl;
-cout << &start << endl;
-cout << &map[0][0] << endl;
-cout << &start[0] << endl;
-america.addcountry(start);
-america.printsize();
-*/ // Proof of concept Proof of concept
+
+
+int main()
+{
+
+	Board& mapofworld = Board::getInstance();	
+
+	readfile("C:\\test.txt");
+
+
 
 
 	return 0;
