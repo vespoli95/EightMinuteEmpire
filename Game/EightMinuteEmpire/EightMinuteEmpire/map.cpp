@@ -59,6 +59,7 @@ Board::Board() {
 
 	//create a single map data structure throughout the game instance that hold a pointer to all the continents 
 	cmap continents;
+
 }
 
 Board& Board::getInstance() {
@@ -68,8 +69,49 @@ Board& Board::getInstance() {
 	return theInstance;
 }
 
+void Board::DFSitr(Region& vertex, vmap& visited)
+{	
+	// Mark the current node as visited and print it
+	visited[vertex.name] = &vertex;
+	cout << vertex.name << " ";
+
+	// Recur for all adjacent nodes to this node 
+	vmap::iterator itr;
+	vmap::iterator chk;
+	for (itr = vertex.land_edges.begin(); itr != vertex.land_edges.end(); ++itr){
+		string regionname = itr->second->name;
+		chk = visited.find(regionname);
+		Region* ptr = itr->second;
+		if (chk == visited.end()) {
+			DFSitr(*ptr, visited);
+		}
+	}
+	vmap::iterator mitr;
+	vmap::iterator mchk;
+	for (mitr = vertex.marine_edges.begin(); mitr != vertex.marine_edges.end(); ++mitr) {
+		string mregionname = mitr->second->name;
+		mchk = visited.find(mregionname);
+		Region* mptr = mitr->second;
+		if (mchk == visited.end()) {
+			DFSitr(*mptr, visited);
+		}
+	}
+}
+
+// DFS traversal of the nodes reachable from node
+void Board::DFS(string regionname)
+{
+	typedef map<string, Region*> vmap;
+	vmap visited;
+	vmap* visitedptr = &visited;
+	Region& vertex = findregion(regionname);
+	cout <<"\n"<<"The DFS is as follows ";
+	DFSitr(vertex, *visitedptr);
+}
+
 void Board::addregionandcontinent(string regionname, string continentname) {
 	Region& x = Board::addregion(regionname);
+	++nodes;
 	//cout << "Region created/found: " << x.name << endl;
 	Continent& y = Board::addcontinent(continentname);
 	//cout << "Continent created/found: " << y.name << endl;
@@ -161,12 +203,17 @@ Continent& Board::addcontinent(string continentname)
 
 }
 
+int& Board::getnbofregions() {
+
+	return nodes;
+}
+
 
 void Board::printlist() {
 	typedef map<string, Region*> rmap;
 	//Print all the regions on the board and its respective edges
 	vmap::iterator itr;
-	cout << "Here are the countries that have been created" << endl;
+	cout << "Here are the "<< nodes <<" countries that have been created" << endl;
 	for (itr = worldmap.begin(); itr != worldmap.end(); ++itr) {
 		cout << itr->first << '\n';
 		//print each edge within each continent
@@ -179,11 +226,8 @@ void Board::printlist() {
 			cout << '\t' << seaitr->first << '\t' << seaitr->second->name << '\n';
 		}
 		cout << '\n';
-	
-	
 	}
-
-
+	
 	//Print all the continents on the board and which regions they include
 	cmap::iterator ctr;
 	cout << "Here are the continents that have been created" << endl;

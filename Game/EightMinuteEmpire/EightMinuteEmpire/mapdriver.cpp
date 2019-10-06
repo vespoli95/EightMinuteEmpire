@@ -9,7 +9,7 @@ using std::ofstream;
 using std::ios;
 
 void readfile(Board& mapofworld,string filename) {
-
+	
 	string regionname1, continentname, edgeid, regionname2;
 
 	ifstream input(filename, ios::in);
@@ -23,7 +23,7 @@ void readfile(Board& mapofworld,string filename) {
 	while (!input.eof())
 	{
 		input >> regionname1;
-
+		
 
 		if (regionname1 == "LE") {
 			//cout << "switching to Land Edges " << endl;
@@ -62,7 +62,7 @@ void readfile(Board& mapofworld,string filename) {
 	}
 	   
 	input.close();
-
+	
 }
 
 
@@ -75,6 +75,7 @@ int main()
 
 	mapofworld.printlist();
 
+	mapofworld.DFS("R06");
 
 	return 0;
 }
