@@ -8,7 +8,7 @@ using std::cin;
 using std::ofstream;
 using std::ios;
 
-void readfile(string filename) {
+void readfile(Board& mapofworld,string filename) {
 
 	string regionname1, continentname, edgeid, regionname2;
 
@@ -23,14 +23,17 @@ void readfile(string filename) {
 	while (!input.eof())
 	{
 		input >> regionname1;
+
+
 		if (regionname1 == "LE") {
-			cout << "switching to Land Edges " << endl;
+			//cout << "switching to Land Edges " << endl;
 			break;
 		}
 		else
 		{
 			input >> continentname;
-			cout << "region name is : " << regionname1 << " which is part of continent: " << continentname << endl;
+			//cout << "region name is : " << regionname1 << " which is part of continent: " << continentname << endl;
+			mapofworld.addregionandcontinent(regionname1, continentname);
 		}
 		
 	}
@@ -39,13 +42,14 @@ void readfile(string filename) {
 	{
 		input >> edgeid;
 		if (edgeid == "ME") {
-			cout << "switching to Marine Edges " << endl;
+			//cout << "switching to Marine Edges " << endl;
 			break;
 		}
 		else
 		{
 			input >> regionname1 >> regionname2;
-			cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by land " << endl;
+			//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by land " << endl;
+			mapofworld.addlandedge(edgeid, regionname1, regionname2);
 		}
 
 	}
@@ -53,8 +57,8 @@ void readfile(string filename) {
 	while (!input.eof())
 	{
 		input >> edgeid >>regionname1 >> regionname2;
-		cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by sea " << endl;
-
+		//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by sea " << endl;
+		mapofworld.addmarineedge(edgeid, regionname1, regionname2);
 	}
 	   
 	input.close();
@@ -67,9 +71,9 @@ int main()
 
 	Board& mapofworld = Board::getInstance();	
 
-	readfile("C:\\test.txt");
+	readfile(mapofworld,"C:\\test.txt");
 
-
+	mapofworld.printlist();
 
 
 	return 0;
