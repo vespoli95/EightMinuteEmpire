@@ -163,16 +163,42 @@ Continent& Board::addcontinent(string continentname)
 
 
 void Board::printlist() {
+	typedef map<string, Region*> rmap;
+	//Print all the regions on the board and its respective edges
 	vmap::iterator itr;
 	cout << "Here are the countries that have been created" << endl;
 	for (itr = worldmap.begin(); itr != worldmap.end(); ++itr) {
 		cout << itr->first << '\n';
+		//print each edge within each continent
+		rmap::iterator landitr;
+		for (landitr = itr->second->land_edges.begin(); landitr != itr->second->land_edges.end(); ++landitr) {
+			cout << '\t' << landitr->first << '\t' << landitr->second->name << '\n';
+		}
+		rmap::iterator seaitr;
+		for (seaitr = itr->second->marine_edges.begin(); seaitr != itr->second->marine_edges.end(); ++seaitr) {
+			cout << '\t' << seaitr->first << '\t' << seaitr->second->name << '\n';
+		}
+		cout << '\n';
+	
+	
 	}
+
+
+	//Print all the continents on the board and which regions they include
 	cmap::iterator ctr;
 	cout << "Here are the continents that have been created" << endl;
 	for (ctr = continents.begin(); ctr != continents.end(); ++ctr) {
 		cout << ctr->first << '\n';
+		//print each region within each continent
+		rmap::iterator cnt;
+		for(cnt = ctr->second->regionList.begin(); cnt != ctr->second->regionList.end();++cnt){
+		cout << '\t' << cnt->first << " ";
+		}
+		cout << '\n';
 	}
+	
+
+
 
 	//cout << "Here are the edges present for each country " << endl;
 	//for (itr = worldmap.begin(); itr != worldmap.end(); ++itr) {
