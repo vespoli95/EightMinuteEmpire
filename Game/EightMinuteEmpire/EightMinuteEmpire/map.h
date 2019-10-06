@@ -24,6 +24,9 @@ private:
 	edges marine_edges;
 	friend class Board;
 	friend class Continent;
+
+	void addlandedge(string edgeid, string regionname1, string regionname2);
+	void addmarineedge(string edgeid, string regionname1, string regionname2);
 };
 
 
@@ -65,6 +68,8 @@ public:
 	static Board& getInstance();
 
 	void addregionandcontinent(string regionname, string continentname);
+
+	Region& findregion(string regionname);
 
 	Region& addregion(string regionname);
 

@@ -15,6 +15,27 @@ Region::Region(string regionname) {
 	regionptr->array;
 }
 
+void Region::addlandedge(string edgeid, string regionname1, string regionname2) {
+	////Region& x = Board::findregion(regionname1);
+
+	//
+	//edges::iterator itr = land_edges.find(edgeid);  //search the worldmap to see if the region already exists
+	//if (itr == land_edges.end()) //if it doesn't exist, add it to the worldmap
+	//{
+	//	land_edges[edgeid] = &x;
+	//	return;
+	//}
+
+	//return;
+	
+}
+
+void Region::addmarineedge(string edgeid, string regionname1, string regionname2 ) {
+	
+
+
+}
+
 Continent::Continent()
 {
 	name = "";
@@ -74,6 +95,17 @@ void Board::addregionandcontinent(string regionname, string continentname) {
 	cout << "Continent created/found: " << y.name << endl;
 	y.addregion(x);
 	y.print();
+}
+
+Region& Board::findregion(string regionname) {
+	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
+	if (itr == worldmap.end()) //if it doesn't exist, add it to the worldmap
+	{
+		cout << "\nRegion doesn't exists!";
+	}
+	cout << "\nRegion already exists!";
+	Region* x = itr->second;
+	return *x;
 }
 
 
