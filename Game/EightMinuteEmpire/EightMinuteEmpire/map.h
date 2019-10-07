@@ -14,6 +14,7 @@ class Region
 public:
 	Region();
 	Region(string regionname);
+	~Region(){};
 
 private:
 	typedef map<string, Region*> edges;
@@ -34,6 +35,7 @@ class Continent
 public:
 	Continent();
 	Continent(string continentname);
+	~Continent() {};
 	typedef map<string, Region*> empire;
 	empire regionList;
 	string name;
@@ -63,6 +65,7 @@ private:
 	int nodes = 0;
 	void DFSitr(Region& vertex, vmap& visited);
 	Board();
+	~Board() {};
 
 	friend class Continent;
 	friend class Region;

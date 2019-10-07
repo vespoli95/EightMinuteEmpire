@@ -12,8 +12,8 @@ int main()
 
 	Board& mapofworld = Board::getInstance();	
 
-	//mapofworld.readfile("C:\\map8.txt"); // SUCCESS
-	mapofworld.readfile("C:\\fail8.txt"); // DISCONNECTED GRAPH
+	mapofworld.readfile("C:\\map8.txt"); // SUCCESS
+	//mapofworld.readfile("C:\\fail8.txt"); // DISCONNECTED GRAPH
 
 	mapofworld.printlist();
 
