@@ -86,6 +86,8 @@ public:
 
 	int& getnbofregions();
 
+	void readfile(string filename);
+
 	void printlist();
 
 

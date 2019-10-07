@@ -1,4 +1,7 @@
+#include <iostream>
+#include <fstream>
 #include "map.h"
+
 
 using namespace std;
 
@@ -74,7 +77,7 @@ void Board::DFSitr(Region& vertex, vmap& visited)
 	// Mark the current node as visited and print it
 	visited[vertex.name] = &vertex;
 	cout << vertex.name << " ";
-
+	
 	// Recur for all adjacent nodes to this node 
 	vmap::iterator itr;
 	vmap::iterator chk;
@@ -104,9 +107,19 @@ void Board::DFS(string regionname)
 	typedef map<string, Region*> vmap;
 	vmap visited;
 	vmap* visitedptr = &visited;
+	int verification;
+
 	Region& vertex = findregion(regionname);
-	cout <<"\n"<<"The DFS is as follows ";
+	cout <<"\n"<<"The DFS is as follows | ";
 	DFSitr(vertex, *visitedptr);
+	verification = visited.size();
+
+	if(verification==nodes){
+		cout <<"| all  " << nodes << " regions accounted for! " << endl;
+	}
+	else {
+		cout << "| there is(are)  " << (nodes-verification) << " node(s) missing for this graph to be connected! " << endl;
+	}
 }
 
 void Board::addregionandcontinent(string regionname, string continentname) {
@@ -206,6 +219,63 @@ Continent& Board::addcontinent(string continentname)
 int& Board::getnbofregions() {
 
 	return nodes;
+}
+
+void Board::readfile(string filename) {
+
+	string regionname1, continentname, edgeid, regionname2;
+
+	ifstream input(filename, ios::in);
+
+	if (input.fail()) {
+		cout << "File does not exist" << endl;
+		cout << "Exit Program" << endl;
+		return;
+	}
+	//mapping regions and continents
+	while (!input.eof())
+	{
+		input >> regionname1;
+
+
+		if (regionname1 == "LE") {
+			//cout << "switching to Land Edges " << endl;
+			break;
+		}
+		else
+		{
+			input >> continentname;
+			//cout << "region name is : " << regionname1 << " which is part of continent: " << continentname << endl;
+			addregionandcontinent(regionname1, continentname);
+		}
+
+	}
+	//mapping land edges
+	while (!input.eof())
+	{
+		input >> edgeid;
+		if (edgeid == "ME") {
+			//cout << "switching to Marine Edges " << endl;
+			break;
+		}
+		else
+		{
+			input >> regionname1 >> regionname2;
+			//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by land " << endl;
+			addlandedge(edgeid, regionname1, regionname2);
+		}
+
+	}
+	//mapping marine edges
+	while (!input.eof())
+	{
+		input >> edgeid >> regionname1 >> regionname2;
+		//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by sea " << endl;
+		addmarineedge(edgeid, regionname1, regionname2);
+	}
+
+	input.close();
+
 }
 
 
