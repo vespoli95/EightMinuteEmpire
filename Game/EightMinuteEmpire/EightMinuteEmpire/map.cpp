@@ -102,7 +102,7 @@ void Board::DFSitr(Region& vertex, vmap& visited)
 }
 
 // DFS traversal of the nodes reachable from node
-void Board::DFS(string regionname)
+bool Board::DFS(string regionname)
 {
 	typedef map<string, Region*> vmap;
 	vmap visited;
@@ -116,9 +116,14 @@ void Board::DFS(string regionname)
 
 	if(verification==nodes){
 		cout <<"| all  " << nodes << " regions accounted for! " << endl;
+		cout << "Map is valid" << endl;
+		return true;
 	}
 	else {
 		cout << "| there is(are)  " << (nodes-verification) << " node(s) missing for this graph to be connected! " << endl;
+
+		cout << "Map is invalid ! Program will terminate." << endl;
+		return false;
 	}
 }
 
@@ -275,6 +280,15 @@ void Board::readfile(string filename) {
 	}
 
 	input.close();
+
+	if (DFS("R01")) {
+
+		printlist();
+	}
+	else
+	{
+		exit;
+	}
 
 }
 

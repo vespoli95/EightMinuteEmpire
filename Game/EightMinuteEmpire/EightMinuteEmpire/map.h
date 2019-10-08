@@ -73,7 +73,7 @@ private:
 public:
 	static Board& getInstance();
 
-	void DFS(string regionname);
+	bool DFS(string regionname);
 
 	void addregionandcontinent(string regionname, string continentname);
 
