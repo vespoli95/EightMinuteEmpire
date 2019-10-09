@@ -9,7 +9,7 @@ inline static Player youngestPlayer(vector<Player> players) {
 
 	return youngest;
 }
-
+/*
 int main() {
 	cout << "******BIDDING FACILITY******" << endl;
 	
@@ -108,3 +108,4 @@ int main() {
 
 	return 0;
 }
+*/

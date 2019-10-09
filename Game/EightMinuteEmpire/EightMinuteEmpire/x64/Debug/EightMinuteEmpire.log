@@ -1,0 +1,13 @@
+﻿  BiddingFacility.cpp
+  BiddingFacilityDriver.cpp
+  map.cpp
+  mapdriver.cpp
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\BiddingFacilityDriver.cpp(1,10): warning C4067:  unexpected tokens following preprocessor directive - expected a newline
+  Player.cpp
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\mapdriver.cpp(8,6): warning C4101:  'players': unreferenced local variable
+  PlayerDriver.cpp
+  Generating Code...
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(1,10): warning C4067:  unexpected tokens following preprocessor directive - expected a newline
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(88): warning C4715:  'Board::addregion': not all control paths return a value
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(118): warning C4715:  'Board::addcontinent': not all control paths return a value
+  EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\x64\Debug\EightMinuteEmpire.exe
