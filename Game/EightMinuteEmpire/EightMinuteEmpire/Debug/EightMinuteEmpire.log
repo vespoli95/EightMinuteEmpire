@@ -1,2 +1,5 @@
-﻿  mapdriver.cpp
-  EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+﻿  main.cpp
+C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\main.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\main.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\BiddingFacilityDriver.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  EightMinuteEmpire.vcxproj -> C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

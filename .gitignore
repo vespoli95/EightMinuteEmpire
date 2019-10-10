@@ -5,8 +5,3 @@
 /.vs/EightMinuteEmpire/v16
 /.vs
 /Game/EightMinuteEmpire/.vs/EightMinuteEmpire/v16
-Debug/
-*.tlog
-*.obj
-*.pdb
-*.idb

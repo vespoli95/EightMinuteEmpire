@@ -1,3 +1,4 @@
+#include "BiddingFacility.h";
 #include "Player.h";
 
 Player::Player() {

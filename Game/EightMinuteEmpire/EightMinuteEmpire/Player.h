@@ -5,6 +5,7 @@
 #include <vector>
 #include "BiddingFacility.h"
 
+
 using namespace std;
 
 class Player {
@@ -13,7 +14,6 @@ class Player {
 		int *pAge;
 		string *pName;
 		BiddingFacility *pBiddingFacility;
-
 	public:
 		Player();
 		Player(string name);

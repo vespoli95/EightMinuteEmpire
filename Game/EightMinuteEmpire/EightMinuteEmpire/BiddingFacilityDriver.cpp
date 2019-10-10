@@ -9,8 +9,8 @@ inline static Player youngestPlayer(vector<Player> players) {
 
 	return youngest;
 }
-/*
-int main() {
+
+static int biddingFacilityDriver() {
 	cout << "******BIDDING FACILITY******" << endl;
 	
 	//initialize players
@@ -108,4 +108,3 @@ int main() {
 
 	return 0;
 }
-*/

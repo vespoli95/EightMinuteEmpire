@@ -7,7 +7,7 @@ using std::endl;
 using std::cin;
 
 
-int main()
+static int mapDriver()
 {
 
 	Board& mapofworld = Board::getInstance();	
