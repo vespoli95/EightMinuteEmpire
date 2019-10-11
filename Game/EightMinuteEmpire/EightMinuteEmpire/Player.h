@@ -4,6 +4,7 @@
 #include <iterator>
 #include <vector>
 #include "BiddingFacility.h"
+#include "map.h"
 
 
 using namespace std;
@@ -13,19 +14,23 @@ class Player {
 		int *pCoins;
 		int *pAge;
 		string *pName;
-		BiddingFacility *pBiddingFacility;
+		BiddingFacility* pBiddingFacility;
+		vector<Region*> playerRegion;
+		//vector<Cards*> playerHand;
+
 	public:
 		Player();
-		Player(string name);
 		Player(string name, int age);
-		BiddingFacility *getBiddingFacility();
-		void showBids();
-		int *getCoins();
-		void setCoins(int coins);
-		int *getAge();
-		void setAge(int age);
-		string *getName();
-		void setName(string name);
+		
+		inline void showBids() { cout << "Name: " << *pName << " / Bid: " << *(pBiddingFacility->getBid()) << endl; };
+		inline BiddingFacility* getBiddingFacility() { return pBiddingFacility; };
+		inline int* getCoins() { return pCoins; };
+		inline void setCoins(int coins) { *pCoins = coins; };
+		inline int* getAge() { return pAge; };
+		inline void setAge(int age) { *pAge = age; };
+		inline string* getName() { return pName; };
+		inline void setName(string name) { *pName = name; };
+		
 		void PayCoin();
 		void PlaceNewArmies();
 		void MoveArmies();
