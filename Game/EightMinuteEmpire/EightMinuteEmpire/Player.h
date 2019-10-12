@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <iterator>
-#include <vector>
 #include "BiddingFacility.h"
 #include "map.h"
 #include "Cards.h";
@@ -15,8 +13,8 @@ class Player {
 		int *pCoins;
 		int *pAge;
 		string *pName;
-		BiddingFacility* pBiddingFacility;
-		vector<Region*> *playerRegion;
+		BiddingFacility *pBiddingFacility;
+		map<string, Region*>*playerRegions = new map<string, Region*>;
 		Hand *playerHand;
 
 
@@ -36,7 +34,7 @@ class Player {
 		inline void setHand(Hand *h) { playerHand = h; };
 		inline Hand* getHand() { return playerHand; };
 		
-		inline vector<Region*> getPlayerRegion() { return *playerRegion; };
+		inline map<string, Region*> getPlayerRegions() { return *playerRegions; };
 		
 		void PayCoin();
 		void PlaceNewArmies();

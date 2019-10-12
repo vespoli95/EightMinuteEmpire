@@ -6,6 +6,7 @@ Player::Player() {
 	pCoins = new int(0);
 	pAge = new int(0);
 	pBiddingFacility = new BiddingFacility();
+	playerHand = new Hand();
 }
 
 Player::Player(string name, int age)
@@ -14,6 +15,7 @@ Player::Player(string name, int age)
 	pCoins = new int(12);
 	pAge = new int(age);
 	pBiddingFacility = new BiddingFacility();
+	playerHand = new Hand();
 }
 
 

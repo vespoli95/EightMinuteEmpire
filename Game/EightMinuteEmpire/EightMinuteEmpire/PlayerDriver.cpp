@@ -8,7 +8,7 @@ using namespace std;
 static int playerDriver()
 {
 	int answer = 0;
-	Player *tPlayer = new Player("Jimmy", 42);
+	Player* tPlayer = new Player("Jimmy", 42);
 
 
 	Card* card1 = new Card("Move 3 Armies", "Forest");
@@ -27,9 +27,12 @@ static int playerDriver()
 	hand->deal(deck->draw());
 
 	tPlayer->setHand(hand);
-	cout << endl << "Display Hand: " << endl;
 
+	cout << endl << "Display Hand: " << endl;
 	tPlayer->getHand()->toString();
+
+	cout << endl << "Display Region size: " << endl
+	<< (tPlayer->getPlayerRegions()).size();
 
 	
 	do {
