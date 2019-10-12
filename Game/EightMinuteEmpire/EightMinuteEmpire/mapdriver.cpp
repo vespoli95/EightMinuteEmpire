@@ -7,7 +7,7 @@ using std::endl;
 using std::cin;
 
 
-int main()
+/*int main()
 {
 
 	Board& mapofworld = Board::getInstance();	
@@ -25,4 +25,4 @@ int main()
 
 
 	return 0;
-}
+}*/
