@@ -114,9 +114,13 @@ int main() {
 	cout << endl << "Display Hand: " << endl;
 	hand->toString();
 
+	cout << endl << "Creating player..." << endl;
 	Player* player = new Player("Jeff", 28);
+	cout << "Player: " << *player->getName() << ", Age: " << *player->getAge() << ", Coins: " << *player->getCoins() << endl;
 
-	cout << endl << "Player " << *(player->getName()) << " takes: ";
+
+
+	cout << endl << "Player " << *(player->getName()) << " takes card: ";
 	cout << (hand->exchange(2)).toString() << endl;
 
 	cout << endl << "Display Hand: " << endl;
@@ -130,7 +134,8 @@ int main() {
 	hand->addCard(deck->draw());
 	hand->toString();
 
-
+	player->setCoins(11);
+	cout << endl << "Player: " << *player->getName() << ", Age: " << *player->getAge() << ", Coins: " << *player->getCoins() << endl;
 	
 
 
