@@ -5,6 +5,7 @@
 #include <vector>
 #include "BiddingFacility.h"
 #include "map.h"
+#include "Cards.h";
 
 
 using namespace std;
@@ -15,8 +16,9 @@ class Player {
 		int *pAge;
 		string *pName;
 		BiddingFacility* pBiddingFacility;
-		vector<Region*> playerRegion;
-		//vector<Cards*> playerHand;
+		vector<Region*> *playerRegion;
+		Hand *playerHand;
+
 
 	public:
 		Player();
@@ -30,6 +32,11 @@ class Player {
 		inline void setAge(int age) { *pAge = age; };
 		inline string* getName() { return pName; };
 		inline void setName(string name) { *pName = name; };
+
+		inline void setHand(Hand *h) { playerHand = h; };
+		inline Hand* getHand() { return playerHand; };
+		
+		inline vector<Region*> getPlayerRegion() { return *playerRegion; };
 		
 		void PayCoin();
 		void PlaceNewArmies();

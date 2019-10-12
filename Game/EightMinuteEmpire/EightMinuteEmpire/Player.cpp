@@ -25,9 +25,6 @@ Player::Player(string name, int age)
 
 
 
-
-
-
 void Player::PayCoin() {
 	cout << "You have reached " << *Player::getName() << "::PayCoin(), this will be implemented in a future release\n";
 }
