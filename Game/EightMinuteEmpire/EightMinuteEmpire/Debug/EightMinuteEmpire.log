@@ -14,3 +14,6 @@ C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cp
   Generating Code...
 C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   EightMinuteEmpire.vcxproj -> C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+﻿  CardsDriver.cpp
+  EightMinuteEmpire.vcxproj -> C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+

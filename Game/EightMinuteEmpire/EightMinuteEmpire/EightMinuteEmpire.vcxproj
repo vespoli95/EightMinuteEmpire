@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClInclude Include="BiddingFacility.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Cards.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
@@ -127,6 +128,8 @@
     <ClCompile Include="BiddingFacility.cpp" />
     <ClCompile Include="BiddingFacilityDriver.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Cards.cpp" />
+    <ClCompile Include="CardsDriver.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="mapdriver.cpp" />
     <ClCompile Include="Player.cpp" />
