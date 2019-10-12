@@ -7,22 +7,14 @@ using std::endl;
 using std::cin;
 
 
-/*int main()
+
+static int mapDriver()
 {
 
 	Board& mapofworld = Board::getInstance();	
-
-	//mapofworld.readfile("C:\\map1.txt"); // SUCCESS
-	//mapofworld.readfile("C:\\map5.txt"); // SUCCESS
-	//mapofworld.readfile("C:\\map6.txt"); // SUCCESS
-	//mapofworld.readfile("C:\\map8.txt"); // SUCCESS
-	//mapofworld.readfile("C:\\map9.txt"); // SUCCESS
-	mapofworld.readfile("C:\\map10.txt"); // SUCCESS
-	//mapofworld.readfile("C:\\map12.txt"); // SUCCESS
-	//mapofworld.readfile("C:\\map14.txt"); // SUCCESS
-
-	//mapofworld.readfile("C:\\fail8.txt"); // DISCONNECTED GRAPH
+		
+	mapofworld.readfile("resource/map6.txt"); 
 
 
 	return 0;
-}*/
+}
