@@ -234,7 +234,7 @@ void Board::readfile(string filename) {
 
 	if (input.fail()) {
 		cout << "File does not exist" << endl;
-		cout << "Exit Program" << endl;
+		cout << "Program will terminate safely" << endl;
 		return;
 	}
 	//mapping regions and continents
@@ -242,6 +242,11 @@ void Board::readfile(string filename) {
 	{
 		input >> regionname1;
 
+		if ((regionname1.length() < 3) && (regionname1 != "LE")) {
+			cout << "File does not contain valid map format" << endl;
+			cout << "Program will terminate safely" << endl;
+			return;
+		}
 
 		if (regionname1 == "LE") {
 			//cout << "switching to Land Edges " << endl;
@@ -250,6 +255,12 @@ void Board::readfile(string filename) {
 		else
 		{
 			input >> continentname;
+
+			if (continentname.length() < 3) {
+				cout << "File does not contain valid map format" << endl;
+				cout << "Program will terminate safely" << endl;
+				return;
+			}
 			//cout << "region name is : " << regionname1 << " which is part of continent: " << continentname << endl;
 			addregionandcontinent(regionname1, continentname);
 		}
@@ -259,6 +270,13 @@ void Board::readfile(string filename) {
 	while (!input.eof())
 	{
 		input >> edgeid;
+
+		if ((edgeid.length() < 3) && (edgeid != "ME")) {
+			cout << "File does not contain valid map format" << endl;
+			cout << "Program will terminate safely" << endl;
+			return;
+		}
+
 		if (edgeid == "ME") {
 			//cout << "switching to Marine Edges " << endl;
 			break;
@@ -266,6 +284,13 @@ void Board::readfile(string filename) {
 		else
 		{
 			input >> regionname1 >> regionname2;
+
+			if ((regionname1.length() < 3) || (regionname2.length() < 3)) {
+				cout << "File does not contain valid map format" << endl;
+				cout << "Program will terminate safely" << endl;
+				return;
+			}
+
 			//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by land " << endl;
 			addlandedge(edgeid, regionname1, regionname2);
 		}
@@ -275,6 +300,13 @@ void Board::readfile(string filename) {
 	while (!input.eof())
 	{
 		input >> edgeid >> regionname1 >> regionname2;
+		
+		if ((edgeid.length() < 3) || (regionname1.length() < 3) || (regionname2.length() < 3)) {
+			cout << "File does not contain valid map format" << endl;
+			cout << "Program will terminate safely" << endl;
+			return;
+		}
+
 		//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by sea " << endl;
 		addmarineedge(edgeid, regionname1, regionname2);
 	}
