@@ -13,8 +13,6 @@ static int mapDriver()
 
 	Board& mapofworld = Board::getInstance();	
 		
-	//mapofworld.readfile("resource/map6.txt"); 
-	//mapofworld.readfile("resource/failformat.txt");
 	mapofworld.loadmap();
 
 	return 0;
