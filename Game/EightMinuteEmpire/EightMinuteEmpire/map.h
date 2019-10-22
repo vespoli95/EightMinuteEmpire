@@ -89,7 +89,9 @@ public:
 
 	int& getnbofregions();
 
-	void readfile(string filename);
+	bool readfile(string filename);
+
+	void loadmap();
 
 	void printlist();
 
