@@ -7,14 +7,29 @@ using std::cout;
 using std::endl;
 using std::cin;
 
+Game::Game() {
+
+	Board& mapofworld = Board::getInstance();
+	mapofworld.loadmap();
+
+
+}
+
+
+Game& Game::getInstance() {
+
+	static Game theInstance;
+
+	return theInstance;
+}
+
 
 
 static int GameLoader()
 {
 
-	Board& mapofworld = Board::getInstance();
+	Game& newgame = Game::getInstance();
 
-	mapofworld.loadmap();
 
 	return 0;
 }
