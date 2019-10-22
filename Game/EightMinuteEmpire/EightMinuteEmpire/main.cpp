@@ -1,5 +1,6 @@
 #include <iostream>
 #include "main.h"
+#include "GameLoader.cpp"
 #include "BiddingFacilityDriver.cpp"
 #include "mapDriver.cpp"
 #include "PlayerDriver.cpp"
@@ -22,7 +23,8 @@ int main()
 		if (answer == 1)
 			biddingFacilityDriver();
 		else if (answer == 2)
-			mapDriver();
+			GameLoader();
+			//mapDriver();
 		else if (answer == 3)
 			playerDriver();
 		else if (answer == 4)

@@ -335,19 +335,21 @@ void Board::loadmap() {
 		cin >> answer;
 		file = folder + answer + ext;
 
-		if (count==4) {
-			cout << "Attempt #" << ++count << "! Too many failed attempts, please try again later" << endl;
-			pursue = false;
-			break;
-		}
-
 		if (readfile(file)) {
 			pursue = false;
 		}
 		else {
 			count++;
 			file = "";
+
+			if (count == 5) {
+				cout << "Attempt #" << count << "! Too many failed attempts, please try again later" << endl;
+				pursue = false;
+				break;
+			}
+
 			cout << "Attempt #" << count << "\nPlease try again" << endl;
+
 		}
 
 	}
