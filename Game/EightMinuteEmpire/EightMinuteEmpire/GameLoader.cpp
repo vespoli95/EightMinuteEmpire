@@ -23,7 +23,11 @@ Game& Game::getInstance() {
 	return theInstance;
 }
 
+void Game::loadplayers() {
 
+
+
+}
 
 static int GameLoader()
 {

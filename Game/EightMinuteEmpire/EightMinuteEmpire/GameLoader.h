@@ -14,6 +14,7 @@ class Game{
 public:
 
 	static Game& getInstance();
+	void loadplayers();
 
 private:
 
