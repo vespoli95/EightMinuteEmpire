@@ -44,6 +44,7 @@ private:
 	int* numOfCards;
 public:
 	Deck();
+	Deck(int nbPlayers);
 	void deal(Hand* hand);
 	void addCard(Card* card);
 	void draw(Hand* hand);

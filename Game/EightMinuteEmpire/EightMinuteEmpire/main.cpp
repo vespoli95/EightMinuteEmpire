@@ -2,13 +2,13 @@
 #include "main.h"
 #include "GameStart.cpp"
 #include "BiddingFacilityDriver.cpp"
-#include "PlayerDriver.cpp"
+//#include "PlayerDriver.cpp"
 #include "CardsDriver.cpp"
 
 using namespace std;
 
 int main()
-{
+{/*
 	int answer = -1;
 	while (answer != 0) {
 		cout << "\n\nHello, please choose an option:\n"
@@ -27,5 +27,7 @@ int main()
 			playerDriver();
 		else if (answer == 4)
 		cardsDriver();
-	}
+	}*/
+	GameLoader();
+
 }
