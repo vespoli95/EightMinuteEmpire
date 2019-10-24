@@ -30,7 +30,7 @@
     <ClInclude Include="Cards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameLoader.h">
+    <ClInclude Include="GameStart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,7 +62,7 @@
     <ClCompile Include="CardsDriver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameLoader.cpp">
+    <ClCompile Include="GameStart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

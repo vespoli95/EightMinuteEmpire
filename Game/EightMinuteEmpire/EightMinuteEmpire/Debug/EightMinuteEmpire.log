@@ -16,7 +16,7 @@ C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\
 C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   PlayerDriver.cpp
 C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  GameLoader.cpp
+  GameStart.cpp
   Generating Code...
 C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   EightMinuteEmpire.vcxproj -> C:\Users\Martin\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

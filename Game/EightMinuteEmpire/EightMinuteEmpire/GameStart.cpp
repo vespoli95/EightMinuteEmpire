@@ -1,5 +1,5 @@
 #include "map.h"
-#include "GameLoader.h"
+#include "GameStart.h"
 #include <iostream>
 #include <fstream>
 

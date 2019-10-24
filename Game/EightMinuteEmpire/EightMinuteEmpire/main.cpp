@@ -1,6 +1,6 @@
 #include <iostream>
 #include "main.h"
-#include "GameLoader.cpp"
+#include "GameStart.cpp"
 #include "BiddingFacilityDriver.cpp"
 #include "PlayerDriver.cpp"
 #include "CardsDriver.cpp"
