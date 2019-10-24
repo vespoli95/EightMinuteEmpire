@@ -7,32 +7,12 @@ using std::cout;
 using std::endl;
 using std::cin;
 
-Game::Game() {
 
-	Board& mapofworld = Board::getInstance();
-	mapofworld.loadmap();
-
-
-}
-
-
-Game& Game::getInstance() {
-
-	static Game theInstance;
-
-	return theInstance;
-}
-
-void Game::loadplayers() {
-
-
-
-}
 
 static int GameLoader()
 {
 
-	Game& newgame = Game::getInstance();
+	GameStart& newgame = GameStart::getInstance();
 
 
 	return 0;

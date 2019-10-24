@@ -1,4 +1,4 @@
-#include "map.h"
+//#include "map.h"
 #include <iostream>
 #include <fstream>
 
@@ -7,7 +7,7 @@ using std::endl;
 using std::cin;
 
 
-
+/*
 static int mapDriver()
 {
 
@@ -16,4 +16,4 @@ static int mapDriver()
 	mapofworld.loadmap();
 
 	return 0;
-}
+}*/
