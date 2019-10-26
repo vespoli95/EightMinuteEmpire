@@ -69,6 +69,7 @@ private:
 
 	friend class Continent;
 	friend class Region;
+	friend class GameStart;
 
 public:
 	static Board& getInstance();

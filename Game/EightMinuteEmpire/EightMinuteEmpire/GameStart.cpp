@@ -1,4 +1,3 @@
-#include "map.h"
 #include "GameStart.h"
 #include <iostream>
 #include <fstream>
@@ -43,6 +42,13 @@ Deck* GameStart::loadDeck(int nbPlayers) {
 
 	return gamedeck;
 }
+
+GameStart& GameStart::getInstance()
+{
+	static GameStart gameInstance;
+
+	return gameInstance;
+};
 
 int GameLoader()
 {

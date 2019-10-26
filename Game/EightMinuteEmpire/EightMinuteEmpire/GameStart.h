@@ -6,6 +6,7 @@
 #include <string>
 #include "Cards.h"
 #include "Player.h"
+#include "map.h"
 
 using std::cout;
 using std::endl;
@@ -19,17 +20,10 @@ public:
 
 	~GameStart() {};
 
-	inline static GameStart& getInstance()
-	{
-				static GameStart theInstance;
-
-		return theInstance;
-	};
+	static GameStart& getInstance();
 	 
-
-private:
-
 	GameStart();
+private:
 
 	int loadPlayers();
 	
