@@ -337,6 +337,7 @@ bool Board::loadmap() {
 
 		if (readfile(file)) {
 			pursue = false;
+			return false;
 		}
 		else {
 			count++;
@@ -353,7 +354,7 @@ bool Board::loadmap() {
 		}
 
 	}
-
+	
 }
 
 void Board::printlist() {
