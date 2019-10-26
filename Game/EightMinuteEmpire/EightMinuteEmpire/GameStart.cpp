@@ -10,7 +10,7 @@ using std::cin;
 
 
 GameStart::GameStart() {
-
+	gamedeck = NULL;
 	Board& mapofworld = Board::getInstance();
 	if (mapofworld.loadmap()) {
 		EXIT_FAILURE;
@@ -29,26 +29,42 @@ int GameStart::loadPlayers() {
 	cout << "\n How many players will be playing?" << endl;
 	cin >> nbPlayers;
 
-	for (int i = 0; i < nbPlayers; i++) {
+	if (nbPlayers <= 0) {
 
-		cout << "Player " << count << " what is your name?" << endl;
-		cin >> playerName;
-		cout << "Player " << count << " what is your age?" << endl;
-		cin >> playerAge;
+		return 0;
+	}
+	else {
+		
+		for (int i = 0; i < nbPlayers; i++) {
 
-		Player* tPlayer = new Player(playerName, playerAge);
-		count++;
+			cout << "Player " << count << " what is your name?" << endl;
+			cin >> playerName;
+			cout << "Player " << count << " what is your age?" << endl;
+			cin >> playerAge;
+
+			Player* tPlayer = new Player(playerName, playerAge);
+			count++;
+
+		}
+		return nbPlayers;
 
 	}
-	return nbPlayers;
+
 	
 }
 
 Deck* GameStart::loadDeck(int nbPlayers) {
 
+	if (nbPlayers==0) {
+
+		cout << "You need at least 1 player, please try again later" << endl;
+	}
+	
+	else{
 	Deck* gamedeck = new Deck(nbPlayers);
 
 	return gamedeck;
+	}
 }
 
 GameStart& GameStart::getInstance()

@@ -1,5 +1,3 @@
 ﻿  GameStart.cpp
-  map.cpp
-  Generating Code...
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(358): warning C4715: 'Board::loadmap': not all control paths return a value
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
   EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
