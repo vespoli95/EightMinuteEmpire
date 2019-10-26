@@ -1,3 +1,4 @@
+#include "map.h"
 #include "GameStart.h"
 #include <iostream>
 #include <fstream>
@@ -7,11 +8,18 @@ using std::cout;
 using std::endl;
 using std::cin;
 
+
 GameStart::GameStart() {
 
 	Board& mapofworld = Board::getInstance();
-	mapofworld.loadmap();
-	gamedeck = loadDeck(loadPlayers());
+	if (mapofworld.loadmap()) {
+		EXIT_FAILURE;
+	}
+	else
+	{
+		gamedeck = loadDeck(loadPlayers());
+	}
+	
 
 }
 
@@ -49,12 +57,3 @@ GameStart& GameStart::getInstance()
 
 	return gameInstance;
 };
-
-int GameLoader()
-{
-
-	GameStart& gameplay = GameStart::getInstance();
-	
-
-	return 0;
-}

@@ -1,29 +1,14 @@
 ﻿  BiddingFacility.cpp
   BiddingFacilityDriver.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\BiddingFacilityDriver.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   main.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\main.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Cards.cpp
   CardsDriver.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\BiddingFacilityDriver.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   map.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   mapdriver.cpp
   Player.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   PlayerDriver.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   GameStart.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  GameStartDriver.cpp
   Generating Code...
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-GameStart.obj : error LNK2005: "public: __thiscall GameStart::GameStart(void)" (??0GameStart@@QAE@XZ) already defined in main.obj
-GameStart.obj : error LNK2005: "int __cdecl GameLoader(void)" (?GameLoader@@YAHXZ) already defined in main.obj
-GameStart.obj : error LNK2005: "public: static class GameStart & __cdecl GameStart::getInstance(void)" (?getInstance@GameStart@@SAAAV1@XZ) already defined in main.obj
-GameStart.obj : error LNK2005: "private: class Deck * __thiscall GameStart::loadDeck(int)" (?loadDeck@GameStart@@AAEPAVDeck@@H@Z) already defined in main.obj
-GameStart.obj : error LNK2005: "private: int __thiscall GameStart::loadPlayers(void)" (?loadPlayers@GameStart@@AAEHXZ) already defined in main.obj
-C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe : fatal error LNK1169: one or more multiply defined symbols found
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(357): warning C4715: 'Board::loadmap': not all control paths return a value
+  EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

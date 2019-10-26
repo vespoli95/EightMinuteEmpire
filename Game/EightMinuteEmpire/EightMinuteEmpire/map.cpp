@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include "map.h"
-#include "Gamestart.h"
 
 
 using namespace std;
@@ -326,7 +325,7 @@ bool Board::readfile(string filename) {
 
 }
 
-void Board::loadmap() {
+bool Board::loadmap() {
 	string folder = "resource/", answer, file, ext = ".txt";
 	bool pursue = true;
 	int count = 0;
@@ -345,12 +344,12 @@ void Board::loadmap() {
 
 			if (count == 5) {
 				cout << "Attempt #" << count << "! Too many failed attempts, please try again later" << endl;
+				return true;
 				pursue = false;
-				break;
+				
 			}
 
 			cout << "Attempt #" << count << "\nPlease try again" << endl;
-
 		}
 
 	}

@@ -92,7 +92,7 @@ public:
 
 	bool readfile(string filename);
 
-	void loadmap();
+	bool loadmap();
 
 	void printlist();
 
