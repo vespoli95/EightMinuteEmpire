@@ -69,7 +69,6 @@ private:
 
 	friend class Continent;
 	friend class Region;
-	friend class GameStart;
 
 public:
 	static Board& getInstance();
@@ -90,9 +89,7 @@ public:
 
 	int& getnbofregions();
 
-	bool readfile(string filename);
-
-	bool loadmap();
+	void readfile(string filename);
 
 	void printlist();
 

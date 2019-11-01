@@ -30,9 +30,6 @@
     <ClInclude Include="Cards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameStart.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -53,19 +50,16 @@
     <ClCompile Include="mapdriver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+
+    <ClCompile Include="main.cpp"> 
       <Filter>Source Files</Filter>
     </ClCompile>
+
     <ClCompile Include="Cards.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CardsDriver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStart.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStartDriver.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

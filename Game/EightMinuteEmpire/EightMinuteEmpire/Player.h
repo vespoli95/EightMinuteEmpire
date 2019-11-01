@@ -3,7 +3,7 @@
 #include <string>
 #include "BiddingFacility.h"
 #include "map.h"
-#include "Cards.h"
+#include "Cards.h";
 
 
 using namespace std;

@@ -119,7 +119,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BiddingFacility.h" />
-    <ClInclude Include="GameStart.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Cards.h" />
     <ClInclude Include="map.h" />
@@ -135,8 +134,6 @@
     <ClCompile Include="mapdriver.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDriver.cpp" />
-    <ClCompile Include="GameStart.cpp" />
-    <ClCompile Include="GameStartDriver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

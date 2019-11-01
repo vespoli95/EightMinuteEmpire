@@ -1,5 +1,5 @@
-#include "BiddingFacility.h"
-#include "Player.h"
+#include "BiddingFacility.h";
+#include "Player.h";
 
 Player::Player() {
 	pName = new string("error");
