@@ -1,7 +1,7 @@
 #include <iostream>
 #include "main.h"
+#include "GameStartDriver.cpp"
 #include "BiddingFacilityDriver.cpp"
-#include "mapDriver.cpp"
 #include "PlayerDriver.cpp"
 #include "CardsDriver.cpp"
 
@@ -13,7 +13,7 @@ int main()
 	while (answer != 0) {
 		cout << "\n\nHello, please choose an option:\n"
 			<< "1 for bidding facility driver\n"
-			<< "2 for map driver\n"
+			<< "2 for GameStart driver\n"
 			<< "3 for player driver\n"
 			<< "4 for cards driver\n"
 			<< "0 to exit\n";
@@ -22,10 +22,11 @@ int main()
 		if (answer == 1)
 			biddingFacilityDriver();
 		else if (answer == 2)
-			mapDriver();
+			GameLoader();
 		else if (answer == 3)
 			playerDriver();
 		else if (answer == 4)
 		cardsDriver();
 	}
+
 }

@@ -122,7 +122,7 @@ bool Board::DFS(string regionname)
 	else {
 		cout << "| there is(are)  " << (nodes-verification) << " node(s) missing for this graph to be connected! " << endl;
 
-		cout << "Map is invalid ! Program will terminate." << endl;
+		cout << "Map is invalid !" << endl;
 		return false;
 	}
 }
@@ -226,7 +226,7 @@ int& Board::getnbofregions() {
 	return nodes;
 }
 
-void Board::readfile(string filename) {
+bool Board::readfile(string filename) {
 
 	string regionname1, continentname, edgeid, regionname2;
 
@@ -234,14 +234,19 @@ void Board::readfile(string filename) {
 
 	if (input.fail()) {
 		cout << "File does not exist" << endl;
-		cout << "Exit Program" << endl;
-		return;
+		//cout << "Program will terminate safely" << endl;
+		return false;
 	}
 	//mapping regions and continents
 	while (!input.eof())
 	{
 		input >> regionname1;
 
+		if ((regionname1.length() < 3) && (regionname1 != "LE")) {
+			cout << "File does not contain valid map format" << endl;
+			//cout << "Program will terminate safely" << endl;
+			return false;
+		}
 
 		if (regionname1 == "LE") {
 			//cout << "switching to Land Edges " << endl;
@@ -250,6 +255,12 @@ void Board::readfile(string filename) {
 		else
 		{
 			input >> continentname;
+
+			if (continentname.length() < 3) {
+				cout << "File does not contain valid map format" << endl;
+				//cout << "Program will terminate safely" << endl;
+				return false;
+			}
 			//cout << "region name is : " << regionname1 << " which is part of continent: " << continentname << endl;
 			addregionandcontinent(regionname1, continentname);
 		}
@@ -259,6 +270,13 @@ void Board::readfile(string filename) {
 	while (!input.eof())
 	{
 		input >> edgeid;
+
+		if ((edgeid.length() < 3) && (edgeid != "ME")) {
+			cout << "File does not contain valid map format" << endl;
+			//cout << "Program will terminate safely" << endl;
+			return false;
+		}
+
 		if (edgeid == "ME") {
 			//cout << "switching to Marine Edges " << endl;
 			break;
@@ -266,6 +284,13 @@ void Board::readfile(string filename) {
 		else
 		{
 			input >> regionname1 >> regionname2;
+
+			if ((regionname1.length() < 3) || (regionname2.length() < 3)) {
+				cout << "File does not contain valid map format" << endl;
+				//cout << "Program will terminate safely" << endl;
+				return false;
+			}
+
 			//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by land " << endl;
 			addlandedge(edgeid, regionname1, regionname2);
 		}
@@ -275,6 +300,13 @@ void Board::readfile(string filename) {
 	while (!input.eof())
 	{
 		input >> edgeid >> regionname1 >> regionname2;
+		
+		if ((edgeid.length() < 3) || (regionname1.length() < 3) || (regionname2.length() < 3)) {
+			cout << "File does not contain valid map format" << endl;
+			//cout << "Program will terminate safely" << endl;
+			return false;
+		}
+
 		//cout << "edge " << edgeid << " links " << regionname1 << " and region " << regionname2 << " by sea " << endl;
 		addmarineedge(edgeid, regionname1, regionname2);
 	}
@@ -284,14 +316,46 @@ void Board::readfile(string filename) {
 	if (DFS("R01")) {
 
 		printlist();
+		return true;
 	}
 	else
 	{
-		exit;
+		return false;
 	}
 
 }
 
+bool Board::loadmap() {
+	string folder = "resource/", answer, file, ext = ".txt";
+	bool pursue = true;
+	int count = 0;
+
+	while (pursue) {
+		cout << "\n\nHello, please enter the name of the map you want to load: " << endl;
+		cin >> answer;
+		file = folder + answer + ext;
+
+		if (readfile(file)) {
+			pursue = false;
+			return false;
+		}
+		else {
+			count++;
+			file = "";
+
+			if (count == 5) {
+				cout << "Attempt #" << count << "! Too many failed attempts, please try again later" << endl;
+				return true;
+				pursue = false;
+				
+			}
+
+			cout << "Attempt #" << count << "\nPlease try again" << endl;
+		}
+
+	}
+	
+}
 
 void Board::printlist() {
 	typedef map<string, Region*> rmap;
