@@ -63,6 +63,7 @@ Board::Board() {
 	//create a single map data structure throughout the game instance that hold a pointer to all the continents 
 	cmap continents;
 
+	Region* startingRegion = NULL;
 }
 
 Board& Board::getInstance() {
@@ -301,7 +302,7 @@ bool Board::readfile(string filename) {
 	{
 		input >> edgeid;
 
-		if (edgeid == "STARTING") {
+		if (edgeid == "START") {
 
 			input >> regionname1;
 			
@@ -349,7 +350,7 @@ bool Board::addstartingregion(Region& regionname) {
 
 	*startingRegion = regionname;
 
-	return true;
+ 	return true;
 
 };
 
