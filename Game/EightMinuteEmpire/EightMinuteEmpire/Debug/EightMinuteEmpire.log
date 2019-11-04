@@ -1,3 +1,16 @@
-﻿  GameStart.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
-  EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+﻿  BiddingFacility.cpp
+  BiddingFacilityDriver.cpp
+  main.cpp
+  Cards.cpp
+  CardsDriver.cpp
+  map.cpp
+  mapdriver.cpp
+  Player.cpp
+  PlayerDriver.cpp
+  GameStart.cpp
+  GameStartDriver.cpp
+  Generating Code...
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(358): warning C4715: 'Board::loadmap': not all control paths return a value
+  LINK : C:\Users\Martin\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe not found or not built by the last incremental link; performing full link
+  EightMinuteEmpire.vcxproj -> C:\Users\Martin\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
