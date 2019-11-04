@@ -299,7 +299,27 @@ bool Board::readfile(string filename) {
 	//mapping marine edges
 	while (!input.eof())
 	{
-		input >> edgeid >> regionname1 >> regionname2;
+		input >> edgeid;
+
+		if (edgeid == "STARTING") {
+
+			input >> regionname1;
+			
+			if (addstartingregion(findregion(regionname1))) {
+
+				cout << "Starting region will be  " << regionname1 << endl;
+			}
+			else
+			{
+				cout << "Starting region was not loaded properly, please verify map file and try again" << endl;
+			}
+
+			
+			
+		}
+		
+
+		input >> regionname1 >> regionname2;
 		
 		if ((edgeid.length() < 3) || (regionname1.length() < 3) || (regionname2.length() < 3)) {
 			cout << "File does not contain valid map format" << endl;
@@ -324,6 +344,14 @@ bool Board::readfile(string filename) {
 	}
 
 }
+
+bool Board::addstartingregion(Region& regionname) {
+
+	*startingRegion = regionname;
+
+	return true;
+
+};
 
 bool Board::loadmap() {
 	string folder = "resource/", answer, file, ext = ".txt";

@@ -89,6 +89,8 @@ public:
 
 	Region& addregion(string regionname);
 
+	bool addstartingregion(Region& regionname);
+
 	void addlandedge(string edgeid, string regionname1, string regionname2);
 
 	void addmarineedge(string edgeid, string regionname1, string regionname2);
