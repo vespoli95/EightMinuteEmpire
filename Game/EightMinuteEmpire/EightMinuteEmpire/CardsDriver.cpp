@@ -9,23 +9,11 @@
 
 using namespace std;
 
-
-//function that determines the youngest player given a vector of players
-static Player youngestPlayers(vector<Player> players) {
-	Player youngest = players[0];
-	for (Player p : players)
-		if (p.getAge() < youngest.getAge())
-			youngest = p;
-
-	return youngest;
-}
-
-static Player biddingFacilityDriver(vector<Player>& players) {
-	cout << "******BIDDING FACILITY******" << endl;
-
+//Create players based on input for user
+static vector<Player> initializePlayers() {
 	//initialize players
 	int numPlayers;
-
+	vector<Player> players;
 	do {
 		cout << "\nHow many players? (must be between 2 and 5 inclusive)" << endl;
 		cin >> numPlayers;
@@ -41,6 +29,36 @@ static Player biddingFacilityDriver(vector<Player>& players) {
 		Player temp_player(name, age);
 		players.push_back(temp_player);
 	}
+	return players;
+}
+
+static void givePlayersCoins(vector<Player>& players) {
+	int numPlayers = players.size();
+
+	for (int i = numPlayers-1; i >= 0; i--) {
+		if (numPlayers == 5)
+			players.at(i).setCoins(8);
+		else if (numPlayers == 4)
+			players.at(i).setCoins(9);
+		else if (numPlayers == 3)
+			players.at(i).setCoins(11);
+		else if (numPlayers == 2)
+			players.at(i).setCoins(14);
+	}
+}
+
+//function that determines the youngest player given a vector of players
+static Player youngestPlayers(vector<Player> players) {
+	Player youngest = players[0];
+	for (Player p : players)
+		if (p.getAge() < youngest.getAge())
+			youngest = p;
+
+	return youngest;
+}
+
+static Player biddingFacilityDriver(vector<Player>& players) {
+	cout << "******BIDDING FACILITY******" << endl;
 
 	//initialize iterator for vector of players
 	vector<Player>::iterator ptr;
@@ -115,111 +133,8 @@ static Player biddingFacilityDriver(vector<Player>& players) {
 }
 
 static int cardsDriver(){
-	/*cout << "Creating Deck..." << endl;
 
-	Card* card1 = new Card("Move 3 Armies", "Forest");
-	Card* card2 = new Card("Add 3 Armies", "Forest");
-	Card* card3 = new Card("Move 6 Armies", "Forest");
-	Card* card4 = new Card("Destroy 1 Army or Build City", "Forest");
-	Card* card5 = new Card("Add 2 Armies or Move 3 Armies", "Forest");
-	Card* card6 = new Card("Move 4 Armies via Ship", "Forest");
-	Card* card7 = new Card("Build City", "Forest");
-	Card* card8 = new Card("Move 3 Armies via Ship", "Forest");
-	Card* card9 = new Card("Build City", "Carrot");
-	Card* card10 = new Card("Destroy 1 Army and Add 1 Army", "Carrot");
-	Card* card11 = new Card("Add 3 Armies", "Carrot");
-	Card* card12 = new Card("Move 4 Armies", "Carrot");
-	Card* card13 = new Card("Move 5 Armies", "Carrot");
-	Card* card14 = new Card("Add 3 Armies", "Carrot x 2");
-	Card* card15 = new Card("Move 3 Armies vis Ship", "Carrot");
-	Card* card16 = new Card("Add 4 Armies or Move 2 Armies", "Carrot");
-	Card* card17 = new Card("Move 4 Armies", "Carrot");
-	Card* card18 = new Card("Build City", "Carrot");
-	Card* card19 = new Card("Move 4 Armies", "Anvil");
-	Card* card20 = new Card("Add 3 Armies or move 4 Armies", "Anvil");
-	Card* card21 = new Card("Move 3 Armies via Ship", "Anvil");
-	Card* card22 = new Card("Build City", "Anvil");
-	Card* card23 = new Card("Move 4 Armies", "Anvil x 2");
-	Card* card24 = new Card("Add 3 Armies or Move 3 Armies", "Anvil");
-	Card* card25 = new Card("Move 5 Armies", "Anvil");
-	Card* card26 = new Card("Add 3 Armies", "Anvil");
-	Card* card27 = new Card("Move 2 Armies", "Ore");
-	Card* card28 = new Card("Move 3 Armies vis Ship", "Ore");
-	Card* card29 = new Card("Move 2 Armies vis Ship", "Ore");
-	Card* card30 = new Card("Move 2 Armies vis Ship", "Ore");
-	Card* card31 = new Card("Add 3 Armies", "Ore");
-	Card* card32 = new Card("Add 3 Armies", "Ore");
-	Card* card33 = new Card("Add 2 Armies", "Ore");
-	Card* card34 = new Card("Add 2 Armies", "Crystal");
-	Card* card35 = new Card("Add 2 Armies", "Crystal");
-	Card* card36 = new Card("Move 2 Armies", "Crystal");
-	Card* card37 = new Card("Add 1 Army", "Crystal");
-	Card* card38 = new Card("Add 2 Armies", "Crystal");
-	Card* card39 = new Card("Move 2 Armies", "Wild");
-	Card* card40 = new Card("Move 2 Armies", "Wild");
-	Card* card41 = new Card("Add 2 Armies", "Wild");
-	Card* card42 = new Card("Add 3 Armies", "Anvil");
-
-	Hand* hand = new Hand();
-	Deck* deck = new Deck();
-
-	deck->addCard(card1);
-	deck->addCard(card2);
-	deck->addCard(card3);
-	deck->addCard(card4);
-	deck->addCard(card5);
-	deck->addCard(card6);
-	deck->addCard(card7);
-	deck->addCard(card8);
-	deck->addCard(card9);
-	deck->addCard(card10);
-	deck->addCard(card11);
-	deck->addCard(card12);
-	deck->addCard(card13);
-	deck->addCard(card14);
-	deck->addCard(card15);
-	deck->addCard(card16);
-	deck->addCard(card17);
-	deck->addCard(card18);
-	deck->addCard(card19);
-	deck->addCard(card20);
-	deck->addCard(card21);
-	deck->addCard(card22);
-	deck->addCard(card23);
-	deck->addCard(card24);
-	deck->addCard(card25);
-	deck->addCard(card26);
-	deck->addCard(card27);
-	deck->addCard(card28);
-	deck->addCard(card29);
-	deck->addCard(card30);
-	deck->addCard(card31);
-	deck->addCard(card32);
-	deck->addCard(card33);
-	deck->addCard(card34);
-	deck->addCard(card35);
-	deck->addCard(card36);
-	deck->addCard(card37);
-	deck->addCard(card38);
-	deck->addCard(card39);
-	deck->addCard(card40);
-	deck->addCard(card41);
-	deck->addCard(card42);
-
-	cout << "Drawing Hand..." << endl;
-
-	hand->deal(deck->draw());
-	hand->deal(deck->draw());
-	hand->deal(deck->draw());
-	hand->deal(deck->draw());
-	hand->deal(deck->draw());
-	hand->deal(deck->draw());
-
-
-	cout << endl << "Display Hand: " << endl;
-	hand->toString();
-
-	cout << endl << "Creating player..." << endl;
+	/* cout << endl << "Creating player..." << endl;
 	Player* player = new Player("Jeff", 28);
 	cout << "Player: " << *player->getName() << ", Age: " << *player->getAge() << ", Coins: " << *player->getCoins() << endl;
 
@@ -242,23 +157,8 @@ static int cardsDriver(){
 	player->setCoins(11);
 	cout << endl << "Player: " << *player->getName() << ", Age: " << *player->getAge() << ", Coins: " << *player->getCoins() << endl;
 	
-
-
-
-	// Create cards
-	/*Card *cards[10] = {new Card("Move4","Carrot"),
-			new Card("Move","Bean"),
-			new Card("Move1","Iron"),
-			new Card("Move2","Tomato"),
-			new Card("Move3","Apple"),
-			new Card("Move4","Banana"),
-			new Card("Move5","Wood")};
-
-	Deck *deck = new Deck();
-	for(int i = 0; i < 7; i++) {
-		deck->addCard(cards[i]);
-		cout << cards[i] << endl;
-	}*/
+	*/
+	
 	cout << "Setting up game" << endl;
 	Deck* deck = new Deck(3);
 	deck->toString();
@@ -280,8 +180,41 @@ static int cardsDriver(){
 	cout << endl << "Display Hand: " << endl;
 	hand->toString();
 
-	vector<Player> players;
+	//Get players
+	vector<Player> players = initializePlayers();
+
+	//Create map
+	Board& mapofworld = Board::getInstance();
+	if (mapofworld.loadmap()) {
+		EXIT_FAILURE;
+	}
+
+	//Placing armies
+
+
+	//Give players coins
+	givePlayersCoins(players);
+
+	//Bidding
 	Player startPlayer = biddingFacilityDriver(players);
+
+	//Let player take card
+	cout << endl << "Display Hand: " << endl;
+	hand->toString();
+	int card;
+	do {
+		cout << "\nWhich card would you like? (must be between 0 and 5 inclusive)" << endl;
+		cin >> card;
+	} while (card < 0 || card > 5);
+
+	cout << endl << "Player " << (*startPlayer.getName()) << " takes card: ";
+	//hand->exchange(card);
+	cout << (hand->exchange(card)).toString() << endl;
+
+	//Show cards sliding
+	cout << endl << "Slide cards over: " << endl;
+	hand->slideCards(card);
+	hand->toString();
 
 	cin.get();
 

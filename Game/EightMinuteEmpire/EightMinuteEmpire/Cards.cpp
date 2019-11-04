@@ -89,7 +89,7 @@ void Hand::addCard(Card* card) {
 
 Card Hand::exchange(int pos) {
 	Card card = *hand[pos];
-	delete hand[pos];
+	//delete hand[pos];
 	hand[pos] = NULL;
 	cardsInHand--;
 	return card;
@@ -262,7 +262,7 @@ void Deck::initialize(int numPlayers) {
 	this->addCard(card41);
 	this->addCard(card42);
 
-	if (numPlayers = 5) {
+	if (numPlayers == 5) {
 		Card* card3 = new Card("Move 6 Armies", "Forest");
 		Card* card14 = new Card("Add 3 Armies", "Carrot x 2");
 		Card* card19 = new Card("Move 4 Armies", "Anvil");
