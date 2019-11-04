@@ -63,7 +63,7 @@ Board::Board() {
 	//create a single map data structure throughout the game instance that hold a pointer to all the continents 
 	cmap continents;
 
-	Region* startingRegion = NULL;
+	Region *startingRegion;
 }
 
 Board& Board::getInstance() {
@@ -148,7 +148,6 @@ Region& Board::findregion(string regionname) {
 	Region* x = itr->second;
 	return *x;
 }
-
 
 Region& Board::addregion(string regionname) {
 	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
@@ -308,11 +307,11 @@ bool Board::readfile(string filename) {
 			
 			if (addstartingregion(findregion(regionname1))) {
 
-				cout << "Starting region will be  " << regionname1 << endl;
+				//cout << "Starting region will be  " << regionname1 << endl;
 			}
 			else
 			{
-				cout << "Starting region was not loaded properly, please verify map file and try again" << endl;
+				//cout << "Starting region was not loaded properly, please verify map file and try again" << endl;
 			}
 
 			
@@ -337,6 +336,8 @@ bool Board::readfile(string filename) {
 	if (DFS("R01")) {
 
 		printlist();
+
+		getStartingRegion();
 		return true;
 	}
 	else
@@ -348,7 +349,7 @@ bool Board::readfile(string filename) {
 
 bool Board::addstartingregion(Region& regionname) {
 
-	*startingRegion = regionname;
+	startingRegion = &regionname;
 
  	return true;
 
@@ -417,8 +418,10 @@ void Board::printlist() {
 		}
 		cout << '\n';
 	}
-	
 
+	Region& start = getStartingRegion();
+	
+	cout << "\n Starting region is : " << start.name << endl;
 
 
 	//cout << "Here are the edges present for each country " << endl;

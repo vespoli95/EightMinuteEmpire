@@ -64,7 +64,7 @@ private:
 	cmap continents;
 	int nodes = 0;
 	void DFSitr(Region& vertex, vmap& visited);
-	Region* startingRegion;
+	Region *startingRegion = NULL;
 	Board();
 	~Board() {};
 
