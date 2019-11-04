@@ -64,6 +64,7 @@ private:
 	cmap continents;
 	int nodes = 0;
 	void DFSitr(Region& vertex, vmap& visited);
+	Region *startingRegion = NULL;
 	Board();
 	~Board() {};
 
@@ -78,9 +79,17 @@ public:
 
 	void addregionandcontinent(string regionname, string continentname);
 
+	inline Region& getStartingRegion() {
+
+		return *startingRegion;
+
+	};
+
 	Region& findregion(string regionname);
 
 	Region& addregion(string regionname);
+
+	bool addstartingregion(Region& regionname);
 
 	void addlandedge(string edgeid, string regionname1, string regionname2);
 

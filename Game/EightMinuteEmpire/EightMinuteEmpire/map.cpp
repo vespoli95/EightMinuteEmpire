@@ -63,6 +63,7 @@ Board::Board() {
 	//create a single map data structure throughout the game instance that hold a pointer to all the continents 
 	cmap continents;
 
+	Region *startingRegion;
 }
 
 Board& Board::getInstance() {
@@ -147,7 +148,6 @@ Region& Board::findregion(string regionname) {
 	Region* x = itr->second;
 	return *x;
 }
-
 
 Region& Board::addregion(string regionname) {
 	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
@@ -299,7 +299,27 @@ bool Board::readfile(string filename) {
 	//mapping marine edges
 	while (!input.eof())
 	{
-		input >> edgeid >> regionname1 >> regionname2;
+		input >> edgeid;
+
+		if (edgeid == "START") {
+
+			input >> regionname1;
+			
+			if (addstartingregion(findregion(regionname1))) {
+
+				//cout << "Starting region will be  " << regionname1 << endl;
+			}
+			else
+			{
+				//cout << "Starting region was not loaded properly, please verify map file and try again" << endl;
+			}
+
+			
+			
+		}
+		
+
+		input >> regionname1 >> regionname2;
 		
 		if ((edgeid.length() < 3) || (regionname1.length() < 3) || (regionname2.length() < 3)) {
 			cout << "File does not contain valid map format" << endl;
@@ -316,6 +336,8 @@ bool Board::readfile(string filename) {
 	if (DFS("R01")) {
 
 		printlist();
+
+		getStartingRegion();
 		return true;
 	}
 	else
@@ -324,6 +346,14 @@ bool Board::readfile(string filename) {
 	}
 
 }
+
+bool Board::addstartingregion(Region& regionname) {
+
+	startingRegion = &regionname;
+
+ 	return true;
+
+};
 
 bool Board::loadmap() {
 	string folder = "resource/", answer, file, ext = ".txt";
@@ -388,8 +418,10 @@ void Board::printlist() {
 		}
 		cout << '\n';
 	}
-	
 
+	Region& start = getStartingRegion();
+	
+	cout << "\n Starting region is : " << start.name << endl;
 
 
 	//cout << "Here are the edges present for each country " << endl;
