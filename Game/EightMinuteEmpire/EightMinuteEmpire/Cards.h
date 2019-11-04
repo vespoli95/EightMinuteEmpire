@@ -6,6 +6,7 @@
 #define EIGHTMINUTEEMPIRE_CARDS_H
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -40,14 +41,16 @@ public:
 
 class Deck {
 private:
-	Card* cards[42];
+	vector<Card>* cards;
 	int* numOfCards;
+	void initialize(int numPlayers);
 public:
 	Deck();
-	Deck(int nbPlayers);
-	void deal(Hand* hand);
+	Deck(int numPlayers);
+	//void deal(Hand* hand);
 	void addCard(Card* card);
 	void draw(Hand* hand);
+	void shuffle();
 	Card* draw();
 	void toString();
 };
