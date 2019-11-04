@@ -11,8 +11,8 @@ using std::cin;
 static int mapDriver()
 {
 
-	Board& mapofworld = Board::getInstance();	
-		
+	Board& mapofworld = Board::getInstance();
+
 	mapofworld.loadmap();
 
 	return 0;

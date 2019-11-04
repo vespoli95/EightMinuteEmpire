@@ -12,7 +12,7 @@ inline static Player youngestPlayer(vector<Player> players) {
 
 static int biddingFacilityDriver() {
 	cout << "******BIDDING FACILITY******" << endl;
-	
+
 	//initialize players
 	int numPlayers;
 	vector<Player> players;
@@ -58,7 +58,7 @@ static int biddingFacilityDriver() {
 	for (Player p : players) {
 		if (*p.getBiddingFacility()->getBid() > *highest[0].getBiddingFacility()->getBid())
 			highest[0] = p;
-		else {			
+		else {
 			if (*p.getBiddingFacility()->getBid() == *highest[0].getBiddingFacility()->getBid()) {
 				equalCount++;
 				highest.push_back(p);

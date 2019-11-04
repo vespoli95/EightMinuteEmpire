@@ -1,12 +1,14 @@
 #include <iostream>
 #include "main.h"
+#include "map.h"
+#include "GameStart.h"
 #include "GameStartDriver.cpp"
 #include "BiddingFacilityDriver.cpp"
 #include "PlayerDriver.cpp"
 #include "CardsDriver.cpp"
 
 using namespace std;
-
+/*
 int main()
 {
 	int answer = -1;
@@ -26,7 +28,8 @@ int main()
 		else if (answer == 3)
 			playerDriver();
 		else if (answer == 4)
-		cardsDriver();
+			cardsDriver();
 	}
 
 }
+*/

@@ -50,7 +50,7 @@ Hand::Hand() {
 }
 
 void Hand::slideCards(int pos) {
-	
+
 	while (pos < 5) {
 		hand[pos] = hand[pos + 1];
 		if (pos == 0)
@@ -108,7 +108,7 @@ void Hand::toString() {
 			cout << "Card" << i << "-> " << "Empty" << endl;
 		}
 		else {
-			cout << "Card" << i <<"-> " << hand[i]->toString() << endl;
+			cout << "Card" << i << "-> " << hand[i]->toString() << endl;
 		}
 	}
 }
@@ -127,7 +127,7 @@ Deck::Deck(int nbPlayers) {
 
 		Card* card1 = new Card("Move 3 Armies", "Forest");
 		Card* card2 = new Card("Add 3 Armies", "Forest");
-		
+
 		Card* card4 = new Card("Destroy 1 Army or Build City", "Forest");
 		Card* card5 = new Card("Add 2 Armies or Move 3 Armies", "Forest");
 		Card* card6 = new Card("Move 4 Armies via Ship", "Forest");
@@ -143,7 +143,7 @@ Deck::Deck(int nbPlayers) {
 
 		Card* card17 = new Card("Move 4 Armies", "Carrot");
 		Card* card18 = new Card("Build City", "Carrot");
-	
+
 		Card* card20 = new Card("Add 3 Armies or move 4 Armies", "Anvil");
 		Card* card21 = new Card("Move 3 Armies via Ship", "Anvil");
 		Card* card22 = new Card("Build City", "Anvil");
@@ -302,7 +302,7 @@ Deck::Deck(int nbPlayers) {
 		this->addCard(card42);
 	}
 
-	
+
 }
 
 void Deck::addCard(Card* card) {

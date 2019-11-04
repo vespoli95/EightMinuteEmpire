@@ -1,4 +1,2 @@
-﻿  map.cpp
-C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(66,10): warning C4101: 'startingRegion': unreferenced local variable
-C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(388): warning C4715: 'Board::loadmap': not all control paths return a value
-  EightMinuteEmpire.vcxproj -> C:\Users\Martin\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+﻿  part4_driver.cpp
+  EightMinuteEmpire.vcxproj -> C:\Users\antve\source\repos\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

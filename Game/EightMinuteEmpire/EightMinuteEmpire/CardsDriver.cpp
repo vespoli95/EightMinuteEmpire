@@ -9,7 +9,7 @@
 
 using namespace std;
 
-static int cardsDriver(){
+static int cardsDriver() {
 	cout << "Creating Deck..." << endl;
 
 	Card* card1 = new Card("Move 3 Armies", "Forest");
@@ -136,7 +136,7 @@ static int cardsDriver(){
 
 	player->setCoins(11);
 	cout << endl << "Player: " << *player->getName() << ", Age: " << *player->getAge() << ", Coins: " << *player->getCoins() << endl;
-	
+
 
 
 

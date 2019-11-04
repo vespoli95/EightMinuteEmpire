@@ -16,15 +16,15 @@ public:
 	~GameStart() {};
 
 	static GameStart& getInstance();
-	
-	 
-	
+
+
+
 private:
 
 	int loadPlayers();
-	
+
 	Deck* loadDeck(int nbPlayers);
-	
+
 	Deck* gamedeck;
 };
 

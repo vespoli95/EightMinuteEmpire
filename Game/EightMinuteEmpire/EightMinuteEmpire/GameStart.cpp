@@ -19,7 +19,7 @@ GameStart::GameStart() {
 	{
 		gamedeck = loadDeck(loadPlayers());
 	}
-	
+
 
 }
 
@@ -34,7 +34,7 @@ int GameStart::loadPlayers() {
 		return 0;
 	}
 	else {
-		
+
 		for (int i = 0; i < nbPlayers; i++) {
 
 			cout << "Player " << count << " what is your name?" << endl;
@@ -50,20 +50,20 @@ int GameStart::loadPlayers() {
 
 	}
 
-	
+
 }
 
 Deck* GameStart::loadDeck(int nbPlayers) {
 
-	if (nbPlayers==0) {
+	if (nbPlayers == 0) {
 
 		cout << "You need at least 1 player, please try again later" << endl;
 	}
-	
-	else{
-	Deck* gamedeck = new Deck(nbPlayers);
 
-	return gamedeck;
+	else {
+		Deck* gamedeck = new Deck(nbPlayers);
+
+		return gamedeck;
 	}
 }
 

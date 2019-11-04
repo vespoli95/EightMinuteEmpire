@@ -34,7 +34,7 @@ void Continent::addregion(Region& regionname) {
 	if (itr == regionList.end()) //if it doesn't exist, add it to the worldmap
 	{
 		regionList[regionname.name] = &regionname;
-		return ;
+		return;
 	}
 	//cout << "\nRegion already exists!";
 	//Region* x = itr->second;
@@ -49,7 +49,7 @@ void Continent::print()
 		cout << itr->first << '\n';
 		//cout << itr->second->name << '\n'; //test to see if both return same content
 	}
-	
+
 }
 
 
@@ -64,25 +64,25 @@ Board::Board() {
 	cmap continents;
 
 	Region *startingRegion;
+
 }
 
 Board& Board::getInstance() {
-
 	static Board theInstance;
 
 	return theInstance;
 }
 
 void Board::DFSitr(Region& vertex, vmap& visited)
-{	
+{
 	// Mark the current node as visited and print it
 	visited[vertex.name] = &vertex;
 	cout << vertex.name << " ";
-	
+
 	// Recur for all adjacent nodes to this node 
 	vmap::iterator itr;
 	vmap::iterator chk;
-	for (itr = vertex.land_edges.begin(); itr != vertex.land_edges.end(); ++itr){
+	for (itr = vertex.land_edges.begin(); itr != vertex.land_edges.end(); ++itr) {
 		string regionname = itr->second->name;
 		chk = visited.find(regionname);
 		Region* ptr = itr->second;
@@ -111,17 +111,17 @@ bool Board::DFS(string regionname)
 	int verification;
 
 	Region& vertex = findregion(regionname);
-	cout <<"\n"<<"The DFS is as follows | ";
+	cout << "\n" << "The DFS is as follows | ";
 	DFSitr(vertex, *visitedptr);
 	verification = visited.size();
 
-	if(verification==nodes){
-		cout <<"| all  " << nodes << " regions accounted for! " << endl;
+	if (verification == nodes) {
+		cout << "| all  " << nodes << " regions accounted for! " << endl;
 		cout << "Map is valid" << endl;
 		return true;
 	}
 	else {
-		cout << "| there is(are)  " << (nodes-verification) << " node(s) missing for this graph to be connected! " << endl;
+		cout << "| there is(are)  " << (nodes - verification) << " node(s) missing for this graph to be connected! " << endl;
 
 		cout << "Map is invalid !" << endl;
 		return false;
@@ -140,7 +140,7 @@ void Board::addregionandcontinent(string regionname, string continentname) {
 
 Region& Board::findregion(string regionname) {
 	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
-	if (itr == worldmap.end()) 
+	if (itr == worldmap.end())
 	{
 		cout << "\nRegion doesn't exists!";
 	}
@@ -148,6 +148,7 @@ Region& Board::findregion(string regionname) {
 	Region* x = itr->second;
 	return *x;
 }
+
 
 Region& Board::addregion(string regionname) {
 	vmap::iterator itr = worldmap.find(regionname);  //search the worldmap to see if the region already exists
@@ -168,12 +169,12 @@ void Board::addlandedge(string edgeid, string regionname1, string regionname2) {
 	Region& y = findregion(regionname2);
 
 	//place <edgeid,region1 pointer> in Land Edge of region1
-	vmap::iterator itr = x.land_edges.find(edgeid);  
+	vmap::iterator itr = x.land_edges.find(edgeid);
 	if (itr == x.land_edges.end()) {
 		x.land_edges[edgeid] = &y;
 	}
 	//place <edgeid,region2 pointer> in Land Edge of region2
-	vmap::iterator cnt = y.land_edges.find(edgeid);  
+	vmap::iterator cnt = y.land_edges.find(edgeid);
 	if (cnt == y.land_edges.end())
 	{
 		y.land_edges[edgeid] = &x;
@@ -304,7 +305,7 @@ bool Board::readfile(string filename) {
 		if (edgeid == "START") {
 
 			input >> regionname1;
-			
+
 			if (addstartingregion(findregion(regionname1))) {
 
 				//cout << "Starting region will be  " << regionname1 << endl;
@@ -314,13 +315,12 @@ bool Board::readfile(string filename) {
 				//cout << "Starting region was not loaded properly, please verify map file and try again" << endl;
 			}
 
-			
-			
+
+
 		}
-		
 
 		input >> regionname1 >> regionname2;
-		
+
 		if ((edgeid.length() < 3) || (regionname1.length() < 3) || (regionname2.length() < 3)) {
 			cout << "File does not contain valid map format" << endl;
 			//cout << "Program will terminate safely" << endl;
@@ -335,9 +335,9 @@ bool Board::readfile(string filename) {
 
 	if (DFS("R01")) {
 
-		printlist();
-
+		printlist();		
 		getStartingRegion();
+
 		return true;
 	}
 	else
@@ -351,7 +351,7 @@ bool Board::addstartingregion(Region& regionname) {
 
 	startingRegion = &regionname;
 
- 	return true;
+	return true;
 
 };
 
@@ -359,6 +359,7 @@ bool Board::loadmap() {
 	string folder = "resource/", answer, file, ext = ".txt";
 	bool pursue = true;
 	int count = 0;
+	
 
 	while (pursue) {
 		cout << "\n\nHello, please enter the name of the map you want to load: " << endl;
@@ -377,21 +378,21 @@ bool Board::loadmap() {
 				cout << "Attempt #" << count << "! Too many failed attempts, please try again later" << endl;
 				return true;
 				pursue = false;
-				
+
 			}
 
 			cout << "Attempt #" << count << "\nPlease try again" << endl;
 		}
 
 	}
-	
+
 }
 
 void Board::printlist() {
 	typedef map<string, Region*> rmap;
 	//Print all the regions on the board and its respective edges
 	vmap::iterator itr;
-	cout << "Here are the "<< nodes <<" countries that have been created" << endl;
+	cout << "Here are the " << nodes << " countries that have been created" << endl;
 	for (itr = worldmap.begin(); itr != worldmap.end(); ++itr) {
 		cout << itr->first << '\n';
 		//print each edge within each continent
@@ -405,7 +406,7 @@ void Board::printlist() {
 		}
 		cout << '\n';
 	}
-	
+
 	//Print all the continents on the board and which regions they include
 	cmap::iterator ctr;
 	cout << "Here are the continents that have been created" << endl;
@@ -413,14 +414,14 @@ void Board::printlist() {
 		cout << ctr->first << '\n';
 		//print each region within each continent
 		rmap::iterator cnt;
-		for(cnt = ctr->second->regionList.begin(); cnt != ctr->second->regionList.end();++cnt){
-		cout << '\t' << cnt->first << " ";
+		for (cnt = ctr->second->regionList.begin(); cnt != ctr->second->regionList.end(); ++cnt) {
+			cout << '\t' << cnt->first << " ";
 		}
 		cout << '\n';
 	}
 
 	Region& start = getStartingRegion();
-	
+
 	cout << "\n Starting region is : " << start.name << endl;
 
 
