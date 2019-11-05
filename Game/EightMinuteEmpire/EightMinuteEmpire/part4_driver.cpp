@@ -18,31 +18,32 @@ static int driverhi()
 	board.loadmap();
 	Player *ant = new Player("Anthony", 23);
 	Player *tim = new Player("Tim", 22);
-	vector<Player> players{ *ant};
+	vector<Player> players{ *ant, *tim};
 	vector<Player>::iterator plyr;
-
+	int i = 2;
 	//testing PlaceNewArmies
 	for (plyr = players.begin(); plyr < players.end(); plyr++)
 	{
-		/*cout << *plyr->getName() << " please place your first 3 armies." << endl;
-		cout << *pNumArmies << " armies remaining." << endl;
-		do {
-			cout << numArmies << " armies to place. Where do you want to place your next one?" << endl;
-			string region;
-			cin >> region;
-			int amount;
-			do {
-				cout << "How many would you like to place here?" << endl;
-				cin >> amount;
-			} while (amount > numArmies || amount <= 0);
-			selected_regions->insert(pair<string, int>(region, amount));
-			numArmies -= amount;
-		} while (numArmies > 0);
-*/
-		
+
+		cout << *plyr->getName() << " please place your first 3 armies." << endl;
+		cout << *plyr->getNumArmies() << " armies remaining." << endl;
+		//do {
+		//	cout << numArmies << " armies to place. Where do you want to place your next one?" << endl;
+		//	string region;
+		//	cin >> region;
+		//	int amount;
+		//	do {
+		//		cout << "How many would you like to place here?" << endl;
+		//		cin >> amount;
+		//	} while (amount > numArmies || amount <= 0);
+		//	selected_regions->insert(pair<string, int>(region, amount));
+		//	numArmies -= amount;
+		//} while (numArmies > 0);
+
+
 		map<string, Region*> regions = board.getWorldMap();
-		map<string, int> temp{ {"R09", 1} , {"R05", 1}, {"R07", 1} };
-		plyr->PlaceNewArmies(3, temp, true, board);
+		map<string, int> temp{ {"R09", i++} };
+		plyr->PlaceNewArmies(temp, true, board);
 
 		
 		
@@ -56,6 +57,7 @@ static int driverhi()
 			for (it2 = region2->second->getArmies()->begin(); it2 != region2->second->getArmies()->end(); it2++)
 				cout << "\tname: " << it2->first << ", #: " << it2->second << endl;
 		}
+		plyr->DestroyArmy("Anthony", "R09", board);
 
 
 		/*map<string, int> selected_region = new map<string, int>();
@@ -66,17 +68,17 @@ static int driverhi()
 		selected_region->insert(pair<string, int>(region, 1));
 		*/
 
-		map<string, int> selected_region{ {"R01", 1} };
-		map<string, Region*>::iterator region_ptr;
-		plyr->BuildCity(selected_region, board);
+		//map<string, int> selected_region{ {"R01", 1} };
+		//map<string, Region*>::iterator region_ptr;
+		//plyr->BuildCity(selected_region, board);
 
-		//test to see if city was added properly
-		map<string, int>::iterator city_ptr;
-		for (region_ptr = regions.begin(); region_ptr != regions.end(); region_ptr++) {
-			cout << region_ptr->first << ": " << endl;
-			for (city_ptr = region_ptr->second->getCities()->begin(); city_ptr != region_ptr->second->getCities()->end(); city_ptr++)
-				cout << "\tName: " << city_ptr->first << ", #: " << city_ptr->second << endl;
-		}
+		////test to see if city was added properly
+		//map<string, int>::iterator city_ptr;
+		//for (region_ptr = regions.begin(); region_ptr != regions.end(); region_ptr++) {
+		//	cout << region_ptr->first << ": " << endl;
+		//	for (city_ptr = region_ptr->second->getCities()->begin(); city_ptr != region_ptr->second->getCities()->end(); city_ptr++)
+		//		cout << "\tName: " << city_ptr->first << ", #: " << city_ptr->second << endl;
+		//}
 
 
 		//testing move armies
@@ -93,16 +95,24 @@ static int driverhi()
 		} while (amount > 0);
 		moves.insert(pair<string, string>(army, region));*/
 
-		plyr->MoveArmies(1, { { "R01", "R03" } }, board);
+		//cout << endl;
 
-		for (region2 = regions.begin(); region2 != regions.end(); region2++) {
-			cout << region2->first << ":" << endl;
-			for (it2 = region2->second->getArmies()->begin(); it2 != region2->second->getArmies()->end(); it2++)
-				cout << "\tname: " << it2->first << ", #: " << it2->second << endl;
-		}
+		//map<string, string> temp2{ { "R09", "R10" }, { "R10", "R11" } };
+		//plyr->MoveArmies(2, temp2, board);
+
+		//for (region2 = regions.begin(); region2 != regions.end(); region2++) {
+		//	cout << region2->first << ":" << endl;
+		//	for (it2 = region2->second->getArmies()->begin(); it2 != region2->second->getArmies()->end(); it2++)
+		//		cout << "\tname: " << it2->first << ", #: " << it2->second << endl;
+		//}
 		
 
+		cout << "\nTESTING ANDOR()\n";
 
+		Card *card = new Card("Add 2 Armies and Move 3 Armies", "Forest");
+		plyr->AndOr(*card);
+
+		cout << "\nTESTING ANDOR()\n";
 
 		getchar();
 		getchar();
