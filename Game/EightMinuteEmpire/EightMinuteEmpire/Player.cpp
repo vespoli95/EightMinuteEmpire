@@ -243,6 +243,9 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 							RemoveArmy(board, *found->second);
 							break;
 						}
+						else {
+							cout << "There's no " << (moveOverWater ? "land" : "marine") << " edge there!" << endl;
+						}
 					}
 				}
 			}
