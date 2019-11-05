@@ -14,6 +14,7 @@ class Player {
 		int *pAge;
 		int *pNumArmies;
 		int nbCards;
+		int score;
 		string *pName;
 		BiddingFacility *pBiddingFacility;
 		map<string, Region> *playerRegions = new map<string, Region>;
@@ -44,18 +45,21 @@ class Player {
 		inline int getGoods(string key) { return playerGoods[key]; };
 		inline map<string, int> getGoods() { return playerGoods; };
 		inline map<string, Region> getPlayerRegions() { return *playerRegions; };
+		inline void setScore(int s) { score = s; };
+		inline int getScore() { return score; };
 		
 		void PayCoin();
 		bool Ignore();
-		void MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board &board);
-		void MoveOverLand(int amount, map<string, string> moves, Board &board);
-		void MoveOverWater(int amount, map<string, string> moves, Board &board);
-		void BuildCity(map<string, int> selected_region, Board &board);
-		void PlaceNewArmies(map<string, int> placements, bool gameStart, Board &board);
-		void RemoveArmy(Board &board, Region &region);
-		bool DestroyArmy(string playerName, string regionName, Board &board);
-		vector<int> AndOr(Card &card);
+		void MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board& board);
+		void MoveOverLand(int amount, map<string, string> moves, Board& board);
+		void MoveOverWater(int amount, map<string, string> moves, Board& board);
+		void BuildCity(map<string, int> selected_region, Board& board);
+		void PlaceNewArmies(map<string, int> placements, bool gameStart, Board& board);
+		void RemoveArmy(Board& board, Region& region);
+		bool DestroyArmy(string playerName, string regionName, Board& board);
+		vector<int> AndOr(Card& card);
+		void DestroyArmy();
 		string toString();
 		static bool equals(Player, Player p2);
-		int computeScore();
+		int computeGoods();
 };

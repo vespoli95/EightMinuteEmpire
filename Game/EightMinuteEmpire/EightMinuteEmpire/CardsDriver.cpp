@@ -195,7 +195,7 @@ static int cardsDriver() {
 	{
 		map<string, Region*> regions = mapofworld.getWorldMap();
 		map<string, int> temp{ {"R09", 3} };
-		plyr->PlaceNewArmies(3, temp, true, mapofworld);
+		plyr->PlaceNewArmies(temp, true, mapofworld);
 
 		//check if adding armies worked
 		map<string, Region*>::iterator region2;
@@ -218,7 +218,7 @@ static int cardsDriver() {
 			cout << "Type in the region name:" << endl;
 			cin >> input;
 			map<string, int> temp = { {input, 1} };
-			fakePlayer.PlaceNewArmies(1, temp, false, mapofworld);
+			fakePlayer.PlaceNewArmies(temp, false, mapofworld);
 			
 			//check if adding armies worked
 			map<string, Region*> regions = mapofworld.getWorldMap();

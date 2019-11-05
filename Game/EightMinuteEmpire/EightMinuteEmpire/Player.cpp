@@ -266,10 +266,6 @@ void Player::MoveOverWater(int amount, map<string, string> moves, Board & board)
 }
 
 
-void Player::DestroyArmy() {
-	cout << "You have reached " << *Player::getName() << "::DestroyArmy(), this will be implemented in a future release\n";
-}
-
 string Player::toString() {
 	return ("player name: " + *Player::getName() + " coins: " + std::to_string(*Player::getCoins()));
 }
@@ -284,7 +280,7 @@ bool Player::equals(Player p1, Player p2)
 	return false;
 }
 
-int Player::computeScore()
+int Player::computeGoods()
 {
 	if (getGoods("Wild")) {
 		cout << "you have " << getGoods("Wild") << " wild goods to distribute";
