@@ -155,3 +155,105 @@ void Player::MoveOverLandOrWater() {
 void Player::DestroyArmy() {
 	cout << "You have reached " << *Player::getName() << "::DestroyArmy(), this will be implemented in a future release\n";
 }
+
+string Player::toString() {
+	return ("player name: " + *Player::getName() + " coins: " + std::to_string(*Player::getCoins()));
+}
+
+
+bool Player::equals(Player p1, Player p2)
+{
+	if (p1.getName() == p2.getName())
+		if (p1.getCoins() == p2.getCoins())
+			if (p1.getAge() == p2.getAge())
+				return true;
+	return false;
+}
+
+int Player::computeScore()
+{
+	if (getGoods("Wild")) {
+		cout << "you have " << getGoods("Wild") << " wild goods to distribute";
+		cout << endl << "you can you your wild cards on:\n1. Carrot\n2. Forest\n3. Anvil\n4. Crystal\n5. Ore\n";
+		int choice;
+		for (int i = 0; i < getGoods("Wild"); i++) {
+			cout << "choose wild card : ";
+			cin >> choice;
+			switch (choice)
+			{
+			default:cout << "wrong input try again";
+				break;
+			case 1:setGoods("Carrot"); break;
+			case 2:setGoods("Forest"); break;
+			case 3:setGoods("Anvil"); break;
+			case 4:setGoods("Crystal"); break;
+			case 5:setGoods("Ore"); break;
+			}
+		}
+	}
+	int score = 0;
+	int goodsCalc = getGoods("Carrot");
+	if (goodsCalc != 0)
+		if (goodsCalc <= 3)
+			score++;
+		else if (goodsCalc <= 5)
+			score = score + 2;
+		else if (goodsCalc <= 7)
+			score = score + 4;
+		else if (goodsCalc >= 8)
+			score = score + 7;
+
+	cout << endl << score << endl;
+
+	goodsCalc = getGoods("Forest");
+	if (goodsCalc != 0)
+		if (goodsCalc <= 2)
+			score++;
+		else if (goodsCalc <= 4)
+			score = score + 2;
+		else if (goodsCalc <= 5)
+			score = score + 4;
+		else if (goodsCalc >= 6)
+			score = score + 7;
+
+	cout << endl << score << endl;
+	goodsCalc = getGoods("Anvil");
+	if (goodsCalc != 0)
+		if (goodsCalc <= 2)
+			score++;
+		else if (goodsCalc <= 4)
+			score = score + 2;
+		else if (goodsCalc <= 6)
+			score = score + 4;
+		else if (goodsCalc >= 7)
+			score = score + 7;
+
+	cout << endl << score << endl;
+	goodsCalc = getGoods("Crystal");
+	if (goodsCalc != 0)
+		if (goodsCalc <= 1)
+			score++;
+		else if (goodsCalc <= 2)
+			score = score + 2;
+		else if (goodsCalc <= 3)
+			score = score + 4;
+		else if (goodsCalc >= 4)
+			score = score + 7;
+	cout << endl << score << endl;
+
+	goodsCalc = getGoods("Ore");
+	if (goodsCalc != 0)
+		if (goodsCalc <= 2)
+			score++;
+		else if (goodsCalc <= 3)
+			score = score + 2;
+		else if (goodsCalc <= 4)
+			score = score + 4;
+		else if (goodsCalc >= 5)
+			score = score + 7;
+	cout << endl << score << endl;
+
+
+
+	return score;
+}

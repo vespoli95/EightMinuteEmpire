@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClInclude Include="BiddingFacility.h" />
     <ClInclude Include="Cards.h" />
+    <ClInclude Include="ComputeScore.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="map.h" />
@@ -31,6 +33,8 @@
     <ClCompile Include="BiddingFacilityDriver.cpp" />
     <ClCompile Include="Cards.cpp" />
     <ClCompile Include="CardsDriver.cpp" />
+    <ClCompile Include="ComputeScore.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="GameStartDriver.cpp" />
     <ClCompile Include="main.cpp" />
