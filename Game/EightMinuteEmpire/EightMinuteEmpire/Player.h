@@ -42,6 +42,7 @@ class Player {
 		
 		inline map<string, Region> getPlayerRegions() { return *playerRegions; };
 		
+		bool compare(Player player);
 		void PayCoin();
 		bool Ignore();
 		void MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board &board);

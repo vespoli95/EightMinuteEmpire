@@ -32,6 +32,25 @@ static vector<Player> initializePlayers() {
 	return players;
 }
 
+static vector<Player> determineOrder(Player startPlayer, vector<Player>& players) {
+	vector<Player> orderedPlayers;
+	int numAtStartPlayer = 0;
+	bool add = false;
+	for (int i = 0; i <= players.size() - 1; i++) {
+		if (startPlayer.compare(players.at(i))) {
+			numAtStartPlayer = i;
+			add = true;
+		}
+		if (add)
+			orderedPlayers.push_back(players[i]);
+	}
+	for (int i = 0; i < numAtStartPlayer; i++) {
+		orderedPlayers.push_back(players[i]);
+	}
+
+	return orderedPlayers;
+}
+
 static void givePlayersCoins(vector<Player>& players) {
 	int numPlayers = players.size();
 
@@ -195,7 +214,7 @@ static int cardsDriver() {
 	{
 		map<string, Region*> regions = mapofworld.getWorldMap();
 		map<string, int> temp{ {"R09", 3} };
-		plyr->PlaceNewArmies(3, temp, true, mapofworld);
+		plyr->PlaceNewArmies(temp, true, mapofworld);
 
 		//check if adding armies worked
 		map<string, Region*>::iterator region2;
@@ -218,7 +237,7 @@ static int cardsDriver() {
 			cout << "Type in the region name:" << endl;
 			cin >> input;
 			map<string, int> temp = { {input, 1} };
-			fakePlayer.PlaceNewArmies(1, temp, false, mapofworld);
+			fakePlayer.PlaceNewArmies(temp, false, mapofworld);
 			
 			//check if adding armies worked
 			map<string, Region*> regions = mapofworld.getWorldMap();
@@ -244,26 +263,34 @@ static int cardsDriver() {
 	//Bidding
 	Player startPlayer = biddingFacilityDriver(players);
 
-	//Let player take card
+	//Determine order of play
+	vector<Player> orderPlayers = determineOrder(startPlayer, players);
+
 	cout << endl << "Display Hand: " << endl;
 	hand->toString();
-	int card;
-	do {
-		cout << "\nWhich card would you like? (must be between 0 and 5 inclusive)" << endl;
-		cin >> card;
-	} while (card < 0 || card > 5);
+	for(int i = 0; i < orderPlayers.size(); i++)
+	{
+		//Let player take card
+		cout << endl << (*orderPlayers[i].getName()) << "'s turn!" << endl;
+		int card;
+		do {
+			cout << "\nWhich card would you like? (must be between 0 and 5 inclusive)" << endl;
+			cin >> card;
+		} while (card < 0 || card > 5);
 
-	cout << endl << "Player " << (*startPlayer.getName()) << " takes card: ";
-	cout << (hand->exchange(card)).toString() << endl;
+		cout << endl << "Player " << (*orderPlayers[i].getName()) << " takes card: ";
+		cout << (hand->exchange(card)).toString() << endl;
 
-	//Show cards sliding
-	cout << endl << "Slide cards over: " << endl;
-	hand->slideCards(card);
-	hand->toString();
+		//Show cards sliding
+		cout << endl << "Slide cards over: " << endl;
+		hand->slideCards(card);
+		hand->toString();
 
-	cout << endl << "Player " << (*startPlayer.getName()) << " draws a card: " << endl;
-	hand->addCard(deck->draw());
-	hand->toString();
+		//Draw card
+		cout << endl << "Player " << (*orderPlayers[i].getName()) << " draws a card: " << endl;
+		hand->addCard(deck->draw());
+		hand->toString();
+	}
 
 	cin.get();
 
