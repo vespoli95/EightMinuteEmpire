@@ -48,6 +48,7 @@ class Player {
 		inline void setScore(int s) { score = s; };
 		inline int getScore() { return score; };
 		
+		bool compare(Player player);
 		void PayCoin();
 		bool Ignore();
 		void MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board& board);
