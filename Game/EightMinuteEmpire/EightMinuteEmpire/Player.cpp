@@ -20,7 +20,7 @@ Player::Player() {
 	pAge = new int(0);
 	pBiddingFacility = new BiddingFacility();
 	playerHand = new Hand();
-	*pNumArmies = 14;
+	pNumArmies = new int(14);
 	//setArmies(*pArmies);
 	int i = 1;
 

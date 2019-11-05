@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int main()
+static int driverhi()
 {
 	//singleton board
 	Board board = Board::getInstance();
