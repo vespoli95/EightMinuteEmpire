@@ -45,6 +45,23 @@ void Player::PayCoin() {
 	cout << "You have reached " << *Player::getName() << "::PayCoin(), this will be implemented in a future release\n";
 }
 
+bool Player::Ignore()
+{
+	char answer;
+	cout << "Would you like to ignore this action? (Y/N)" << endl;
+	cin >> answer;
+	if (answer == 'Y' || answer == 'y')
+		return true;
+	else if (answer == 'N' || answer == 'n')
+		return false;
+	else {
+		cout << "Incorrect input." << endl;
+		this->Ignore();
+	}
+	return false;
+}
+
+
 void Player::BuildCity(map<string, int> selected_region, Board &board) {
 	//testing BuildCity()
 	map<string, Region*> regions = board.getWorldMap();
@@ -66,10 +83,11 @@ void Player::BuildCity(map<string, int> selected_region, Board &board) {
 		cout << "Can't build a city there!";
 }
 
-void Player::PlaceNewArmies(int numArmies, map<string, int> placements, bool gameStart, Board &board) {	
+void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &board) {	
 	map<string, Region*> regions = board.getWorldMap();
 	map<string, int>::iterator it;
 	map<string, Region*>::iterator region;
+	map<string, int>::iterator army;
 	int matchCount = 0;
 	Region startingRegion = board.getStartingRegion();
 	bool gameStartAndNotGivenStartingRegion = false;
@@ -100,8 +118,16 @@ void Player::PlaceNewArmies(int numArmies, map<string, int> placements, bool gam
 
 					//if has city or on starting region
 					if (hasCity || startingRegion.getName() == region->second->getName()) {
-						region->second->getArmies()->insert(pair<string, int>(*getName(), it->second));
+						map<string, int> *armies = region->second->getArmies();
+						army = armies->find(*getName());
+						if (army != armies->end()) {
+							army->second += it->second;
+						}
+						else 
+							region->second->getArmies()->insert(pair<string, int>(*getName(), it->second));
+						
 						matchCount++;
+						pNumArmies--;
 						break;
 					}
 				}
@@ -111,46 +137,134 @@ void Player::PlaceNewArmies(int numArmies, map<string, int> placements, bool gam
 	else {
 		cout << "Not in the starting region! The starting region is: " << startingRegion.getName() << endl;
 	}
-
 	
 
 }
-void Player::MoveArmies(int amount, map<string, string> moves, Board &board) {
+
+
+void Player::RemoveArmy(Board &board, Region &region) {
+	map<string, int> *armies = region.getArmies();
+	map<string, int>::iterator army;
+
+	for (army = armies->begin(); army != armies->end(); army++) {
+		if (army->first == *getName()) {
+			if (army->second == 1)
+				armies->erase(army);
+			else
+				army->second--;
+			break;
+		}
+		
+	}
+
+}
+
+bool Player::DestroyArmy(string playerName, string regionName, Board &board)
+{
+	map<string, Region*> regions = board.getWorldMap();
+	map<string, Region*>::iterator found;
+
+	found = regions.find(regionName);
+	if (found != regions.end()) {
+		map<string, int> *armies = found->second->getArmies();
+		map<string, int>::iterator army;
+		for (army = armies->begin(); army != armies->end(); army++) {
+			if (army->first == playerName) {
+				if (army->second > 1)
+					army->second--;
+				else
+					armies->erase(army);
+				cout << "1 of " << playerName << "'s army deleted on " << regionName << endl;
+				return true;
+			}
+		}
+	}
+	else {
+		cout << "Region does not exist on map." << endl;
+		return false;
+	}
+
+	cout << "Army unable to be deleted.";
+	return false;
+}
+
+//returns a vector of the indices of the and/or card selection
+vector<int> Player::AndOr(Card &card)
+{
+	vector<int> chosenCards{};
+	int answer;
+	bool isOr = false, isAnd = false;
+	if (card.getAction()->find("or") != string::npos) {
+		isOr = true;
+		do {
+			cout << "Which action do you want to choose, 1 or 2?" << endl;
+			cin >> answer;
+		} while (answer != 1 && answer != 2);
+		chosenCards.push_back(answer - 1);
+	}
+	else if (card.getAction()->find("and") != string::npos) {
+		chosenCards.push_back(0);
+		chosenCards.push_back(1);
+	}
+	else 
+		cout << "This card is not an and/or card." << endl;
+
+	return chosenCards;
+}
+
+
+void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board &board) {
 	map<string, string>::iterator move;
 	map<string, Region*>::iterator found;
 	map<string, Region*>::iterator edge;
 	map<string, Region*> regions = board.getWorldMap();
 
+	for (int i = 0; i < amount; i++) {
+		for (move = moves.begin(); move != moves.end(); move++) {
+			//find if this players' armies are on the region
+			bool playerHasArmyOnRegion = false;
+			found = regions.find(move->first);
+			map<string, int>::iterator army;
+			map<string, int> *armies = found->second->getArmies();
+ 			for (army = armies->begin(); army != armies->end(); army++) {
+				if (army->first == *getName()) {
+					playerHasArmyOnRegion = true;
+				}
 
-	for (move = moves.begin(); move != moves.end(); move++) {
-		bool playerHasArmyOnRegion = false;
-		found = regions.find(move->first);
-		//find if this players armies are on the region
-		map<string, int>::iterator army;
-		map<string, int> *armies = found->second->getArmies();
-		for (army = armies->begin(); army != armies->end(); army++) {
-			if (army->first == *getName())
-				return;
-		}
-		if (found != regions.end()) {
-			map<string, Region*> land_edges = found->second->getLandEdges();
-			for (edge = land_edges.begin(); edge != land_edges.end(); edge++) {
-				if (edge->second->getName() == move->second) {
-					map<string, int> *armies = edge->second->getArmies();
-					armies->insert(pair<string, int>(*getName(), 1));
-					
-					break;
+			}
+			if (playerHasArmyOnRegion) {
+				//if they are, find if there's an edge from that region to the region they wish to move to
+				if (found != regions.end()) {
+					map<string, Region*> edges =  moveOverWater ? found->second->getMarineEdges() : found->second->getLandEdges();
+					for (edge = edges.begin(); edge != edges.end(); edge++) {
+						if (edge->second->getName() == move->second) {
+							map<string, int> *armies = edge->second->getArmies();
+							armies->insert(pair<string, int>(*getName(), 1));
+							RemoveArmy(board, *found->second);
+							break;
+						}
+					}
 				}
 			}
+			else {
+				cout << "You do not have an army on this region!" << endl;
+			}
+
 		}
 	}
+	
 }
 
-//void Player::RemoveArmy(Board &board,)
-
-void Player::MoveOverLandOrWater() {
-	cout << "You have reached " << *Player::getName() << "::MoveOverLand(), this will be implemented in a future release\n";
+void Player::MoveOverLand(int amount, map<string, string> moves, Board & board)
+{
+	MoveArmies(false, amount, moves, board);
 }
+
+void Player::MoveOverWater(int amount, map<string, string> moves, Board & board)
+{
+	MoveArmies(true, amount, moves, board);
+}
+
 
 void Player::DestroyArmy() {
 	cout << "You have reached " << *Player::getName() << "::DestroyArmy(), this will be implemented in a future release\n";

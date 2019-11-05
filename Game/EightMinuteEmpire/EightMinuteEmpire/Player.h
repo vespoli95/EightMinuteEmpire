@@ -46,11 +46,15 @@ class Player {
 		inline map<string, Region> getPlayerRegions() { return *playerRegions; };
 		
 		void PayCoin();
-		void MoveArmies(int amount, map<string, string> moves, Board &board);
-		void MoveOverLandOrWater();
+		bool Ignore();
+		void MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board &board);
+		void MoveOverLand(int amount, map<string, string> moves, Board &board);
+		void MoveOverWater(int amount, map<string, string> moves, Board &board);
 		void BuildCity(map<string, int> selected_region, Board &board);
-		void PlaceNewArmies(int numArmies, map<string, int> placements, bool gameStart, Board &board);
-		void DestroyArmy();
+		void PlaceNewArmies(map<string, int> placements, bool gameStart, Board &board);
+		void RemoveArmy(Board &board, Region &region);
+		bool DestroyArmy(string playerName, string regionName, Board &board);
+		vector<int> AndOr(Card &card);
 		string toString();
 		static bool equals(Player, Player p2);
 		int computeScore();
