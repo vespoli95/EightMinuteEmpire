@@ -117,7 +117,7 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 					}
 
 					//if has city or on starting region
-					if (hasCity || startingRegion.getName() == region->second->getName()) {
+					if (hasCity || startingRegion.getName() == region->second->getName() || *this->getName() == "AIPlayer") {
 						map<string, int> *armies = region->second->getArmies();
 						army = armies->find(*getName());
 						if (army != armies->end()) {
@@ -253,6 +253,14 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 		}
 	}
 	
+}
+
+bool Player::compare(Player player) {
+	if (this->pAge == player.getAge() && this->pCoins == player.getCoins() && this->pName == player.getName()) {
+		return true;
+	}
+	else
+		return false;
 }
 
 void Player::MoveOverLand(int amount, map<string, string> moves, Board & board)
