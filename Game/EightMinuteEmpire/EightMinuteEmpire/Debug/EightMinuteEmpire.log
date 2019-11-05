@@ -24,3 +24,4 @@ C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\Eigh
 C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(389): warning C4715: 'Board::loadmap': not all control paths return a value
 C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
   EightMinuteEmpire.vcxproj -> C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+
