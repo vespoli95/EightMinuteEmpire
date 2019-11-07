@@ -203,8 +203,8 @@ static int cardsDriver() {
 	vector<Player> players = initializePlayers();
 
 	//Create map
-	Board& mapofworld = Board::getInstance();
-	if (mapofworld.loadmap()) {
+	Board* mapofworld = Board::getInstance();
+	if (mapofworld->loadmap()) {
 		EXIT_FAILURE;
 	}
 
@@ -212,9 +212,9 @@ static int cardsDriver() {
 	vector<Player>::iterator plyr;
 	for (plyr = players.begin(); plyr < players.end(); plyr++)
 	{
-		map<string, Region*> regions = mapofworld.getWorldMap();
+		map<string, Region*> regions = mapofworld->getWorldMap();
 		map<string, int> temp{ {"R09", 3} };
-		plyr->PlaceNewArmies(temp, true, mapofworld);
+		plyr->PlaceNewArmies(temp, true, *mapofworld);
 
 		//check if adding armies worked
 		map<string, Region*>::iterator region2;
@@ -237,10 +237,10 @@ static int cardsDriver() {
 			cout << "Type in the region name:" << endl;
 			cin >> input;
 			map<string, int> temp = { {input, 1} };
-			fakePlayer.PlaceNewArmies(temp, false, mapofworld);
+			fakePlayer.PlaceNewArmies(temp, false, *mapofworld);
 			
 			//check if adding armies worked
-			map<string, Region*> regions = mapofworld.getWorldMap();
+			map<string, Region*> regions = mapofworld->getWorldMap();
 			map<string, Region*>::iterator region2;
 			map<string, int>::iterator it2;
 

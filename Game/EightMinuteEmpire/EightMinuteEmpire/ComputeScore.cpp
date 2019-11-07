@@ -7,8 +7,8 @@ void computeScore() {
 	string winner;
 	int score = 0;
 	int maxScore = 0;
-	Board& mapofworld = Board::getInstance();
-	if (mapofworld.loadmap()) {
+	Board* mapofworld = Board::getInstance();
+	if (mapofworld->loadmap()) {
 		EXIT_FAILURE;
 	}
 
@@ -28,7 +28,7 @@ void computeScore() {
 		temp_player.setGoods("Wild");
 		temp_player.setGoods("Wild");
 		map<string, int> temp{ {"R13", i + 1} };
-		temp_player.PlaceNewArmies(temp, true, mapofworld);
+		temp_player.PlaceNewArmies(temp, true, *mapofworld);
 		players.push_back(temp_player);
 	}
 	

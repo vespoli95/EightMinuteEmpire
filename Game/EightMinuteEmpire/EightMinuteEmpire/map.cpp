@@ -5,6 +5,7 @@
 
 using namespace std;
 
+Board *Board::s_Instance = 0;
 
 Region::Region()
 {
@@ -67,10 +68,13 @@ Board::Board() {
 
 }
 
-Board& Board::getInstance() {
-	static Board theInstance;
-
-	return theInstance;
+Board* Board::getInstance() {
+	
+	if (!s_Instance) {
+		s_Instance = new Board();
+	}
+		
+	return s_Instance;
 }
 
 void Board::DFSitr(Region& vertex, vmap& visited)

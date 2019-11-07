@@ -12,15 +12,15 @@ using namespace std;
 static int driverhi()
 {
 	//singleton board
-	Board board = Board::getInstance();
+	Board *board = Board::getInstance();
 
 	//initialize iterator for vector of players
-	board.loadmap();
+	board->loadmap();
 	Player *ant = new Player("Anthony", 23);
 	Player *tim = new Player("Tim", 22);
 	Player *john = new Player("John", 50);
 	vector<Player> players{ *ant, *tim};	
-	map<string, Region*> regions = board.getWorldMap();
+	map<string, Region*> regions = board->getWorldMap();
 	vector<Player>::iterator plyr;
 
 	for (plyr = players.begin(); plyr < players.end(); plyr++)
@@ -44,7 +44,7 @@ static int driverhi()
 			armiesToPlace -= amount;
 		} while (armiesToPlace > 0);
 
-		plyr->PlaceNewArmies(temp, false, board);
+		plyr->PlaceNewArmies(temp, false, *board);
 
 
 		//check if adding armies worked
@@ -62,7 +62,7 @@ static int driverhi()
 
 		//---- DestroyArmy() ---- 
 		cout << "\n ---- DestroyArmy() ---- \n";
-		plyr->DestroyArmy("Anthony", "R09", board);
+		plyr->DestroyArmy("Anthony", "R09", *board);
 
 		for (region2 = regions.begin(); region2 != regions.end(); region2++) {
 			cout << region2->first << ":" << endl;
@@ -84,7 +84,7 @@ static int driverhi()
 		
 
 		map<string, Region*>::iterator region_ptr;
-		plyr->BuildCity(temp_2, board);
+		plyr->BuildCity(temp_2, *board);
 
 		//test to see if city was added properly
 		map<string, int>::iterator city_ptr;
@@ -110,7 +110,7 @@ static int driverhi()
 			cout << "Where would you like to move this army?" << endl;
 			cin >> region_3;
 			temp_3.insert({ army, region_3 });
-			plyr->MoveArmies(false, 1, temp_3, board);	
+			plyr->MoveArmies(false, 1, temp_3, *board);	
 			for (region2 = regions.begin(); region2 != regions.end(); region2++) {
 				cout << region2->first << ":" << endl;
 				for (it2 = region2->second->getArmies()->begin(); it2 != region2->second->getArmies()->end(); it2++)

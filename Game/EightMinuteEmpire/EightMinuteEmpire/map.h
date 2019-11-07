@@ -61,14 +61,11 @@ private:
 
 class Board
 {
-
-
-
 public:
 	inline Region& getStartingRegion() {return *startingRegion;};
 	inline map<string, Region*> getWorldMap() { return worldmap; }
 	inline map<string, Continent*> getContinents() { return continents; }
-	static Board& getInstance();
+	static Board* getInstance();
 	bool DFS(string regionname);
 	void addregionandcontinent(string regionname, string continentname);
 	Region& findregion(string regionname);
@@ -93,8 +90,8 @@ private:
 	cmap continents;
 	int nodes = 0;
 	void DFSitr(Region& vertex, vmap& visited);
-	string *loadedMap;
-
+	string *loadedMap = NULL;
+	static Board* s_Instance;
 
 	friend class Continent;
 	friend class Region;

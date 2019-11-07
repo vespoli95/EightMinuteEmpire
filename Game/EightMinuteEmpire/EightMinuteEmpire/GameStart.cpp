@@ -11,8 +11,8 @@ using std::cin;
 
 GameStart::GameStart() {
 	gamedeck = NULL;
-	Board& mapofworld = Board::getInstance();
-	if (mapofworld.loadmap()) {
+	
+	if (Board::getInstance()->loadmap()) {
 		EXIT_FAILURE;
 	}
 	else
