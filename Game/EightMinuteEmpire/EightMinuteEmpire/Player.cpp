@@ -23,7 +23,10 @@ Player::Player() {
 	pNumArmies = new int(14);
 	//setArmies(*pArmies);
 	int i = 1;
-
+	placed_new_armies = NULL;
+	city_built = new string("");
+	army_destroyed = NULL;
+	move_army = NULL;
 }
 
 Player::Player(string name, int age)
@@ -34,6 +37,10 @@ Player::Player(string name, int age)
 	pBiddingFacility = new BiddingFacility();
 	playerHand = new Hand();
 	pNumArmies = new int(14);
+	placed_new_armies = NULL;
+	city_built = new string("");
+	army_destroyed = NULL;
+	move_army = NULL;
 
 	
 }
@@ -63,7 +70,6 @@ bool Player::Ignore()
 
 
 void Player::BuildCity(map<string, int> selected_region, Board &board) {
-	//testing BuildCity()
 	map<string, Region*> regions = board.getWorldMap();
 	map<string, Region*>::iterator region_ptr;
 	map<string, Region*>::iterator found;
@@ -77,6 +83,9 @@ void Player::BuildCity(map<string, int> selected_region, Board &board) {
 		if (found != regions.end()) {
 			found->second->getCities()->insert(pair<string, int>(*getName(), 1));
 			built = true;
+			setCityBuilt(selected_region.begin()->first);
+			Notify("BuildCity");
+
 		}
 	}
 	if (!built)
@@ -118,6 +127,8 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 
 					//if has city or on starting region
 					if (hasCity || startingRegion.getName() == region->second->getName() || *this->getName() == "AIPlayer") {
+						map<string, int> *placed_new_armies = new map<string, int>({ { it->first, it->second } });
+						setPlacedNewArmies(placed_new_armies);
 						map<string, int> *armies = region->second->getArmies();
 						army = armies->find(*getName());
 						if (army != armies->end()) {
@@ -125,6 +136,7 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 						}
 						else 
 							region->second->getArmies()->insert(pair<string, int>(*getName(), it->second));
+						Notify("PlaceNewArmies");
 						
 						matchCount++;
 						pNumArmies--;
@@ -136,7 +148,8 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 	}
 	else {
 		cout << "Not in the starting region! The starting region is: " << startingRegion.getName() << endl;
-	}
+	} 
+
 	
 
 }
@@ -154,7 +167,6 @@ void Player::RemoveArmy(Board &board, Region &region) {
 				army->second--;
 			break;
 		}
-		
 	}
 
 }
@@ -174,7 +186,8 @@ bool Player::DestroyArmy(string playerName, string regionName, Board &board)
 					army->second--;
 				else
 					armies->erase(army);
-				cout << "1 of " << playerName << "'s army deleted on " << regionName << endl;
+				setDestroyArmy(playerName, regionName);
+				Notify("DestroyArmy");
 				return true;
 			}
 		}
@@ -218,6 +231,7 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 	map<string, Region*>::iterator found;
 	map<string, Region*>::iterator edge;
 	map<string, Region*> regions = board.getWorldMap();
+	bool edgeFound = false;
 
 	for (int i = 0; i < amount; i++) {
 		for (move = moves.begin(); move != moves.end(); move++) {
@@ -241,12 +255,15 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 							map<string, int> *armies = edge->second->getArmies();
 							armies->insert(pair<string, int>(*getName(), 1));
 							RemoveArmy(board, *found->second);
+							setMoveArmy(move->first, move->second);
+							Notify("MoveArmies");
+							edgeFound = true;
 							break;
 						}
-						else {
-							cout << "There's no " << (moveOverWater ? "land" : "marine") << " edge there!" << endl;
-						}
+						
 					}
+					if (!edgeFound) 
+						cout << "There's no " << (moveOverWater ? "land" : "marine") << " edge there!" << endl;
 				}
 			}
 			else {
