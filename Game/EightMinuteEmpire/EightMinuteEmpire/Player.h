@@ -19,6 +19,7 @@ class Player {
 		BiddingFacility *pBiddingFacility;
 		map<string, Region> *playerRegions = new map<string, Region>;
 		map<string, int> playerGoods;
+		map<string, int> playerRegionsMap;
 		Hand *playerHand;
 
 
@@ -43,8 +44,13 @@ class Player {
 		inline Hand* getHand() { return playerHand; };
 		inline void setGoods(string key) { playerGoods[key] = playerGoods[key] + 1; };
 		inline int getGoods(string key) { return playerGoods[key]; };
+		
+		inline void setplayerRegion(map<string, int> map) { playerRegionsMap = map; };
+		inline map<string, int>* getplayerRegion() { return &playerRegionsMap; };
+		inline int* getplayerRegion(string region) { return &playerRegionsMap[region]; };
+		
 		inline map<string, int> getGoods() { return playerGoods; };
-		inline map<string, Region> getPlayerRegions() { return *playerRegions; };
+	//	inline map<string, Region> getPlayerRegions() { return *playerRegions; };
 		inline void setScore(int s) { score = s; };
 		inline int getScore() { return score; };
 		
@@ -63,4 +69,5 @@ class Player {
 		string toString();
 		static bool equals(Player, Player p2);
 		int computeGoods();
+		map<string, int> computeRegions(Board& board);
 };

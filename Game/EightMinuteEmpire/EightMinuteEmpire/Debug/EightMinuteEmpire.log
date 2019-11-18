@@ -1,31 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  BiddingFacility.cpp
-  BiddingFacilityDriver.cpp
-  Cards.cpp
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(149,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  CardsDriver.cpp
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(168,20): warning C4018: '<': signed/unsigned mismatch
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(39,20): warning C4018: '<=': signed/unsigned mismatch
   ComputeScore.cpp
-  GameLoop.cpp
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(271,19): warning C4018: '<': signed/unsigned mismatch
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(39,20): warning C4018: '<=': signed/unsigned mismatch
-  GameStart.cpp
-  GameStartDriver.cpp
-  main.cpp
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(271,19): warning C4018: '<': signed/unsigned mismatch
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(39,20): warning C4018: '<=': signed/unsigned mismatch
-  map.cpp
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(271,19): warning C4018: '<': signed/unsigned mismatch
-  mapdriver.cpp
-  part4_driver.cpp
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(67,10): warning C4101: 'startingRegion': unreferenced local variable
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(39,20): warning C4018: '<=': signed/unsigned mismatch
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(271,19): warning C4018: '<': signed/unsigned mismatch
-  Player.cpp
-  PlayerDriver.cpp
-  Generating Code...
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\part4_driver.cpp(54,11): warning C4129: ' ': unrecognized character escape sequence
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(393): warning C4715: 'Board::loadmap': not all control paths return a value
-C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
+C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\ComputeScore.cpp(11,6): warning C4101: 'results': unreferenced local variable
   EightMinuteEmpire.vcxproj -> C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-static void setArmies(vector<string> &v) {
+static void setArmies(vector<string>& v) {
 	int i = 1;
 	vector<string>::iterator ptr;
 	for (string s : v) {
@@ -35,7 +35,7 @@ Player::Player(string name, int age)
 	playerHand = new Hand();
 	pNumArmies = new int(14);
 
-	
+
 }
 
 
@@ -62,7 +62,7 @@ bool Player::Ignore()
 }
 
 
-void Player::BuildCity(map<string, int> selected_region, Board &board) {
+void Player::BuildCity(map<string, int> selected_region, Board& board) {
 	//testing BuildCity()
 	map<string, Region*> regions = board.getWorldMap();
 	map<string, Region*>::iterator region_ptr;
@@ -83,7 +83,7 @@ void Player::BuildCity(map<string, int> selected_region, Board &board) {
 		cout << "Can't build a city there!";
 }
 
-void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &board) {	
+void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board& board) {
 	map<string, Region*> regions = board.getWorldMap();
 	map<string, int>::iterator it;
 	map<string, Region*>::iterator region;
@@ -101,7 +101,7 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 			}
 		}
 	}
-	if (!gameStartAndNotGivenStartingRegion){
+	if (!gameStartAndNotGivenStartingRegion) {
 		for (it = placements.begin(); it != placements.end(); it++) {
 			if (matchCount == placements.size())
 				break;
@@ -118,14 +118,14 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 
 					//if has city or on starting region
 					if (hasCity || startingRegion.getName() == region->second->getName() || *this->getName() == "AIPlayer") {
-						map<string, int> *armies = region->second->getArmies();
+						map<string, int>* armies = region->second->getArmies();
 						army = armies->find(*getName());
 						if (army != armies->end()) {
 							army->second += it->second;
 						}
-						else 
+						else
 							region->second->getArmies()->insert(pair<string, int>(*getName(), it->second));
-						
+
 						matchCount++;
 						pNumArmies--;
 						break;
@@ -137,13 +137,13 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 	else {
 		cout << "Not in the starting region! The starting region is: " << startingRegion.getName() << endl;
 	}
-	
+
 
 }
 
 
-void Player::RemoveArmy(Board &board, Region &region) {
-	map<string, int> *armies = region.getArmies();
+void Player::RemoveArmy(Board& board, Region& region) {
+	map<string, int>* armies = region.getArmies();
 	map<string, int>::iterator army;
 
 	for (army = armies->begin(); army != armies->end(); army++) {
@@ -154,19 +154,19 @@ void Player::RemoveArmy(Board &board, Region &region) {
 				army->second--;
 			break;
 		}
-		
+
 	}
 
 }
 
-bool Player::DestroyArmy(string playerName, string regionName, Board &board)
+bool Player::DestroyArmy(string playerName, string regionName, Board& board)
 {
 	map<string, Region*> regions = board.getWorldMap();
 	map<string, Region*>::iterator found;
 
 	found = regions.find(regionName);
 	if (found != regions.end()) {
-		map<string, int> *armies = found->second->getArmies();
+		map<string, int>* armies = found->second->getArmies();
 		map<string, int>::iterator army;
 		for (army = armies->begin(); army != armies->end(); army++) {
 			if (army->first == playerName) {
@@ -189,7 +189,7 @@ bool Player::DestroyArmy(string playerName, string regionName, Board &board)
 }
 
 //returns a vector of the indices of the and/or card selection
-vector<int> Player::AndOr(Card &card)
+vector<int> Player::AndOr(Card& card)
 {
 	vector<int> chosenCards{};
 	int answer;
@@ -206,14 +206,14 @@ vector<int> Player::AndOr(Card &card)
 		chosenCards.push_back(0);
 		chosenCards.push_back(1);
 	}
-	else 
+	else
 		cout << "This card is not an and/or card." << endl;
 
 	return chosenCards;
 }
 
 
-void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board &board) {
+void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> moves, Board& board) {
 	map<string, string>::iterator move;
 	map<string, Region*>::iterator found;
 	map<string, Region*>::iterator edge;
@@ -225,8 +225,8 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 			bool playerHasArmyOnRegion = false;
 			found = regions.find(move->first);
 			map<string, int>::iterator army;
-			map<string, int> *armies = found->second->getArmies();
- 			for (army = armies->begin(); army != armies->end(); army++) {
+			map<string, int>* armies = found->second->getArmies();
+			for (army = armies->begin(); army != armies->end(); army++) {
 				if (army->first == *getName()) {
 					playerHasArmyOnRegion = true;
 				}
@@ -235,10 +235,10 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 			if (playerHasArmyOnRegion) {
 				//if they are, find if there's an edge from that region to the region they wish to move to
 				if (found != regions.end()) {
-					map<string, Region*> edges =  moveOverWater ? found->second->getMarineEdges() : found->second->getLandEdges();
+					map<string, Region*> edges = moveOverWater ? found->second->getMarineEdges() : found->second->getLandEdges();
 					for (edge = edges.begin(); edge != edges.end(); edge++) {
 						if (edge->second->getName() == move->second) {
-							map<string, int> *armies = edge->second->getArmies();
+							map<string, int>* armies = edge->second->getArmies();
 							armies->insert(pair<string, int>(*getName(), 1));
 							RemoveArmy(board, *found->second);
 							break;
@@ -255,7 +255,7 @@ void Player::MoveArmies(bool moveOverWater, int amount, map<string, string> move
 
 		}
 	}
-	
+
 }
 
 bool Player::compare(Player player) {
@@ -266,12 +266,12 @@ bool Player::compare(Player player) {
 		return false;
 }
 
-void Player::MoveOverLand(int amount, map<string, string> moves, Board & board)
+void Player::MoveOverLand(int amount, map<string, string> moves, Board& board)
 {
 	MoveArmies(false, amount, moves, board);
 }
 
-void Player::MoveOverWater(int amount, map<string, string> moves, Board & board)
+void Player::MoveOverWater(int amount, map<string, string> moves, Board& board)
 {
 	MoveArmies(true, amount, moves, board);
 }
@@ -324,7 +324,7 @@ int Player::computeGoods()
 		else if (goodsCalc >= 8)
 			score = score + 7;
 
-	cout << endl << score << endl;
+	//cout << endl << score << endl;
 
 	goodsCalc = getGoods("Forest");
 	if (goodsCalc != 0)
@@ -337,7 +337,7 @@ int Player::computeGoods()
 		else if (goodsCalc >= 6)
 			score = score + 7;
 
-	cout << endl << score << endl;
+	//cout << endl << score << endl;
 	goodsCalc = getGoods("Anvil");
 	if (goodsCalc != 0)
 		if (goodsCalc <= 2)
@@ -349,7 +349,7 @@ int Player::computeGoods()
 		else if (goodsCalc >= 7)
 			score = score + 7;
 
-	cout << endl << score << endl;
+	//cout << endl << score << endl;
 	goodsCalc = getGoods("Crystal");
 	if (goodsCalc != 0)
 		if (goodsCalc <= 1)
@@ -360,7 +360,7 @@ int Player::computeGoods()
 			score = score + 4;
 		else if (goodsCalc >= 4)
 			score = score + 7;
-	cout << endl << score << endl;
+	//cout << endl << score << endl;
 
 	goodsCalc = getGoods("Ore");
 	if (goodsCalc != 0)
@@ -372,9 +372,28 @@ int Player::computeGoods()
 			score = score + 4;
 		else if (goodsCalc >= 5)
 			score = score + 7;
-	cout << endl << score << endl;
+	//	cout << endl << score << endl;
 
 
 
 	return score;
+}
+
+map<string, int> Player::computeRegions(Board& board) {
+	map<string, int> results;
+	map<string, Region*> regions = board.getWorldMap();
+	map<string, Region*>::iterator region_ptr;
+	map<string, int>::iterator region_ptr2;
+	for (region_ptr = regions.begin(); region_ptr != regions.end(); region_ptr++) {
+		//cout << endl << region_ptr->first;
+		for (region_ptr2 = region_ptr->second->getArmies()->begin(); region_ptr2 != region_ptr->second->getArmies()->end(); region_ptr2++) {
+			//cout << endl << region_ptr2->first << " " << region_ptr2->second;
+			if (getName()->_Equal(region_ptr2->first))
+				results.insert({ region_ptr->first, region_ptr2->second });
+		}
+		if (region_ptr->second->getArmies()->empty())
+			results.insert({ region_ptr->first, 0 });
+	}
+	playerRegionsMap = results;
+	return results;
 }
