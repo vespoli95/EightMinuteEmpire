@@ -1,8 +1,6 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  GameStart.cpp
-  map.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  ComputeScore.cpp
+  main.cpp
   Generating Code...
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(67,10): warning C4101: 'startingRegion': unreferenced local variable
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(393): warning C4715: 'Board::loadmap': not all control paths return a value
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
-  EightMinuteEmpire.vcxproj -> C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\ComputeScore.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  EightMinuteEmpire.vcxproj -> C:\wamp\www\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

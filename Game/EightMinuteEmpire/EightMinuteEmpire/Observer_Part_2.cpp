@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int Observer_Part_2() {
 	//initialize board
 	Board *board = Board::getInstance();
 	board->loadmap();

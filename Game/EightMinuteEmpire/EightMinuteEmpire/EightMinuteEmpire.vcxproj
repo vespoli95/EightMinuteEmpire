@@ -23,10 +23,13 @@
     <ClInclude Include="Cards.h" />
     <ClInclude Include="ComputeScore.h" />
     <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="GameObservers.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Subject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BiddingFacility.cpp" />
@@ -35,14 +38,18 @@
     <ClCompile Include="CardsDriver.cpp" />
     <ClCompile Include="ComputeScore.cpp" />
     <ClCompile Include="GameLoop.cpp" />
+    <ClCompile Include="GameObservers.cpp" />
     <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="GameStartDriver.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="mapdriver.cpp" />
+    <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="Observer_Part_2.cpp" />
     <ClCompile Include="part4_driver.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDriver.cpp" />
+    <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
