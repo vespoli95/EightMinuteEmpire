@@ -1,13 +1,14 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "BiddingFacility.h"
 #include "map.h"
-#include "Subject.h"
+#include "Cards.h"
 
 
 using namespace std;
 
-class Player : public Subject {
+class Player {
 	private:
 		int *pCoins;
 		int *pAge;
@@ -20,32 +21,12 @@ class Player : public Subject {
 		map<string, int> playerGoods;
 		Hand *playerHand;
 
-		//for observer
-		map<string, int> *placed_new_armies;
-		string *city_built;
-		map<string, string> *army_destroyed;
-		map<string, string> *move_army;
+
 
 	public:
 		Player();
 		Player(string name, int age);
-
-		inline map<string, int> *getPlacedNewArmies() { return placed_new_armies; };
-		inline void setPlacedNewArmies(map<string, int> *current_move) { this->placed_new_armies = current_move; };
-		inline string* getCityBuilt() { return city_built; };
-		inline void setCityBuilt(string cityBuilt) { *city_built = cityBuilt; };
-		inline map<string, string> *getArmyDestroyed() { return army_destroyed; };
-		inline void setDestroyArmy(string playerName, string regionName) { 
-			map<string, string> *temp = new map<string, string>();
-			temp->insert(pair<string, string>(playerName, regionName));
-			army_destroyed = temp;
-		};
-		inline map<string, string> *getMoveArmy() { return move_army; };
-		inline void setMoveArmy(string startingPosition, string endPosition) {
-			map<string, string> *temp = new map<string, string>();
-			temp->insert(pair<string, string>(startingPosition, endPosition));
-			move_army = temp;
-		};
+		
 		inline void showBids() { cout << "Name: " << *pName << " / Bid: " << *(pBiddingFacility->getBid()) << endl; };
 		inline BiddingFacility* getBiddingFacility() { return pBiddingFacility; };
 		inline int* getCoins() { return pCoins; };
@@ -66,6 +47,7 @@ class Player : public Subject {
 		inline map<string, Region> getPlayerRegions() { return *playerRegions; };
 		inline void setScore(int s) { score = s; };
 		inline int getScore() { return score; };
+		
 		bool compare(Player player);
 		void PayCoin();
 		bool Ignore();
@@ -77,6 +59,7 @@ class Player : public Subject {
 		void RemoveArmy(Board& board, Region& region);
 		bool DestroyArmy(string playerName, string regionName, Board& board);
 		vector<int> AndOr(Card& card);
+		void DestroyArmy();
 		string toString();
 		static bool equals(Player, Player p2);
 		int computeGoods();
