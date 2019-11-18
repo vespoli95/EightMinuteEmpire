@@ -41,7 +41,17 @@ void GameObserver::display(string method)
 	else if (method == "MoveArmies")
 		cout << *_subject->getName() << " moved an army from region " << move_army->begin()->first << " to " << move_army->begin()->second << endl;
 
+	stats();
 	cout << endl;
+
+}
+
+void GameObserver::stats() {
+	int* coins = _subject->getCoins();
+	int points = _subject->getScore();
+
+	cout << *_subject->getName() << " has " << *coins << " coins." << endl;
+	cout << *_subject->getName() << " has " << points << " points." << endl;
 
 }
 

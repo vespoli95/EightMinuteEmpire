@@ -11,7 +11,7 @@ public:
 	~GameObserver();
 	void Update(string method);
 	void display(string method);
-
+	void stats();
 	void setSubject(Player*);
 
 private:
