@@ -4,6 +4,7 @@
 #include "BiddingFacility.h"
 #include "map.h"
 #include "Cards.h"
+#include "PlayerStrategies.h"
 
 
 using namespace std;
@@ -21,7 +22,7 @@ class Player {
 		map<string, int> playerGoods;
 		map<string, int> playerRegionsMap;
 		Hand *playerHand;
-
+		PlayerStrategy* strategy;
 
 
 	public:
@@ -70,4 +71,8 @@ class Player {
 		static bool equals(Player, Player p2);
 		int computeGoods();
 		map<string, int> computeRegions(Board& board);
+
+		inline void setStrategy(PlayerStrategy* newStrat) { this->strategy = newStrat; }
+
+		inline int executeStrategy(Hand* h, string pn, int c) { return this->strategy->execute(h, pn, c); }
 };

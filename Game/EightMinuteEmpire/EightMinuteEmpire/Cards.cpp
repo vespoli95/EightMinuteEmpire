@@ -94,6 +94,10 @@ Card Hand::exchange(int pos) {
 	cardsInHand--;
 	return card;
 }
+Card Hand::peak(int pos) {
+	Card card = *hand[pos];
+	return card;
+}
 
 void Hand::toString() {
 	/*cout << "Card1-> " << hand[0]->toString() << endl <<
