@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-/*int main() {
+static int obsDriver() {
 	//initialize board
 	Board *board = Board::getInstance();
 	board->loadmap();
@@ -23,4 +23,4 @@ using namespace std;
 	getchar();
 
 	return 0;
-}*/
+}
