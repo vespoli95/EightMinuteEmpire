@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+/*int main() {
 	//initialize board
 	Board *board = Board::getInstance();
 	board->loadmap();
@@ -23,4 +23,4 @@ int main() {
 	getchar();
 
 	return 0;
-}
+}*/

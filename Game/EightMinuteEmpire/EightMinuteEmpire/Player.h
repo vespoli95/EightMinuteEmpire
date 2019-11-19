@@ -2,6 +2,7 @@
 #include <iostream>
 #include "BiddingFacility.h"
 #include "map.h"
+#include <map>
 #include "Subject.h"
 
 
@@ -14,11 +15,13 @@ class Player : public Subject {
 		int *pNumArmies;
 		int nbCards;
 		int score;
+		int *pCities;
 		string *pName;
 		BiddingFacility *pBiddingFacility;
 		map<string, Region> *playerRegions = new map<string, Region>;
 		map<string, int> playerGoods;
 		Hand *playerHand;
+		vector<Card>* hand;
 
 		//for observer
 		map<string, int> *placed_new_armies;
@@ -56,6 +59,7 @@ class Player : public Subject {
 		inline void setName(string name) { *pName = name; };
 		inline int* getNumArmies() { return pNumArmies; }
 		inline void setNumArmies(int numArmies) { *pNumArmies = numArmies; }
+		inline int* getCities() { return pCities; };
 		inline void addCard() { nbCards++; };
 		inline int getNbCards() { return nbCards; };
 		inline void setHand(Hand *h) { playerHand = h; };
@@ -80,4 +84,7 @@ class Player : public Subject {
 		string toString();
 		static bool equals(Player, Player p2);
 		int computeGoods();
+		void addCardToHand(Card card);
+		string determineContinentOwner(string continent, map<string, Region*> regions);
+		void calculateContinents(Board* board);
 };

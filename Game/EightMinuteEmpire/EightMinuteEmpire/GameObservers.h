@@ -11,9 +11,21 @@ public:
 	~GameObserver();
 	void Update(string method);
 	void display(string method);
-
 	void setSubject(Player*);
 
 private:
 	Player *_subject;
+};
+
+class StatisticsObserver : public Observer
+{
+	public:
+		StatisticsObserver();
+		StatisticsObserver(Player* p);
+		~StatisticsObserver();
+		void Update(string method);
+		void display(string method);
+		void setSubject(Player*);
+	private:
+		Player* _subject;
 };

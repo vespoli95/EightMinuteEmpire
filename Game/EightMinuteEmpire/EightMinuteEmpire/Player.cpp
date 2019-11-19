@@ -27,6 +27,8 @@ Player::Player() {
 	city_built = new string("");
 	army_destroyed = NULL;
 	move_army = NULL;
+	pCities = new int(3);
+	hand = new vector<Card>;
 }
 
 Player::Player(string name, int age)
@@ -41,8 +43,8 @@ Player::Player(string name, int age)
 	city_built = new string("");
 	army_destroyed = NULL;
 	move_army = NULL;
-
-	
+	pCities = new int(3);
+	hand = new vector<Card>;
 }
 
 
@@ -76,20 +78,24 @@ void Player::BuildCity(map<string, int> selected_region, Board &board) {
 	bool built = false;
 
 	//add city to map of cities within a region if the selected region is valid in the map
-	for (region_ptr = regions.begin(); region_ptr != regions.end(); region_ptr++) {
-		found = regions.end();
-		if (region_ptr->first == selected_region.begin()->first)
-			found = region_ptr;
-		if (found != regions.end()) {
-			found->second->getCities()->insert(pair<string, int>(*getName(), 1));
-			built = true;
-			setCityBuilt(selected_region.begin()->first);
-			Notify("BuildCity");
+	if (*pCities != 0) {
+		for (region_ptr = regions.begin(); region_ptr != regions.end(); region_ptr++) {
+			found = regions.end();
+			if (region_ptr->first == selected_region.begin()->first)
+				found = region_ptr;
+			if (found != regions.end()) {
+				found->second->getCities()->insert(pair<string, int>(*getName(), 1));
+				built = true;
+				setCityBuilt(selected_region.begin()->first);
+				--(*pCities);
+				Notify("BuildCity");
 
+			}
 		}
 	}
 	if (!built)
-		cout << "Can't build a city there!";
+		cout << "Can't build a city there!" << endl;
+	
 }
 
 void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &board) {	
@@ -148,10 +154,9 @@ void Player::PlaceNewArmies(map<string, int> placements, bool gameStart, Board &
 	}
 	else {
 		cout << "Not in the starting region! The starting region is: " << startingRegion.getName() << endl;
-	} 
-
+	}
 	
-
+	calculateContinents(&board);
 }
 
 
@@ -188,6 +193,7 @@ bool Player::DestroyArmy(string playerName, string regionName, Board &board)
 					armies->erase(army);
 				setDestroyArmy(playerName, regionName);
 				Notify("DestroyArmy");
+				calculateContinents(&board);
 				return true;
 			}
 		}
@@ -394,4 +400,71 @@ int Player::computeGoods()
 
 
 	return score;
+}
+
+void Player::addCardToHand(Card card) {
+	hand->push_back(card);
+	addCard();
+}
+
+void Player::calculateContinents(Board* board) {
+	map<string, Continent*> continents = board->getContinents();
+	map<string, Continent*>::iterator it;
+	string output = "";
+	for (it = continents.begin(); it != continents.end(); it++)
+	{
+		output += determineContinentOwner(it->first, it->second->regionList);
+	}
+	Notify(output);
+}
+
+string Player::determineContinentOwner(string continent, map<string, Region*> regions) {
+	map<string, Region*>::iterator region;
+	map<string, int>::iterator it;
+	int highestArmy = 0;
+	string highestName = "";
+	vector<string> regionOwners;
+
+	for (region = regions.begin(); region != regions.end(); region++) {
+		cout << region->first << ":" << endl;
+		for (it = region->second->getArmies()->begin(); it != region->second->getArmies()->end(); it++) {
+			cout << "\tname: " << it->first << ", #: " << it->second << endl;
+			if (highestArmy < it->second) {
+				highestArmy = it->second;
+				highestName = it->first;
+			}
+			else if (highestArmy == it->second) {
+				highestName = "";
+			}
+		}
+		if (highestName != "") {
+			regionOwners.push_back(highestName);
+			highestName = "";
+		}
+	}
+	if (regionOwners.size() > 0) {
+		map<string, int> m;
+		// count occurrences of every string
+		for (int i = 0; i < regionOwners.size(); i++)
+		{
+			map<string, int>::iterator it = m.find(regionOwners[i]);
+
+			if (it == m.end())
+				m.insert(pair<string, int>(regionOwners[i], 1));
+
+			else
+				m[regionOwners[i]] += 1;
+		}
+
+		// find the max
+		it = m.begin();
+		for (map<string, int>::iterator it2 = m.begin(); it2 != m.end(); ++it2)
+		{
+			if (it2->second > it->second)
+				it = it2;
+		}
+		return continent + ": " + it->first + "; ";
+	}
+	else
+		return continent + ": None" + "; ";
 }
