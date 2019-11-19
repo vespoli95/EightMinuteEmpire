@@ -1,5 +1,3 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Observer_Part_2.cpp
-  Observer_Part_3.cpp
-  Generating Code...
+  main.cpp
   EightMinuteEmpire.vcxproj -> C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

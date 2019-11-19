@@ -12,7 +12,7 @@ static bool checkEndGame(Player* p, Player* p2) {
 		return false;
 }
 
-int StatDriver() {
+static int StatDriver() {
 	//initialize board
 	Board* board = Board::getInstance();
 	if (board->loadmap()) {
