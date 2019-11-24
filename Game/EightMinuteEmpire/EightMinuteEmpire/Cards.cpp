@@ -265,13 +265,13 @@ void Deck::initialize(int numPlayers) {
 
 	if (numPlayers == 5) {
 		Card* card3 = new Card("Move 6 Armies", "Forest");
-		Card* card14 = new Card("Add 3 Armies", "Carrot x 2");
-		Card* card19 = new Card("Move 4 Armies", "Anvil");
+		Card* card16 = new Card("Add 3 Armies", "Carrot x 2");
+		Card* card19 = new Card("Move 4 Armies", "Anvil x2");
 		Card* card29 = new Card("Move 2 Armies via Ship", "Ore");
 		Card* card38 = new Card("Add 2 Armies", "Crystal");
 
 		this->addCard(card3);
-		this->addCard(card14);
+		this->addCard(card16);
 		this->addCard(card19);
 		this->addCard(card29);
 		this->addCard(card38);
