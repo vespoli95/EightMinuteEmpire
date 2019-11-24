@@ -172,6 +172,7 @@ void Deck::toString() {
 	cout << "numOfCards: " << *numOfCards << endl;
 }
 
+//TODO: create a Deck of cards using the Factory Design Pattern
 void Deck::initialize(int numPlayers) {
 	cout << "Creating Deck..." << endl;
 
