@@ -26,6 +26,7 @@ int main()
 
 	cout << "Setting up game" << endl;
 	Deck* deck = new Deck(3);
+	deck->toString();
 
 	system("pause");
 	return 0;

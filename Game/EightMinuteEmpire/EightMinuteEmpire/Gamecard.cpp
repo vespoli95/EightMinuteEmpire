@@ -13,15 +13,12 @@ public:
 	AnvilCard() {
 
 		this->pGood = new string("Anvil");
-		int randNum = rand() % (vect.size() - 1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
-		cout << this->toString() << endl; //for debugging only, remove when not needed
+		//cout << *pGood <<" Size : " << vect.size() << endl; //for debugging only, remove when not needed
+		//cout << this->toString() << endl; //for debugging only, remove when not needed
 		vect.pop_back();
-		
-
-
+				
 	}	
 	
 	AnvilCard(bool special) {
@@ -30,13 +27,7 @@ public:
 		this->pAction = new string("Move 4 Armies");
 		this->pCost = new int(0);
 	}
-
-	string toString() {
-		string cardStr = "Action: " + *pAction + ", Good: " +
-			*pGood + ", Cost: " + to_string(*pCost);
-		return cardStr;
-	}
-
+	
 	~AnvilCard() {};
 
 };
@@ -49,11 +40,9 @@ public:
 
 	CarrotCard() {
 		this->pGood = new string("Carrot");
-		int randNum = rand() % (vect.size() - 1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
-		cout << this->toString() << endl; //for debugging only, remove when not needed
+
 		vect.pop_back();
 
 	}
@@ -63,12 +52,6 @@ public:
 		this->pAction = new string("Add 3 Armies");
 		this->pCost = new int(0);
 	}
-
-	//string Card::toString() {
-	//	string cardStr = "Action: " + *pAction + ", Good: " +
-	//		*pGood + ", Cost: " + to_string(*pCost);
-	//	return cardStr;
-	//}
 
 	~CarrotCard() {};
 };
@@ -82,11 +65,8 @@ public:
 	CrystalCard() {
 
 		this->pGood = new string("Crystal");
-		int randNum = rand() % (vect.size() - 1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
-		cout << this->toString() << endl; //for debugging only, remove when not needed
 		vect.pop_back();
 
 	}
@@ -97,13 +77,7 @@ public:
 		this->pAction = new string("Add 2 Armies");
 		this->pCost = new int(0);
 	}
-
-	//string Card::toString() {
-	//	string cardStr = "Action: " + *pAction + ", Good: " +
-	//		*pGood + ", Cost: " + to_string(*pCost);
-	//	return cardStr;
-	//}
-
+	
 	~CrystalCard() {};
 
 };
@@ -117,11 +91,8 @@ public:
 	ForestCard() {
 
 		this->pGood = new string("Forest");
-		int randNum = rand() % (vect.size() - 1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
-		cout << this->toString() << endl; //for debugging only, remove when not needed
 		vect.pop_back();
 	}
 		
@@ -131,13 +102,7 @@ public:
 		this->pAction = new string("Move 6 Armies");
 		this->pCost = new int(0);
 	}
-
-	//string Card::toString() {
-	//	string cardStr = "Action: " + *pAction + ", Good: " +
-	//		*pGood + ", Cost: " + to_string(*pCost);
-	//	return cardStr;
-	//}
-
+	
 	~ForestCard() {};
 };
 
@@ -150,11 +115,8 @@ public:
 	OreCard() {
 
 		this->pGood = new string("Ore");
-		int randNum = rand() % (vect.size() - 1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
-		cout << this->toString() << endl; //for debugging only, remove when not needed
 		vect.pop_back();
 
 	}
@@ -166,12 +128,6 @@ public:
 		this->pCost = new int(0);
 	}
 
-	//string Card::toString() {
-	//	string cardStr = "Action: " + *pAction + ", Good: " +
-	//		*pGood + ", Cost: " + to_string(*pCost);
-	//	return cardStr;
-	//}
-
 	~OreCard() {};
 
 };
@@ -181,25 +137,15 @@ class WildCard : public Card {
 	static vector<string> vect;
 
 public:
-
-
+	
 	WildCard() {
 
 		this->pGood = new string("Wild");
-		int randNum = rand() % (vect.size() - 1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
-		cout << this->toString() << endl; //for debugging only, remove when not needed
 		vect.pop_back();
 
 	}
-
-	//string Card::toString() {
-	//	string cardStr = "Action: " + *pAction + ", Good: " +
-	//		*pGood + ", Cost: " + to_string(*pCost);
-	//	return cardStr;
-	//}
 
 	~WildCard() {};
 	
