@@ -40,8 +40,8 @@ private:
 };
 
 vector<string> AnvilCard::vect = { "Add 3 Armies or move 4 Armies", "Move 3 Armies via Ship", "Build City","Move 4 Armies","Add 3 Armies or Move 3 Armies","Move 5 Armies","Add 3 Armies","Add 3 Armies"};
-vector<string> CarrotCard::vect = {};
-vector<string> CrystalCard::vect = {};
-vector<string> ForestCard::vect = {};
-vector<string> OreCard::vect = {};
-vector<string> WildCard::vect = {};
+vector<string> CarrotCard::vect = {"Build City","Destroy 1 Army and Add 1 Army","Add 3 Armies","Move 4 Armies","Move 5 Armies","Add 3 Armies","Move 3 Armies via Ship","Move 4 Armies","Build City"};
+vector<string> CrystalCard::vect = {"Add 2 Armies","Add 2 Armies","Move 2 Armies","Add 1 Army"};
+vector<string> ForestCard::vect = { "Move 3 Armies","Add 3 Armies","Destroy 1 Army or Build City","Add 2 Armies or Move 3 Armies","Move 4 Armies via Ship","Build City","Move 3 Armies via Ship"};
+vector<string> OreCard::vect = { "Move 2 Armies","Move 3 Armies via Ship","Move 2 Armies via Ship","Add 3 Armies","Add 3 Armies","Add 2 Armies"};
+vector<string> WildCard::vect = { "Move 2 Armies","Move 2 Armies","Add 2 Armies"};
