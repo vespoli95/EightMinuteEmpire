@@ -37,6 +37,7 @@
     <ClCompile Include="BiddingFacilityDriver.cpp" />
     <ClCompile Include="Cards.cpp" />
     <ClCompile Include="CardsDriver.cpp" />
+    <ClCompile Include="cardsfactorydriver.cpp" />
     <ClCompile Include="ComputeScore.cpp" />
     <ClCompile Include="Gamecard.cpp" />
     <ClCompile Include="GameLoop.cpp" />
