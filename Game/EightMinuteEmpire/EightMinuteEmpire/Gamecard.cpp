@@ -11,9 +11,10 @@ class AnvilCard : public Card {
 public:
 
 	AnvilCard() {
-		int randNum = rand() % (vect.size()-1 + 1);
-		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
+
 		this->pGood = new string("Anvil");
+		int randNum = rand() % (vect.size() - 1 + 1);
+		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
 		this->pAction = new string(vect.back());
 		this->pCost = new int(0);
 		cout << this->toString() << endl; //for debugging only, remove when not needed
@@ -27,7 +28,7 @@ public:
 		
 		this->pGood = new string("Anvil");
 		this->pAction = new string("Move 4 Armies");
-
+		this->pCost = new int(0);
 	}
 
 	string toString() {
@@ -48,14 +49,19 @@ public:
 
 	CarrotCard() {
 		this->pGood = new string("Carrot");
-
+		int randNum = rand() % (vect.size() - 1 + 1);
+		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
+		this->pAction = new string(vect.back());
+		this->pCost = new int(0);
+		cout << this->toString() << endl; //for debugging only, remove when not needed
+		vect.pop_back();
 
 	}
 
 	CarrotCard(bool special) {
 		this->pGood = new string("Carrot");
 		this->pAction = new string("Add 3 Armies");
-
+		this->pCost = new int(0);
 	}
 
 	//string Card::toString() {
@@ -76,7 +82,12 @@ public:
 	CrystalCard() {
 
 		this->pGood = new string("Crystal");
-
+		int randNum = rand() % (vect.size() - 1 + 1);
+		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
+		this->pAction = new string(vect.back());
+		this->pCost = new int(0);
+		cout << this->toString() << endl; //for debugging only, remove when not needed
+		vect.pop_back();
 
 	}
 		
@@ -84,7 +95,7 @@ public:
 
 		this->pGood = new string("Crystal");
 		this->pAction = new string("Add 2 Armies");
-
+		this->pCost = new int(0);
 	}
 
 	//string Card::toString() {
@@ -106,14 +117,19 @@ public:
 	ForestCard() {
 
 		this->pGood = new string("Forest");
-
+		int randNum = rand() % (vect.size() - 1 + 1);
+		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
+		this->pAction = new string(vect.back());
+		this->pCost = new int(0);
+		cout << this->toString() << endl; //for debugging only, remove when not needed
+		vect.pop_back();
 	}
 		
 	ForestCard(bool special) {
 
 		this->pGood = new string("Forest");
 		this->pAction = new string("Move 6 Armies");
-
+		this->pCost = new int(0);
 	}
 
 	//string Card::toString() {
@@ -134,7 +150,12 @@ public:
 	OreCard() {
 
 		this->pGood = new string("Ore");
-
+		int randNum = rand() % (vect.size() - 1 + 1);
+		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
+		this->pAction = new string(vect.back());
+		this->pCost = new int(0);
+		cout << this->toString() << endl; //for debugging only, remove when not needed
+		vect.pop_back();
 
 	}
 		
@@ -142,7 +163,7 @@ public:
 
 		this->pGood = new string("Ore");
 		this->pAction = new string("Move 2 Armies via Ship");
-
+		this->pCost = new int(0);
 	}
 
 	//string Card::toString() {
@@ -165,7 +186,12 @@ public:
 	WildCard() {
 
 		this->pGood = new string("Wild");
-
+		int randNum = rand() % (vect.size() - 1 + 1);
+		cout << "Size : " << vect.size() << endl; //for debugging only, remove when not needed
+		this->pAction = new string(vect.back());
+		this->pCost = new int(0);
+		cout << this->toString() << endl; //for debugging only, remove when not needed
+		vect.pop_back();
 
 	}
 

@@ -287,7 +287,7 @@ void Deck::initialize(int numPlayers) {
 	cout << "Creating Deck..." << endl;
 
 	cards = new vector<Card>;
-	/*
+	
 	Card* card1 = CardsFactory::Create("Forest");
 	Card* card2 = CardsFactory::Create("Forest");
 
@@ -306,13 +306,7 @@ void Deck::initialize(int numPlayers) {
 
 	Card* card17 = CardsFactory::Create("Carrot");
 	Card* card18 = CardsFactory::Create("Carrot");
-	*/
 
-	Card* card20 = CardsFactory::Create("Anvil");
-	Card* card21 = CardsFactory::Create("Anvil");
-	this->addCard(card20);
-	this->addCard(card21);
-	/*
 	Card* card20 = CardsFactory::Create("Anvil");
 	Card* card21 = CardsFactory::Create("Anvil");
 	Card* card22 = CardsFactory::Create("Anvil");
@@ -393,7 +387,7 @@ void Deck::initialize(int numPlayers) {
 		this->addCard(card29);
 		this->addCard(card38);
 	}
-	*/
+	
 
 }
 
