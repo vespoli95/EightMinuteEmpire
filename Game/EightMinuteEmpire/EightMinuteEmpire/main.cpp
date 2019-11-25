@@ -2,7 +2,8 @@
 #include "main.h"
 #include "map.h"
 #include "GameStart.h"
-#include "GameStartDriver.cpp"
+#include "cardsfactorydriver.cpp"
+//#include "GameStartDriver.cpp"
 #include "BiddingFacilityDriver.cpp"
 #include "Observer_Part_3.cpp"
 #include "Observer_Part_2.cpp"
@@ -15,6 +16,7 @@ int main()
 		cout << "\n\nHello, please choose an option:\n"
 			<< "1 Observer driver\n"
 			<< "2 Stats Observer driver\n"
+			<< "3 CardsFactory driver\n"
 			<< "0 to exit\n";
 		cin >> answer;
 
@@ -22,6 +24,9 @@ int main()
 			obsDriver();
 		else if (answer == 2)
 			StatDriver();
+		else if (answer == 3)
+			cardsfactorydriver();
 	}
+
 
 }

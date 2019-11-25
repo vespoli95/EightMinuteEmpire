@@ -6,6 +6,7 @@
 #include <string>
 #include "Cards.h"
 #include <time.h>
+#include "Cardsfactory.h"
 
 
 using namespace std;
@@ -44,6 +45,7 @@ string Card::toString() {
 		*pGood + ", Cost: " + to_string(*pCost);
 	return cardStr;
 }
+
 
 // Functions for Hand
 Hand::Hand() {
@@ -172,6 +174,7 @@ void Deck::toString() {
 	cout << "numOfCards: " << *numOfCards << endl;
 }
 
+/*
 void Deck::initialize(int numPlayers) {
 	cout << "Creating Deck..." << endl;
 
@@ -264,16 +267,127 @@ void Deck::initialize(int numPlayers) {
 
 	if (numPlayers == 5) {
 		Card* card3 = new Card("Move 6 Armies", "Forest");
-		Card* card14 = new Card("Add 3 Armies", "Carrot x 2");
-		Card* card19 = new Card("Move 4 Armies", "Anvil");
+		Card* card16 = new Card("Add 3 Armies", "Carrot x 2");
+		Card* card19 = new Card("Move 4 Armies", "Anvil x2");
 		Card* card29 = new Card("Move 2 Armies via Ship", "Ore");
 		Card* card38 = new Card("Add 2 Armies", "Crystal");
 
 		this->addCard(card3);
-		this->addCard(card14);
+		this->addCard(card16);
 		this->addCard(card19);
 		this->addCard(card29);
 		this->addCard(card38);
 	}
 
 }
+*/
+
+//TODO: create a Deck of cards using the Factory Design Pattern
+void Deck::initialize(int numPlayers) {
+	cout << "Creating Deck..." << endl;
+
+	cards = new vector<Card>;
+	
+	Card* card1 = CardsFactory::Create("Forest");
+	Card* card2 = CardsFactory::Create("Forest");
+
+	Card* card4 = CardsFactory::Create("Forest");
+	Card* card5 = CardsFactory::Create("Forest");
+	Card* card6 = CardsFactory::Create("Forest");
+	Card* card7 = CardsFactory::Create("Forest");
+	Card* card8 = CardsFactory::Create("Forest");
+	Card* card9 = CardsFactory::Create("Carrot");
+	Card* card10 = CardsFactory::Create("Carrot");
+	Card* card11 = CardsFactory::Create("Carrot");
+	Card* card12 = CardsFactory::Create("Carrot");
+	Card* card13 = CardsFactory::Create("Carrot");
+	Card* card14 = CardsFactory::Create("Carrot");
+	Card* card15 = CardsFactory::Create("Carrot");
+
+	Card* card17 = CardsFactory::Create("Carrot");
+	Card* card18 = CardsFactory::Create("Carrot");
+
+	Card* card20 = CardsFactory::Create("Anvil");
+	Card* card21 = CardsFactory::Create("Anvil");
+	Card* card22 = CardsFactory::Create("Anvil");
+	Card* card23 = CardsFactory::Create("Anvil");
+	Card* card24 = CardsFactory::Create("Anvil");
+	Card* card25 = CardsFactory::Create("Anvil");
+	Card* card26 = CardsFactory::Create("Anvil");
+	Card* card27 = CardsFactory::Create("Ore");
+	Card* card28 = CardsFactory::Create("Ore");
+
+	Card* card30 = CardsFactory::Create("Ore");
+	Card* card31 = CardsFactory::Create("Ore");
+	Card* card32 = CardsFactory::Create("Ore");
+	Card* card33 = CardsFactory::Create("Ore");
+	Card* card34 = CardsFactory::Create("Crystal");
+	Card* card35 = CardsFactory::Create("Crystal");
+	Card* card36 = CardsFactory::Create("Crystal");
+	Card* card37 = CardsFactory::Create("Crystal");
+
+	Card* card39 = CardsFactory::Create("Wild");
+	Card* card40 = CardsFactory::Create("Wild");
+	Card* card41 = CardsFactory::Create("Wild");
+	Card* card42 = CardsFactory::Create("Anvil");
+
+	this->addCard(card1);
+	this->addCard(card2);
+
+	this->addCard(card4);
+	this->addCard(card5);
+	this->addCard(card6);
+	this->addCard(card7);
+	this->addCard(card8);
+	this->addCard(card9);
+	this->addCard(card10);
+	this->addCard(card11);
+	this->addCard(card12);
+	this->addCard(card13);
+	this->addCard(card14);
+	this->addCard(card15);
+
+	this->addCard(card17);
+	this->addCard(card18);
+
+	this->addCard(card20);
+	this->addCard(card21);
+	this->addCard(card22);
+	this->addCard(card23);
+	this->addCard(card24);
+	this->addCard(card25);
+	this->addCard(card26);
+	this->addCard(card27);
+	this->addCard(card28);
+
+	this->addCard(card30);
+	this->addCard(card31);
+	this->addCard(card32);
+	this->addCard(card33);
+	this->addCard(card34);
+	this->addCard(card35);
+	this->addCard(card36);
+	this->addCard(card37);
+
+	this->addCard(card39);
+	this->addCard(card40);
+	this->addCard(card41);
+	this->addCard(card42);
+
+	if (numPlayers == 5) {
+		Card* card3 = CardsFactory::Create("Forest",true);
+		Card* card16 = CardsFactory::Create("Carrot",true);
+		Card* card19 = CardsFactory::Create("Anvil",true);
+		Card* card29 = CardsFactory::Create("Ore",true);
+		Card* card38 = CardsFactory::Create("Crystal",true);
+
+		this->addCard(card3);
+		this->addCard(card16);
+		this->addCard(card19);
+		this->addCard(card29);
+		this->addCard(card38);
+	}
+	
+
+}
+

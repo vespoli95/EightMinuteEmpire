@@ -1,3 +1,34 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  BiddingFacility.cpp
+  BiddingFacilityDriver.cpp
+  Cards.cpp
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(151,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  CardsDriver.cpp
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(170,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(39,20): warning C4018: '<=': signed/unsigned mismatch
+  cardsfactorydriver.cpp
+  ComputeScore.cpp
+  Gamecard.cpp
+  GameLoop.cpp
+  GameObservers.cpp
+  GameStart.cpp
+  GameStartDriver.cpp
   main.cpp
-  EightMinuteEmpire.vcxproj -> C:\Users\j_buonam\Documents\GitHub\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
+  map.cpp
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(271,19): warning C4018: '<': signed/unsigned mismatch
+  mapdriver.cpp
+  Observer.cpp
+  Observer_Part_2.cpp
+  Observer_Part_3.cpp
+  part4_driver.cpp
+  Player.cpp
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(67,10): warning C4101: 'startingRegion': unreferenced local variable
+  PlayerDriver.cpp
+  Generating Code...
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(448,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(393): warning C4715: 'Board::loadmap': not all control paths return a value
+  Compiling...
+  Subject.cpp
+  Generating Code...
+C:\Users\Martin\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
+  EightMinuteEmpire.vcxproj -> C:\Users\Martin\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe
