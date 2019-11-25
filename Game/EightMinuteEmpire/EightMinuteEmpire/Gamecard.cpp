@@ -42,6 +42,8 @@ public:
 
 class CarrotCard : public Card {
 
+	static vector<string> vect;
+
 public:
 
 	CarrotCard() {
@@ -66,6 +68,8 @@ public:
 };
 
 class CrystalCard : public Card {
+
+	static vector<string> vect;
 
 public:
 
@@ -95,6 +99,8 @@ public:
 
 class ForestCard : public Card {
 
+	static vector<string> vect;
+
 public:
 
 	ForestCard() {
@@ -120,6 +126,8 @@ public:
 };
 
 class OreCard : public Card {
+
+	static vector<string> vect;
 
 public:
 
@@ -148,6 +156,8 @@ public:
 };
 
 class WildCard : public Card {
+
+	static vector<string> vect;
 
 public:
 
