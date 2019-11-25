@@ -16,6 +16,10 @@ private:
 	string* pAction;
 	string* pGood;
 	int* pCost;
+
+	virtual void setAction() = 0;
+	virtual void setGood() = 0;
+
 public:
 	Card();
 	Card(string action, string good);

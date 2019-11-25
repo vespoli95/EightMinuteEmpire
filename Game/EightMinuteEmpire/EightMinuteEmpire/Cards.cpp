@@ -6,6 +6,7 @@
 #include <string>
 #include "Cards.h"
 #include <time.h>
+#include "Cardsfactory.h"
 
 
 using namespace std;
