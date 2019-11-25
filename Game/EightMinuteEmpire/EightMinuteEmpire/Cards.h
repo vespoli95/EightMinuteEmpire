@@ -13,12 +13,11 @@ using namespace std;
 
 class Card {
 private:
-	string* pAction;
-	string* pGood;
-	int* pCost;
+	/*Made this PROTECTED for Assignment 4 Part 1*/
+	//string* pAction;
+	//string* pGood;
+	//int* pCost;
 
-	virtual void setAction() = 0;
-	virtual void setGood() = 0;
 
 public:
 	Card();
@@ -27,7 +26,13 @@ public:
 	string* getGood();
 	int* getCost();
 	void setCost(int cost);
-	string toString();
+	virtual string toString();
+	~Card() {};
+
+protected:
+	string* pAction;
+	string* pGood;
+	int* pCost;
 };
 
 class Hand {

@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	int answer = -1;
+	/*int answer = -1;
 	while (answer != 0) {
 		cout << "\n\nHello, please choose an option:\n"
 			<< "1 Observer driver\n"
@@ -22,6 +22,12 @@ int main()
 			obsDriver();
 		else if (answer == 2)
 			StatDriver();
-	}
+	}*/
+
+	cout << "Setting up game" << endl;
+	Deck* deck = new Deck(3);
+
+	system("pause");
+	return 0;
 
 }

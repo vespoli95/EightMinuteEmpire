@@ -1,13 +1,30 @@
-﻿  BiddingFacility.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  BiddingFacility.cpp
   BiddingFacilityDriver.cpp
+  Cards.cpp
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(150,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  CardsDriver.cpp
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(151,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ComputeScore.cpp
+  Gamecard.cpp
+  GameLoop.cpp
+  GameObservers.cpp
+  GameStart.cpp
+  GameStartDriver.cpp
+  main.cpp
   map.cpp
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(55,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(67,10): warning C4101: 'startingRegion': unreferenced local variable
   mapdriver.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\BiddingFacilityDriver.cpp(1,10): warning C4067:  unexpected tokens following preprocessor directive - expected a newline
+  Observer.cpp
+  Observer_Part_2.cpp
+  Observer_Part_3.cpp
+  part4_driver.cpp
   Player.cpp
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\mapdriver.cpp(8,6): warning C4101:  'players': unreferenced local variable
   PlayerDriver.cpp
+  Subject.cpp
   Generating Code...
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(1,10): warning C4067:  unexpected tokens following preprocessor directive - expected a newline
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(88): warning C4715:  'Board::addregion': not all control paths return a value
-C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(118): warning C4715:  'Board::addcontinent': not all control paths return a value
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(120,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\map.cpp(393): warning C4715: 'Board::loadmap': not all control paths return a value
+C:\Users\marti\source\repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
   EightMinuteEmpire.vcxproj -> C:\Users\marti\Source\Repos\vespoli95\EightMinuteEmpire\Game\EightMinuteEmpire\x64\Debug\EightMinuteEmpire.exe
