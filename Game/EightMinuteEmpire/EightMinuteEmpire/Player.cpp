@@ -47,8 +47,20 @@ Player::Player(string name, int age)
 	hand = new vector<Card>;
 }
 
-
-
+Player::~Player() {
+	delete pName; pName = NULL;
+	delete pCoins; pCoins = NULL;
+	delete pAge; pAge = NULL;
+	delete pBiddingFacility; pBiddingFacility = NULL;
+	delete playerHand; playerHand = NULL;
+	delete pNumArmies; pNumArmies = NULL;
+	delete placed_new_armies; placed_new_armies = NULL;
+	delete city_built; city_built = NULL;
+	delete army_destroyed; army_destroyed = NULL;
+	delete move_army; move_army = NULL;
+	delete pCities; pCities = NULL;
+	delete hand; hand = NULL;
+}
 
 void Player::PayCoin() {
 	cout << "You have reached " << *Player::getName() << "::PayCoin(), this will be implemented in a future release\n";

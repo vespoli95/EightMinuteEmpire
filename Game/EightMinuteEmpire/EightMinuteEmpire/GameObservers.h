@@ -1,6 +1,13 @@
 #pragma once
-#include "Observer.h"
 #include "Player.h"
+
+class Observer {
+public:
+	~Observer() {};
+	virtual void Update(string method) = 0;
+protected:
+	Observer() {};
+};
 
 //ConcreteObserver
 class GameObserver : public Observer

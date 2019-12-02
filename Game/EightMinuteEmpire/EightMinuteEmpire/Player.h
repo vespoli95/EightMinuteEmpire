@@ -8,6 +8,9 @@
 
 using namespace std;
 
+
+
+
 class Player : public Subject {
 	private:
 		int *pCoins;
@@ -32,6 +35,7 @@ class Player : public Subject {
 	public:
 		Player();
 		Player(string name, int age);
+		~Player();
 
 		inline map<string, int> *getPlacedNewArmies() { return placed_new_armies; };
 		inline void setPlacedNewArmies(map<string, int> *current_move) { this->placed_new_armies = current_move; };

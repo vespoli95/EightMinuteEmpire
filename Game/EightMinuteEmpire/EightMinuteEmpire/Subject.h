@@ -1,7 +1,9 @@
 #pragma once
 #include <list>
-#include "Observer.h"
+#include "cards.h"
 using namespace std;
+
+class Observer;
 
 class Subject {
 public:

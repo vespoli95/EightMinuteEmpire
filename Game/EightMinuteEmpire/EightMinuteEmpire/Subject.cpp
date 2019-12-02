@@ -1,4 +1,5 @@
 #include "Subject.h"
+#include "GameObservers.h"
 
 Subject::Subject()
 {
