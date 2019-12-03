@@ -1,24 +1,3 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (EightMinuteEmpire.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  BiddingFacilityDriver.cpp
-  Cards.cpp
-C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(157,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  CardsDriver.cpp
-C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Cards.cpp(176,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(39,20): warning C4018: '<=': signed/unsigned mismatch
-  cardsfactorydriver.cpp
-  ComputeScore.cpp
-  Gamecard.cpp
-  GameObservers.cpp
-  GameStart.cpp
-  GameStartDriver.cpp
-  main.cpp
-  Observer_Part_2.cpp
-  Observer_Part_3.cpp
-  Player.cpp
-C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\CardsDriver.cpp(271,19): warning C4018: '<': signed/unsigned mismatch
-  PlayerStrategies.cpp
-  Subject.cpp
-  Generating Code...
-C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\Player.cpp(460,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\EightMinuteEmpire\GameStart.cpp(68): warning C4715: 'GameStart::loadDeck': not all control paths return a value
+  GameLoop.cpp
   EightMinuteEmpire.vcxproj -> C:\Users\antve\source\repos\Comp345_Final\EightMinuteEmpire\Game\EightMinuteEmpire\Debug\EightMinuteEmpire.exe

@@ -9,9 +9,6 @@
 
 using namespace std;
 
-
-
-
 class Player : public Subject {
 	private:
 		int *pCoins;

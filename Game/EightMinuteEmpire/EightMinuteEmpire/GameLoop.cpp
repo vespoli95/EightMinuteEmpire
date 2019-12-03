@@ -1,7 +1,7 @@
 #include "GameLoop.h"
 #include <iostream>
-#include <string>
-#include "CardsDriver.cpp"
+//#include <string>
+//#include "CardsDriver.cpp"
 #include "Player.h"
 
 #include "main.h"
@@ -49,35 +49,7 @@ void GameLoop() {
 
 	do {
 		choice = activePlayer->executeStrategy(hand, *activePlayer->getName(), coins);
-						
-									
- 
-
-	  
-  
-																																	   
-					
-					  
-
-						   
-				  
-	
-																			   
-										
-																				
-											 
-																				
-											 
-																				
-											 
-																				
-											 
-																				
-											 
-	
-
-						   
-											  
+						  
 		chosenCard = hand->exchange(choice);
 		hand->slideCards(choice);
 		hand->addCard(deck->draw());
