@@ -4,7 +4,7 @@
 #include "map.h"
 #include <map>
 #include "Subject.h"
-#include "../../../../../../../OneDrive/Desktop/PlayerStrategies.h"
+#include "PlayerStrategies.h"
 
 
 using namespace std;
