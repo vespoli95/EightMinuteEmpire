@@ -4,6 +4,7 @@
 #include "map.h"
 #include <map>
 #include "Subject.h"
+#include "../../../../../../../OneDrive/Desktop/PlayerStrategies.h"
 
 
 using namespace std;
@@ -23,8 +24,10 @@ class Player : public Subject {
 		BiddingFacility *pBiddingFacility;
 		map<string, Region> *playerRegions = new map<string, Region>;
 		map<string, int> playerGoods;
+		map<string, int> playerRegionsMap;
 		Hand *playerHand;
 		vector<Card>* hand;
+		PlayerStrategy* strategy;
 
 		//for observer
 		map<string, int> *placed_new_armies;
@@ -91,4 +94,9 @@ class Player : public Subject {
 		void addCardToHand(Card card);
 		string determineContinentOwner(string continent, map<string, Region*> regions);
 		void calculateContinents(Board* board);
+
+		map<string, int> computeRegions(Board& board);
+		inline void setStrategy(PlayerStrategy* newStrat) { this->strategy = newStrat; }
+		inline int executeStrategy(Hand* h, string pn, int c) { return this->strategy->execute(h, pn, c); }
+
 };

@@ -1,23 +1,24 @@
 #include "GameLoop.h"
 #include <iostream>
 #include <string>
-//#include "CardsDriver.cpp"
+#include "CardsDriver.cpp"
 #include "Player.h"
 
 #include "main.h"
 
 
-void GameLoop(){
+void GameLoop() {
 	int nbPlayer = 3;
 	vector<Player> players;
 	for (int i = 1; i <= nbPlayer; i++)
 	{
 		string name = "p" + to_string(i);
-		Player temp_player(name, 10+i);
+		Player temp_player(name, 10 + i);
+		temp_player.setStrategy(new moderateComputer());
 		players.push_back(temp_player);
 
 	}
-	Player *activePlayer = &players[0];
+	Player* activePlayer = &players[0];
 
 	std::cout << "Setting up game" << endl;
 	Deck* deck = new Deck(nbPlayer);
@@ -47,48 +48,63 @@ void GameLoop(){
 	bool gameON = true;
 
 	do {
-		choice = NULL;
-		invalideChoice = true;
-		coins = *activePlayer->getCoins();
+		choice = activePlayer->executeStrategy(hand, *activePlayer->getName(), coins);
+						
+									
+ 
+
+	  
+  
+																																	   
+					
+					  
+
+						   
+				  
+	
+																			   
+										
+																				
+											 
+																				
+											 
+																				
+											 
+																				
+											 
+																				
+											 
 	
 
-		do {
-		
-			std::cout << "\nactive player: " << activePlayer->toString() << endl << "Please choose a card to play from the following: " << endl;
-			hand->toString();
-			std::cin >> choice;
-
-			// select a card to play
-			switch (choice)
-			{
-			default: std::cout << "keep your selection between 0 and 5!" << endl; break;
-			case 0:invalideChoice = false; break;
-			case 1:if (coins < 1) { std::cout << "You dont have enough coins!" << endl; }
-				  else { invalideChoice = false; } break;
-			case 2:if (coins < 1) { std::cout << "You dont have enough coins!" << endl; }
-				  else { invalideChoice = false; } break;
-			case 3:if (coins < 2) { std::cout << "You dont have enough coins!" << endl; }
-				  else { invalideChoice = false; } break;
-			case 4:if (coins < 2) { std::cout << "You dont have enough coins!" << endl; }
-				  else { invalideChoice = false; } break;
-			case 5:if (coins < 3) { std::cout << "You dont have enough coins!" << endl; }
-				  else { invalideChoice = false; } break;
-			}
-
-		} while (invalideChoice);
-		// pick card up, slide and get a new card in
+						   
+											  
 		chosenCard = hand->exchange(choice);
 		hand->slideCards(choice);
 		hand->addCard(deck->draw());
 		activePlayer->setGoods(*chosenCard.getGood());
-		
+
 
 		//remove cost of card from player
-		activePlayer->setCoins(coins-*chosenCard.getCost());
+		activePlayer->setCoins(coins - *chosenCard.getCost());
 
 		//play card;
 
 		std::cout << *chosenCard.getAction();
+		
+		bool invalideChoice = true;
+		do{
+			std::cout << "\nSet player strategy:\n0 - dont change anything\n1 - real player\n2 - greedy computer\n3 - moderate player";
+			std::cin >> choice;
+		
+			switch (choice)
+			{
+				default: std::cout << "keep your selection between 0 and 3!" << endl; break;
+				case 0: invalideChoice = false;  break;
+				case 1: invalideChoice = false; activePlayer->setStrategy(new realPlayer()); break;
+				case 2: invalideChoice = false; activePlayer->setStrategy(new greedyComputer()); break;
+				case 3: invalideChoice = false; activePlayer->setStrategy(new moderateComputer()); break;
+			}
+		} while (invalideChoice);
 
 
 		// see if game is finished

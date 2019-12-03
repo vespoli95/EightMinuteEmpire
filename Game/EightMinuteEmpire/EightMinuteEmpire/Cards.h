@@ -45,6 +45,7 @@ public:
 	void deal(Card* card);
 	void addCard(Card* card);
 	Card exchange(int pos);
+	Card peak(int pos);
 	void toString();
 };
 

@@ -480,3 +480,22 @@ string Player::determineContinentOwner(string continent, map<string, Region*> re
 	else
 		return continent + ": None" + "; ";
 }
+
+map<string, int> Player::computeRegions(Board& board) {
+	map<string, int> results;
+	map<string, Region*> regions = board.getWorldMap();
+	map<string, Region*>::iterator region_ptr;
+	map<string, int>::iterator region_ptr2;
+	for (region_ptr = regions.begin(); region_ptr != regions.end(); region_ptr++) {
+		//cout << endl << region_ptr->first;
+		for (region_ptr2 = region_ptr->second->getArmies()->begin(); region_ptr2 != region_ptr->second->getArmies()->end(); region_ptr2++) {
+			//cout << endl << region_ptr2->first << " " << region_ptr2->second;
+			if (getName()->_Equal(region_ptr2->first))
+				results.insert({ region_ptr->first, region_ptr2->second });
+		}
+		if (region_ptr->second->getArmies()->empty())
+			results.insert({ region_ptr->first, 0 });
+	}
+	playerRegionsMap = results;
+	return results;
+}

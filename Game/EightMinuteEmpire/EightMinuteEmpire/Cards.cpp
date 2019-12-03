@@ -52,6 +52,12 @@ Hand::Hand() {
 	cardsInHand = new int(0);
 }
 
+
+Card Hand::peak(int pos) {
+	Card card = *hand[pos];
+	return card;
+}
+
 void Hand::slideCards(int pos) {
 
 	while (pos < 5) {
